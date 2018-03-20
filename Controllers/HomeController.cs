@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FinalProject.Models;
+using System.Web;
+
+
 
 namespace FinalProject.Controllers
 {
@@ -28,7 +31,42 @@ namespace FinalProject.Controllers
 
             return View();
         }
+ [HttpGet]
+        public ActionResult Chat()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Chat(string answer, int a)
+        {
+            
+            
+          //  if (a == 88)
+           // {
+           //     a = 0;
+           //     Session["q"] = a;
+           // }
+           // else
+           // {
+           //     a = (int)Session["q"] + 1;
+           //     Session["q"] = a;
+           // }
 
+
+            string[] questions =
+            {
+                "Hey! This is your bot! I will conduct your test!",
+                "Whats Your Name?",
+                "How Old are you?",
+                "Whats your qualification?",
+                "Ok! That was all for today!"
+            };
+
+
+            return Json(new { message = questions[(int)a] });
+        
+        
+    }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

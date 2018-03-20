@@ -1,0 +1,97 @@
+
+@{
+    Layout = null;
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyChat</title>
+    <link href="~/css/w3.css" rel="stylesheet" />
+    <link href="~/css/chat.css" rel="stylesheet" />
+   
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(document).keypress(function (e) {
+                if (e.which == 13) {
+                    SendData();
+                }
+            });
+            
+            var a = "<a  class='user' href='#'> ";
+            var d = new Date();
+            var dateAtLoading = d.getHours().toString() + ':' +d.getMinutes().toString();
+                $.ajax({
+                    type: "POST",
+                    url: "https://finalprojectpugc.herokuapp.com/Home/Chat?a=0",
+                    success: function (data) {
+                        $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
+
+                    }
+                }
+                );
+
+
+
+            $('#last').focus();
+            $('#reply').focus();
+
+
+            $("#bt").click(function () {
+                SendData();
+            });
+          });
+        function SendData() {
+            var a = "<a  class='user' href='#'> ";
+            var bt = $('#reply');
+
+            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
+
+            var num = document.querySelectorAll(".chat ul li .other").length;
+
+            $.ajax({
+                type: "POST",
+                url: "https://finalprojectpugc.herokuapp.com/Home/Chat?answer=" + bt.val()+"&a="+num,
+                success: function (data) {
+                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+                    $('#last').focus();
+                },
+                error: function () {
+                    $('.chat ul').append('<button class= "w3-btn w3-xxlarge w3-brown">Its Completed! Go back</button>');
+
+                }
+            });
+        }
+
+
+
+    </script>
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body class="w3-light-grey">
+    
+
+    <div id="chat">
+        <div class="chat">
+            <ul></ul>
+
+        </div>
+
+        <div>
+            <input name="reply" placeholder="Type here" type="text" id="reply" />
+            @*<input class="" style="margin-bottom:80px; outline:none; background-color:#f3f3f3;" id="last" />*@
+            <p id="last" style="margin-bottom:70px;color:#fdfdfd;" tabindex="1">ok</p>
+            <a class="" id="bt"><i style="font-size:50px;" class="w3-text-teal w3-hover-text-black glyphicon glyphicon-send"></i></a>
+        </div>
+    </div>
+</body>
+</html>

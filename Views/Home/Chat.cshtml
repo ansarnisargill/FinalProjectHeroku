@@ -31,7 +31,7 @@
                     type: "POST",
                     url: "https://finalprojectpugc.herokuapp.com/Home/Chat?a=0",
                     success: function (data) {
-                        $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
+                        $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
 
                     }
                 }
@@ -51,7 +51,7 @@
             var a = "<a  class='user' href='#'> ";
             var bt = $('#reply');
 
-            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
+            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
 
             var num = document.querySelectorAll(".chat ul li .other").length;
 
@@ -59,7 +59,7 @@
                 type: "POST",
                 url: "https://finalprojectpugc.herokuapp.com/Home/Chat?answer=" + bt.val()+"&a="+num,
                 success: function (data) {
-                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="/Content/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
                     $('#last').focus();
                 },
                 error: function () {

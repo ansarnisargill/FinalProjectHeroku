@@ -8,3 +8,13 @@ A:\FinalProject\obj\Debug\netcoreapp2.0\FinalProject.AssemblyInfoInputs.cache
 A:\FinalProject\obj\Debug\netcoreapp2.0\FinalProject.AssemblyInfo.cs
 A:\FinalProject\obj\Debug\netcoreapp2.0\FinalProject.dll
 A:\FinalProject\obj\Debug\netcoreapp2.0\FinalProject.pdb
+A:\FinalProject\FinalProjectHeroku\bin\Debug\netcoreapp2.0\FinalProject.deps.json
+A:\FinalProject\FinalProjectHeroku\bin\Debug\netcoreapp2.0\FinalProject.runtimeconfig.json
+A:\FinalProject\FinalProjectHeroku\bin\Debug\netcoreapp2.0\FinalProject.runtimeconfig.dev.json
+A:\FinalProject\FinalProjectHeroku\bin\Debug\netcoreapp2.0\FinalProject.dll
+A:\FinalProject\FinalProjectHeroku\bin\Debug\netcoreapp2.0\FinalProject.pdb
+A:\FinalProject\FinalProjectHeroku\obj\Debug\netcoreapp2.0\FinalProject.csproj.CoreCompileInputs.cache
+A:\FinalProject\FinalProjectHeroku\obj\Debug\netcoreapp2.0\FinalProject.AssemblyInfoInputs.cache
+A:\FinalProject\FinalProjectHeroku\obj\Debug\netcoreapp2.0\FinalProject.AssemblyInfo.cs
+A:\FinalProject\FinalProjectHeroku\obj\Debug\netcoreapp2.0\FinalProject.dll
+A:\FinalProject\FinalProjectHeroku\obj\Debug\netcoreapp2.0\FinalProject.pdb

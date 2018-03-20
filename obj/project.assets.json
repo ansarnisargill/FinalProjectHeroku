@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\FinalProject\\FinalProject.csproj",
+      "projectUniqueName": "A:\\FinalProject\\FinalProjectHeroku\\FinalProject.csproj",
       "projectName": "FinalProject",
-      "projectPath": "A:\\FinalProject\\FinalProject.csproj",
+      "projectPath": "A:\\FinalProject\\FinalProjectHeroku\\FinalProject.csproj",
       "packagesPath": "C:\\Users\\ANSAR\\.nuget\\packages\\",
-      "outputPath": "A:\\FinalProject\\obj\\",
+      "outputPath": "A:\\FinalProject\\FinalProjectHeroku\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

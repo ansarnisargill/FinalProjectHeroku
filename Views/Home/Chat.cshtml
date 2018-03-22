@@ -32,7 +32,11 @@
                     type: "POST",
                     url: "https://finalprojectpugc.herokuapp.com/Home/Chat?a=0",
                     success: function (data) {
+<<<<<<< HEAD
                         $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="/css/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
+=======
+                        $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
+>>>>>>> ed37ccb154e6e4cb0ba5737a25ca07379b671ed2
 
                     }
                 }
@@ -54,7 +58,11 @@
              var d = new Date();
             var dateAtLoading = d.getHours().toString() + ':' +d.getMinutes().toString();
 
+<<<<<<< HEAD
             $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="/css/an.jpg" /> </a ><div class="date">'+dateAtLoading+'</div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
+=======
+            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
+>>>>>>> ed37ccb154e6e4cb0ba5737a25ca07379b671ed2
 
             var num = document.querySelectorAll(".other").length;
 
@@ -62,7 +70,11 @@
                 type: "POST",
                 url: "https://finalprojectpugc.herokuapp.com/Home/Chat?answer=" + bt.val()+"&a="+num,
                 success: function (data) {
+<<<<<<< HEAD
                     $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="/css/an.jpg" /> </a ><div class="date">'+dateAtLoading+'</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+=======
+                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="~/css/an.jpg" /> </a ><div class="date">2 minutes ago </div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+>>>>>>> ed37ccb154e6e4cb0ba5737a25ca07379b671ed2
                     $('#last').focus();
                 },
                 error: function () {

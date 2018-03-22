@@ -11,6 +11,7 @@
      
         <link rel="stylesheet" href="~/css/w3.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     
     <title>Index</title>
     <style>
@@ -19,6 +20,13 @@
             background-size:cover;
         }
     </style>
+    <script>
+$(document).ready(function(){
+$("#first").click(function(){
+    $("#second").click();
+});
+});
+    </script>
 </head>
 <body>
 
@@ -53,8 +61,7 @@
         }
 
       
-        function fb_login() {
-  FB.login( function() {}, { scope: 'email,public_profile' } );
+        
     function statusChangeCallback(response) {
            if (response.status === 'connected') {
                console.log(response);
@@ -62,15 +69,15 @@
        };
 }
     </script>
-<button class="w3-btn w3-red " onclick="fb_login();">PRESS</button>
+<button class="w3-btn w3-red " id="first">PRESS</button>
     <div class="w3-col l6" style="margin-left:24%;margin-top:7%;">
         <h1 class="w3-container w3-teal">Welcome to BetterBrain!</h1>
         <h2 class="w3-container w3-red">Your Ultimate Stop For Better Mental Health and Cure.</h2>
         <a asp-controller="Home" 
    asp-action="Chat" class="w3-btn w3-btn-block w3-indigo w3-xlarge">
 View Details</a>
-        <!-- <div class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_hometown,user_photos,user_education_history,user_posts,user_work_history,user_relationship_details,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-    </div> -->
+         <div  id="second" class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_hometown,user_photos,user_education_history,user_posts,user_work_history,user_relationship_details,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+    </div> 
 
 </body>
 </html>

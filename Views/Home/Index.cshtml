@@ -31,9 +31,9 @@
                 version: 'v2.12'
             });
 
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
+          //  FB.getLoginStatus(function (response) {
+            //    statusChangeCallback(response);
+            //});
         };
 
 
@@ -55,10 +55,10 @@
       
         function fb_login() {
   FB.login( function() {}, { scope: 'email,public_profile' } );
-    function statusChangeCallback(response) {
-           if (response.status === 'connected') {
-               console.log(response);
-            }
+   // function statusChangeCallback(response) {
+     //      if (response.status === 'connected') {
+       //        console.log(response);
+         //   }
        };
 }
     </script>

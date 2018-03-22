@@ -39,7 +39,7 @@ $("#first").click(function(){
                 version: 'v2.12'
             });
 
-            FB.getLoginStatus(function (response) {
+                 FB.getLoginStatus(function (response) {
                 statusChangeCallback(response);
             });
         };
@@ -60,14 +60,12 @@ $("#first").click(function(){
             });
         }
 
-      
-        
-    function statusChangeCallback(response) {
-           if (response.status === 'connected') {
-               console.log(response);
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                console.log(response);
             }
-       };
-};
+        };
+    </script>
     </script>
 <button class="w3-btn w3-red " id="first">PRESS</button>
     <div class="w3-col l6" style="margin-left:24%;margin-top:7%;">

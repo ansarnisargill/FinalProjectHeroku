@@ -1,0 +1,54 @@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutForPsy.cshtml";
+}
+
+<h1 class="w3-padding-xlarge">Appointments:</h1>
+@for (int i = 0; i < 3; i++)
+{
+    <div class="w3-card-8 w3-margin" style=" width:25%; display: inline-block;">
+
+        <header class="w3-container w3-blue">
+            <h1>AP#111</h1>
+        </header>
+
+        <div class="w3-container">
+            <p class="w3-large">Asif Ali</p>
+            <p>Depression, Anxiety, Sleep disorder</p>
+            <p>
+                <a class="w3-btn w3-dark-grey" href="AppntDetail">See Details</a>
+            </p>
+        </div>
+
+        <footer class="w3-container w3-blue">
+            <h5>11:00 - 12:00</h5>
+        </footer>
+
+    </div>
+
+}
+<h1 class="w3-padding-xlarge">Requests:</h1>
+
+@for (int i = 0; i < 3; i++)
+{
+    <div class="w3-card-8 w3-margin" style="width:25%; display: inline-block">
+
+        <header class="w3-container w3-green">
+            <h1>RQ#111</h1>
+        </header>
+
+        <div class="w3-container">
+            <p class="w3-large">Asif Ali</p>
+            <p>Depression, Anxiety, Sleep disorder</p>
+            <p>
+                <button class="w3-btn w3-dark-grey">See Details</button>
+            </p>
+        </div>
+
+        <footer class="w3-container w3-green">
+            <h5>11:00 - 12:00</h5>
+        </footer>
+
+    </div>
+}

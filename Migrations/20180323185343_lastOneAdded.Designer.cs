@@ -11,9 +11,10 @@ using System;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(FinalContext))]
-    partial class FinalContextModelSnapshot : ModelSnapshot
+    [Migration("20180323185343_lastOneAdded")]
+    partial class lastOneAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

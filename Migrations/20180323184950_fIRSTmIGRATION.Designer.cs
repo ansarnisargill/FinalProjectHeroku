@@ -11,9 +11,10 @@ using System;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(FinalContext))]
-    partial class FinalContextModelSnapshot : ModelSnapshot
+    [Migration("20180323184950_fIRSTmIGRATION")]
+    partial class fIRSTmIGRATION
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +48,7 @@ namespace FinalProject.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointment");
                 });
 
             modelBuilder.Entity("FinalProjectHeroku.Models.History", b =>

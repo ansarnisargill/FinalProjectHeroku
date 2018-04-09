@@ -11,21 +11,38 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal card white w3-card-8 col-lg-4 offset-4">
         <h2 class="card-header text-white bg-primary">
-        Sign Up
+            Sign Up
         </h2>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group pl-3 pt-2 pr-3 pb-2">
             <label for="Name">Name:</label>
-            <input type="text" class="form-control" id="Name" name="Name"  placeholder="Enter Your Name">
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Your Name">
         </div>
         <div class="form-group pl-3 pr-3 pb-2">
             <label for="Email">Email:</label>
             <input type="email" class="form-control" id="Email" name="Email" placeholder="email@example.com">
         </div>
-        <div class="form-group p-3">
+
+        <div class="form-group pl-3 pr-3 pb-2">
+            <label for="Password">Password:</label>
+            <input type="password" class="form-control" id="Password" name="Password" >
+        </div>
+
+        <div class="form-group pl-3 pr-3 pb-2">
+            <label for="DateOfBirth">Enter Your Date Of Birth:</label>
+            <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">
+        </div>
+
+        <div class="form-group pl-3 pr-3 pb-2">
+        <label for="City">Enter Your City:</label>
+        <input type="text" class="form-control" id="City" name="City" placeholder="Gujranwala">
+    </div>
+
+
+        <div class="form-group pl-3 pr-3 pb-2">
             <label >Select Your Gender:</label>
         <div class="form-row ">
         <div class="form-check form-check-inline">
@@ -38,10 +55,37 @@
         </div>
         </div>
         </div>
-        
-        
 
-        <div class="form-group">
+
+
+        <!-- primary -->
+        <div class="pretty p-default p-round p-thick">
+            <input type="checkbox" />
+            <div class="state p-primary-o">
+                <label>Primary</label>
+            </div>
+        </div>
+        
+        <div class="form-group pl-3 pr-3 pb-2">
+            <label>Marital Status:</label>
+            <div class="form-row ">
+                <div class="form-check form-check-inline pretty p-default p-round p-thick">
+                    <input class="form-check-input" type="radio" name="IsMarried" id="IsMarred" checked value="True">
+                    <div class="state p-primary-o">
+                        <label class="form-check-label" for="IsMarried">Married</label>
+                    </div>
+                    </div>
+                <div class="form-check form-check-inline  pretty p-default p-round p-thick">
+                    <input class="form-check-input" type="radio" name="IsMarried" id="IsMarried" value="False">
+                    <div class="state p-primary-o">
+                        <label class="form-check-label" for="IsMarried">Not-Married</label>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <input type="date" hidden name="JoinDate" value="@DateTime.Now" id="JoinDate" />
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.IsMarried, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -49,15 +93,15 @@
                     @Html.ValidationMessageFor(model => model.IsMarried, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -69,31 +113,31 @@
             </div>
         </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
        
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

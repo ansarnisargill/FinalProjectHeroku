@@ -25,6 +25,7 @@ namespace FinalProjectRenewed
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/prettych.css",
                       "~/Content/site.css"));
         }
     }

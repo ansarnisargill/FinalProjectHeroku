@@ -49,12 +49,13 @@ namespace FinalProjectRenewed.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,IsMarried,DateOfBirth,Sex,City,Password,Email,JoinDate")] User user)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+            user.JoinDate = DateTime.Now;
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index" ,"Home");
-            }
+                //return RedirectToAction("Index" ,"Home");
+            //}
 
             return View(user);
         }

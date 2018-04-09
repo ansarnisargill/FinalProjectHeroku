@@ -193,6 +193,7 @@
     <Content Include="Content\image\banner2.svg" />
     <Content Include="Content\image\banner3.svg" />
     <Content Include="Content\image\banner4.svg" />
+    <Content Include="Content\prettych.css" />
     <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

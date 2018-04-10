@@ -45,42 +45,45 @@
         <div class="form-group pl-3 pr-3 pb-2">
             <label >Select Your Gender:</label>
         <div class="form-row ">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Sex" id="Sex" checked value="True">
-            <label class="form-check-label" for="Sex">Male</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Sex" id="Sex" value="False">
-            <label class="form-check-label" for="Sex">Female</label>
-        </div>
-        </div>
-        </div>
-
-
-
-        <!-- primary -->
-        <div class="pretty p-default p-round p-thick">
-            <input type="checkbox" />
-            <div class="state p-primary-o">
-                <label>Primary</label>
+            <div class="pretty p-default p-round p-thick">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Sex" id="Sex" checked value="True">
+                    <div class="state p-primary-o">
+                        <label class="form-check-label" for="Sex">Male</label>
+                    </div></div></div>
+                <div class="pretty p-default p-round p-thick">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Sex" id="Sex" value="False">
+                        <div class="state p-primary-o">
+                            <label class="form-check-label" for="Sex">Female</label>
+                        </div></div>
+                </div>
             </div>
         </div>
+
+
+
+        
         
         <div class="form-group pl-3 pr-3 pb-2">
             <label>Marital Status:</label>
             <div class="form-row ">
-                <div class="form-check form-check-inline pretty p-default p-round p-thick">
-                    <input class="form-check-input" type="radio" name="IsMarried" id="IsMarred" checked value="True">
-                    <div class="state p-primary-o">
-                        <label class="form-check-label" for="IsMarried">Married</label>
+                <div class=" pretty p-default p-round p-thick">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="IsMarried" id="IsMarred" checked value="True">
+                        <div class="state p-primary-o">
+                            <label class="form-check-label" for="IsMarried">Married</label>
+                        </div>
                     </div>
+                </div>
+                <div class="pretty p-default p-round p-thick ">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="radio" name="IsMarried" id="IsMarried" value="False">
+                        <div class="state p-primary-o">
+                            <label class="form-check-label" for="IsMarried">Not-Married</label>
+                        </div>
                     </div>
-                <div class="form-check form-check-inline  pretty p-default p-round p-thick">
-                    <input class="form-check-input" type="radio" name="IsMarried" id="IsMarried" value="False">
-                    <div class="state p-primary-o">
-                        <label class="form-check-label" for="IsMarried">Not-Married</label>
-                    </div>
-                    </div>
+                </div>
             </div>
         </div>
         <input type="date" hidden name="JoinDate" value="@DateTime.Now" id="JoinDate" />
@@ -140,9 +143,9 @@
         </div>*@
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="offset-2 col-md-8">
                
-                <input type="submit" value="Sign Up!" class="btn btn-outline-primary btn-block w-75" />
+                <input type="submit" value="Sign Up!" class="btn btn-outline-primary btn-block w3-75" />
             </div>
         </div>
     </div>

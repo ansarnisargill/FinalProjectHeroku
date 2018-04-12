@@ -502,3 +502,4 @@ E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
 A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.backToKaleem.resources
 A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.backToKaleem1.resources
+E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.wentback.resources

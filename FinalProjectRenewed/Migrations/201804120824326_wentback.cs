@@ -3,7 +3,7 @@ namespace FinalProjectRenewed.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class backToKaleem1 : DbMigration
+    public partial class wentback : DbMigration
     {
         public override void Up()
         {

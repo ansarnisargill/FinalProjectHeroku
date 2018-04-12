@@ -16,10 +16,29 @@ namespace FinalProjectRenewed.Controllers
         private FinalContext db = new FinalContext();
 
         // GET: Psychologists
+
+
+        public bool IsPsychologist()
+        {
+            if ( Session["Type"]!=null && Session["Type"].ToString() == "Psy")
+            {
+                return true;
+            }
+            return false;
+        }
         public ActionResult Index()
         {
-            var psychologists = db.Psychologists.Include(p => p.psyType);
-            return View(psychologists.ToList());
+            if (IsPsychologist())
+            {
+                var psychologists = db.Psychologists.Include(p => p.psyType);
+                return View(psychologists.ToList());
+            }
+            else
+            {
+                string a = " Panga mat lo";
+                return Content( a );
+            }
+           
         }
 
         // GET: Psychologists/Details/5
@@ -49,7 +68,7 @@ namespace FinalProjectRenewed.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Username,Password,Name,PsyTypeID,Education,Experience,RegistrationNo,CNIC,MobileNo,Sex,JoinDate")] Psychologist psychologist)
+        public ActionResult Create([Bind(Include = "ID,Username,Password,Name,PsyTypeID,Education,Experience,RegistrationNo,CNIC,MobileNo,Sex,JoinDate,Email")] Psychologist psychologist)
         {
             if (ModelState.IsValid)
             {
@@ -145,6 +164,7 @@ namespace FinalProjectRenewed.Controllers
             if (data != null)
             {
                 Session["name"] = match.Name;
+                Session["Type"] = "Psy";
                 return RedirectToAction("Index", "Psychologists", Session["name"]);
             }
             else

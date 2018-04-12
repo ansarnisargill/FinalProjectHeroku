@@ -170,13 +170,9 @@
     <Compile Include="Migrations\201804060603304_wee.Designer.cs">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804121837276_backToKaleem.cs" />
-    <Compile Include="Migrations\201804121837276_backToKaleem.Designer.cs">
-      <DependentUpon>201804121837276_backToKaleem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804121849437_backToKaleem1.cs" />
-    <Compile Include="Migrations\201804121849437_backToKaleem1.Designer.cs">
-      <DependentUpon>201804121849437_backToKaleem1.cs</DependentUpon>
+    <Compile Include="Migrations\201804120824326_wentback.cs" />
+    <Compile Include="Migrations\201804120824326_wentback.Designer.cs">
+      <DependentUpon>201804120824326_wentback.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -337,11 +333,8 @@
     <EmbeddedResource Include="Migrations\201804060603304_wee.resx">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121837276_backToKaleem.resx">
-      <DependentUpon>201804121837276_backToKaleem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121849437_backToKaleem1.resx">
-      <DependentUpon>201804121849437_backToKaleem1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804120824326_wentback.resx">
+      <DependentUpon>201804120824326_wentback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

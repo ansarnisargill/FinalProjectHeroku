@@ -12,16 +12,12 @@ namespace FinalProjectRenewed.Controllers
         Dictionary<int, string> chatQuestions = new Dictionary<int, string>();
         Dictionary<int, string> Answers = new Dictionary<int, string>();
 
-        public void populateChatDic()
-        {
-            chatQuestions.Add(0, "Ok! That was all for today!");
-            chatQuestions.Add(1, "Hey!This is your bot!I will conduct your test!");
-            chatQuestions.Add(2, "Whats your qualification?");
-            chatQuestions.Add(3, "Ok! That was all for today!");
-        }
+       
+           
+        
         public ActionResult Index()
         {
-            populateChatDic();
+          
             return View();
         }
         [HttpGet]
@@ -32,6 +28,10 @@ namespace FinalProjectRenewed.Controllers
         [HttpPost]
         public ActionResult Chat(string answer, int a)
         {
+            chatQuestions.Add(0, "Ok! That was all for today!");
+            chatQuestions.Add(1, "Hey!This is your bot!I will conduct your test!");
+            chatQuestions.Add(2, "Whats your qualification?");
+            chatQuestions.Add(3, "Ok! That was all for today!");
             if (answer != null && answer != "" && a != 1)
             {
                 Answers.Add(a, answer);

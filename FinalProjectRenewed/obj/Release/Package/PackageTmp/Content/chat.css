@@ -1,0 +1,167 @@
+﻿body {
+
+    background-color: #f3f3f3;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body::selection{
+    background-color:red;
+    color:white;
+}
+
+#chat {
+    margin-bottom: 20px;
+}
+
+.chat ul {
+    list-style: none;
+    padding: 8%;
+    margin: 0;
+}
+
+    .chat ul li {
+        margin: 45px 0 0 0;
+        font-weight: 300;
+    }
+
+        .chat ul li a.user {
+            margin: -30px 0 0 0;
+            display: block;
+            color: #333;
+        }
+
+            .chat ul li a.user img {
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                background-color: #f3f3f3;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            }
+
+        .chat ul li .date {
+            font-size: 14px;
+            color: #a6a6a6;
+        }
+
+        .chat ul li .message {
+            display: block;
+            padding: 10px;
+            position: relative;
+            color: #fff;
+            font-size: 25px;
+            background-color: #2ECC71;
+            border-radius: 3px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+            .chat ul li .message:before {
+                content: '';
+                position: absolute;
+                border-top: 16px solid rgba(0, 0, 0, 0.15);
+                border-left: 16px solid transparent;
+                border-right: 16px solid transparent;
+            }
+
+            .chat ul li .message:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                border-top: 17px solid #2ECC71;
+                border-left: 17px solid transparent;
+                border-right: 17px solid transparent;
+            }
+
+
+
+
+
+            .chat ul li .message p {
+                margin: 0;
+                padding: 0;
+                transition: all 0.1s;
+            }
+
+
+
+        .chat ul li.other a.user {
+            float: right;
+        }
+
+        .chat ul li.other .date {
+            float: right;
+            margin: -20px 10px 0 0;
+        }
+
+        .chat ul li.other .message {
+            margin: 0 90px 0 0;
+            background-color: #4CAF50 !important;
+            color: white;
+        }
+
+            .chat ul li.other .message:before {
+                margin: -9px -16px 0 0;
+                right: 0;
+            }
+
+            .chat ul li.other .message:after {
+                content: '';
+                right: 0;
+                margin: 0 -15px 0 0;
+                content: '';
+                position: absolute;
+                top: 0;
+                border-top: 17px solid #4CAF50 !important;
+                border-left: 17px solid transparent;
+                border-right: 17px solid transparent;
+            }
+
+        .chat ul li.you a.user {
+            float: left;
+        }
+
+        .chat ul li.you .date {
+            float: left;
+            margin: -20px 0 0 10px;
+        }
+
+        .chat ul li.you .message {
+            margin: 0 0 0 90px;
+        }
+
+            .chat ul li.you .message:before {
+                margin: -9px 0 0 -16px;
+                left: 0;
+            }
+
+            .chat ul li.you .message:after {
+                content: '';
+                left: 0;
+                margin: 0 0 0 -15px;
+                content: '';
+                position: absolute;
+                top: 0;
+                border-top: 17px solid #fff;
+                border-left: 17px solid transparent;
+                border-right: 17px solid transparent;
+            }
+
+#reply {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    font-size: 25px;
+    padding-left: 3%;
+}
+
+#bt {
+    position: fixed;
+    bottom: 2%;
+    right: 4%;
+    z-index: 2;
+}
+#last:focus{
+    outline:none;
+    background-color:#f3f3f3;
+
+}

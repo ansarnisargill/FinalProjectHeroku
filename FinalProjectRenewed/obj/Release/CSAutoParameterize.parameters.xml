@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FinalContext-Web.config Connection String" description="FinalContext Connection String used in web.config by the application to access the database." defaultValue="server=.\SQLEXPRESS;database=FinalDB;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="A:\\FinalProjectRenewed\\FinalProjectHeroku\\FinalProjectRenewed\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FinalContext']/@connectionString" />
+  </parameter>
+</parameters>

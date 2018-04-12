@@ -134,5 +134,25 @@ namespace FinalProjectRenewed.Controllers
             var list = db.Psychologists.ToList();
             return View(list);
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Psychologist match)
+        {
+            var data = db.Psychologists.Where(m => m.Email == match.Email && m.Password == match.Password).FirstOrDefault();
+            if (data != null)
+            {
+                Session["name"] = match.Name;
+                return RedirectToAction("Index", "Psychologists", Session["name"]);
+            }
+            else
+            {
+                ViewBag.alert = "Email Or Password Is Wrong!!";
+                return View();
+            }
+
+        }
     }
 }

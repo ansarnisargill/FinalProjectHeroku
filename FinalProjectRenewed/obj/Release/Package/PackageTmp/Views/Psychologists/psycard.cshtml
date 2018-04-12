@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FinalProject.Models.Psychologist>
+
+@{
+    ViewBag.Title = "psycard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>psycard</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+    
+
+@foreach (var item in Model)
+{
+    <div class="row">
+    <div class="col-lg-4 col-md-3 border border-info" style="width: 18rem;">
+        <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)</h5>
+            <p>@Html.DisplayFor(modelItem => item.Name)</p>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Education)</h5>
+            <p>@Html.DisplayFor(modelItem => item.Education)</p>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Experience)</h5>
+            <p>@Html.DisplayFor(modelItem => item.Experience)</p>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.MobileNo)</h5>
+            <p>@Html.DisplayFor(modelItem => item.MobileNo)</p>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         @Html.ActionLink("Session", "Index", "Sessions")
+        </div>
+        </div>
+    </div>
+}
+
+

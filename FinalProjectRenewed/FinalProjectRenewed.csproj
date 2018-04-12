@@ -170,6 +170,14 @@
     <Compile Include="Migrations\201804060603304_wee.Designer.cs">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121837276_backToKaleem.cs" />
+    <Compile Include="Migrations\201804121837276_backToKaleem.Designer.cs">
+      <DependentUpon>201804121837276_backToKaleem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121849437_backToKaleem1.cs" />
+    <Compile Include="Migrations\201804121849437_backToKaleem1.Designer.cs">
+      <DependentUpon>201804121849437_backToKaleem1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
@@ -223,6 +231,8 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Properties\PublishProfiles\ansarnisargill - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ansarnisargill - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -293,6 +303,7 @@
     <Content Include="Views\Sessions\Edit.cshtml" />
     <Content Include="Views\Sessions\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutForPsychologist.cshtml" />
+    <Content Include="Views\Psychologists\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804060603304_wee.resx">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121837276_backToKaleem.resx">
+      <DependentUpon>201804121837276_backToKaleem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121849437_backToKaleem1.resx">
+      <DependentUpon>201804121849437_backToKaleem1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

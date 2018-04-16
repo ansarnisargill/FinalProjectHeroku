@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FinalProject.Models.Appointment>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Appointment</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.psychologist.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.result.HistoryOfIllness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.session.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.psychologist.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.result.HistoryOfIllness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.session.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -74,7 +74,7 @@ namespace FinalProjectRenewed.Controllers
             {
                 db.Psychologists.Add(psychologist);
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                return RedirectToAction("Login");
             }
 
             ViewBag.PsyTypeID = new SelectList(db.PsyTypes, "ID", "Name", psychologist.PsyTypeID);
@@ -163,7 +163,7 @@ namespace FinalProjectRenewed.Controllers
             var data = db.Psychologists.Where(m => m.Email == match.Email && m.Password == match.Password).FirstOrDefault();
             if (data != null)
             {
-                Session["name"] = match.Name;
+                Session["name"] = data.Name;
                 Session["Type"] = "Psy";
                 return RedirectToAction("Index", "Psychologists", Session["name"]);
             }
@@ -173,6 +173,26 @@ namespace FinalProjectRenewed.Controllers
                 return View();
             }
 
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login");
+        }
+        public ActionResult Appointment()
+        {
+            var data = db.Appointments.ToList();
+            return View(data);
+        }
+        public ActionResult History()
+        {
+            var data = db.Histories.ToList();
+            return View(data);
+        }
+        public ActionResult Requests()
+        {
+            var data = db.Requests.ToList();
+            return View(data);
         }
     }
 }

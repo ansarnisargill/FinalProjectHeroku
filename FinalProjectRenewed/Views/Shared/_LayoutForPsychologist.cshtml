@@ -2,11 +2,13 @@
 @{
     Layout = null;
 }
-
+@{
+    var data = (string)Session["name"];
+}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>W3.CSS</title>
+    <title>@data- Home Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/Content/w3.css" rel="stylesheet" />
     
@@ -14,33 +16,38 @@
 
 
 <body>
+    <div style="margin-top:-30px">
+        <!-- Sidebar -->
+        <div class="w3-sidebar w3-bar-block" style="width:20%;background-color:#24344b;margin-top:-5px;">
 
-    <!-- Sidebar -->
-    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
-        <h3 class="w3-bar-item">Menu</h3>
-        <a href="#" class="w3-bar-item w3-button">Link 1</a>
-        <a href="#" class="w3-bar-item w3-button">Link 2</a>
-        <a href="#" class="w3-bar-item w3-button">Link 3</a>
-    </div>
+            <h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>
+            <h3></h3>
+            @Html.ActionLink("Appointment", "Appointment", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @Html.ActionLink("History", "History", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray  w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @Html.ActionLink("Request", "Requests", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @*<a href="@Html.ActionLink("","","")" class="w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray">Setting</a>*@
 
-    <!-- Page Content -->
-    <div style="margin-left:25%">
-
-        <div class="w3-container w3-teal">
-            <h1>My Page</h1>
         </div>
+        <!-- Page Content -->
+        <div style="margin-left:20%;">
 
-        <img src="img_car.jpg" alt="Car" style="width:100%">
+            <div class="w3-bar" style="margin-top:30px;background-color:#24344b;">
+                <a class=" ">@Html.ActionLink("Logout","Logout","Psychologists",new {@class= "w3-right w3-bar-item w3-button w3-mobile",style="font-size:20px" })</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-right" style="font-size:20px">Notification</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-right" style="font-size:20px">Messages</a>
+            </div>
 
-        <div class="w3-container">
-            <h2>Sidebar Navigation Example</h2>
-            @RenderBody()
-            <p>The sidebar with is set with "style="width:25%".</p>
-            <p>The left margin of the page content is set to the same value.</p>
+
+
+            <div class="w3-container">
+                <h2>Sidebar Navigation Example</h2>
+                @RenderBody()
+                <p>The sidebar with is set with "style="width:25%".</p>
+                <p>The left margin of the page content is set to the same value.</p>
+            </div>
+
         </div>
-
     </div>
-
 </body>
 </html>
 

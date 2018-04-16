@@ -1,126 +1,108 @@
 ﻿@model FinalProject.Models.Psychologist
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create Your Acount";
+    Layout = null;
 }
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Content/w3.css" rel="stylesheet" />
+</head>
+<body style="background-color:#e9ebee;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class=" card col-lg-6 offset-3 white w3-card-8 ">
-        <h4 class="card-header text-white bg-primary">Psychologist</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group pl-3 pt-2 pr-3 pb-2">
-            @Html.LabelFor(model => model.Username)
-
-            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.Email)
-
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-
-        </div>
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.Password)
-
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "Password" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-
-        </div>
-
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.Name)
-
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.PsyTypeID, "Type Of Psychologist:")
-
-            @Html.DropDownList("PsyTypeID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PsyTypeID, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.Education)
-
-            @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.Experience)
-
-            @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.RegistrationNo)
-
-            @Html.EditorFor(model => model.RegistrationNo, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
-            @Html.ValidationMessageFor(model => model.RegistrationNo, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.CNIC)
-
-            @Html.EditorFor(model => model.CNIC, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
-            @Html.ValidationMessageFor(model => model.CNIC, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            @Html.LabelFor(model => model.MobileNo)
-
-            @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @type = "tel" } })
-            @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+        <div class="w3-col l4 w3-card-4 w3-margin-top w3-margin-bottom w3-white" style="margin-left:35%;">
+            <div class="w3-container w3-teal  ">
+                <h4 class="w3-xxlarge">Signup:</h4>
             </div>
-        </div>
+            @Html.ValidationSummary(true, "", new { @class = "w3-red" })
+            <div class="w3-container">
+                <p>
+                    @Html.LabelFor(model => model.Username, new { @class = "w3-text-teal w3-large" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "w3-red" })
+                </p>
+
+                <p>
+                    @Html.LabelFor(model => model.Email, new { @class = "w3-text-teal w3-large" })
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w3-input", @type = "email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "w3-red" })
+
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.Password, new { @class = "w3-text-teal w3-large" })
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "w3-input", @type = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "w3-red" })
+
+                </p>
+
+
+                <p>
+                    @Html.LabelFor(model => model.Name, new { @class = "w3-text-teal w3-large" })
+
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "w3-input", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "w3-red" })
+
+                </p>
+
+                <p>
+                    @Html.LabelFor(model => model.PsyTypeID, "Type Of Psychologist:", new { @class = "w3-text-teal w3-large" })
+
+                    @Html.DropDownList("PsyTypeID", null, htmlAttributes: new { @class = "w3-input" })
+                    @Html.ValidationMessageFor(model => model.PsyTypeID, "", new { @class = "w3-red" })
+
+                </p>
+
+                <p>
+                    @Html.LabelFor(model => model.Education, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.Education, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.Experience, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.RegistrationNo, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.RegistrationNo, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.RegistrationNo, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.CNIC, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.CNIC, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.CNIC, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.MobileNo, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "w3-input", @type = "tel" } })
+                    @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "w3-red" })
+
+                <p>
+                    @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "w3-text-teal w3-large" })
+
+                    @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "w3-red" })
+
+                </p>
             </div>
-        </div>
+                <input type="submit" value="Create Account" class="w3-btn w3-teal w3-xlarge w3-col l8 w3-margin-bottom" style="margin-left:16.66%;" />
 
-        <input type="submit" value="Create Account" class="btn col-lg-4 offset-4 mb-3 col btn-lg btn-block btn-outline-primary mt-3 " />
+            </div>
+        
+    }
 
-
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+</html>

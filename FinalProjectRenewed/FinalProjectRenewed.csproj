@@ -193,6 +193,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chat.css" />
+    <Content Include="Content\image\2.jpg" />
     <Content Include="Content\image\banner1.svg" />
     <Content Include="Content\image\banner2.svg" />
     <Content Include="Content\image\banner3.svg" />
@@ -299,6 +300,9 @@
     <Content Include="Views\Sessions\Edit.cshtml" />
     <Content Include="Views\Sessions\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutForPsychologist.cshtml" />
+    <Content Include="Views\Psychologists\Appointment.cshtml" />
+    <Content Include="Views\Psychologists\History.cshtml" />
+    <Content Include="Views\Psychologists\Requests.cshtml" />
     <Content Include="Views\Psychologists\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>

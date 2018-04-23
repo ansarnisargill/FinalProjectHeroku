@@ -137,7 +137,9 @@ namespace FinalProjectRenewed.Controllers
             if(data != null)
             {
                 Session["name"] = match.Name;
-                return RedirectToAction("psycard","Psychologists", Session["name"]);
+                Session["type"] = "user";
+                Session["id"] = match.ID;
+                return RedirectToAction("Chat","Home");
             }
             else
             {

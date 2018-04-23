@@ -62,15 +62,14 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://ansarnisargill.gear.host/Home/Chat?answer=" + bt.val() + "&a=" + num,
+                url: "http://localhost:52673/Home/Chat?answer=" + bt.val() + "&a=" + num,
                 success: function (data) {
                     $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="~/Content/image/banner1.svg" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
                     num = data.key;
                     $('#last').focus();
                 },
                 error: function () {
-                    $('.chat ul').append('<button class= "w3-btn w3-xxlarge w3-brown">Its Completed! Go back</button>');
-                    $('#last').focus();
+                    window.location("http://localhost:52673/Home/PsyList")
                 }
             });
         }

@@ -304,6 +304,7 @@
     <Content Include="Views\Psychologists\History.cshtml" />
     <Content Include="Views\Psychologists\Requests.cshtml" />
     <Content Include="Views\Psychologists\Login.cshtml" />
+    <Content Include="Views\Home\PsyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

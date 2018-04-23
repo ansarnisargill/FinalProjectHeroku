@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FinalProject.Models.Psychologist>
+
+@{
+    ViewBag.Title = "PsyList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+                      <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="~/" alt="Card image cap">
+                          <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                      </div>
+
+
+
+<div class="card-deck m-5">
+    @{
+        foreach (var item in Model)
+        {
+            
+            <div class="card offset-4 col-lg-4 border-primary">
+                <img class="card-img-top img-fluid" src="~/Content/image/2.jpg" />
+                <div class="card-header border-primary">@item.Name</div>
+                <div class="card-body text-primary ">
+
+                    <p class="card-text"> This is the what we need to take as a text in a card body </p>
+                </div>
+               
+                <div class="card-footer border-primary">@item.psyType.Name</div>
+                @Html.ActionLink("Details", "Details", new { id = item.ID } )
+                
+            </div>
+        }
+
+    }
+</div>

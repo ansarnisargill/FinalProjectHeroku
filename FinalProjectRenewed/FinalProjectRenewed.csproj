@@ -148,9 +148,6 @@
     <Compile Include="Context\FinalContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PsychologistsController.cs" />
-    <Compile Include="Controllers\PsyTypesController.cs" />
-    <Compile Include="Controllers\SessionsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +180,7 @@
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModels\UserSignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,33 +280,19 @@
     <Content Include="Views\Psychologists\Details.cshtml" />
     <Content Include="Views\Psychologists\Edit.cshtml" />
     <Content Include="Views\Psychologists\Index.cshtml" />
-    <Content Include="Views\PsyTypes\Create.cshtml" />
-    <Content Include="Views\PsyTypes\Delete.cshtml" />
-    <Content Include="Views\PsyTypes\Details.cshtml" />
-    <Content Include="Views\PsyTypes\Edit.cshtml" />
-    <Content Include="Views\PsyTypes\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\SignIn.cshtml" />
     <Content Include="Views\Psychologists\psycard.cshtml" />
-    <Content Include="Views\Sessions\Create.cshtml" />
-    <Content Include="Views\Sessions\Delete.cshtml" />
-    <Content Include="Views\Sessions\Details.cshtml" />
-    <Content Include="Views\Sessions\Edit.cshtml" />
-    <Content Include="Views\Sessions\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutForPsychologist.cshtml" />
     <Content Include="Views\Psychologists\Appointment.cshtml" />
     <Content Include="Views\Psychologists\History.cshtml" />
     <Content Include="Views\Psychologists\Requests.cshtml" />
     <Content Include="Views\Psychologists\Login.cshtml" />
     <Content Include="Views\Home\PsyList.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

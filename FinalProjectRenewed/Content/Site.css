@@ -2,3 +2,40 @@
     background-color:white;
     color:black;
 }
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media screen and (min-width:1200px){
+    .cardsizing {
+        width: 22.5%;
+        margin: 1%;
+        margin-top: 3%;
+        display: inline-flex;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1200px) {
+    .cardsizing {
+        width: 22.5%;
+        margin: 1%;
+        margin-top: 3%;
+        display: inline-flex;
+    }
+}
+@media screen and (min-width:768px) and (max-width:992px) {
+    .cardsizing {
+        width: 47.5%;
+        margin: 1%;
+        margin-top:3%;
+        display: inline-flex;
+    }
+}
+@media screen and (max-width:768px) {
+    .cardsizing {
+        width: 91.5%;
+        margin: 2.5%;
+        margin-top: 3%;
+        display: inline-flex;
+    }
+}

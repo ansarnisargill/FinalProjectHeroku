@@ -11,6 +11,7 @@ namespace FinalProject.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Name { get; set; }
+        public string ImageAddress { get; set; }
         public int PsyTypeID { get; set; }
         public PsyType psyType { get; set; }
         public string Education { get; set; }

@@ -35,7 +35,7 @@ namespace FinalProjectRenewed.Controllers
             }
             else
             {
-                string a = " Panga mat lo";
+                string a = HttpStatusCode.Forbidden.ToString();
                 return Content( a );
             }
            
@@ -165,6 +165,7 @@ namespace FinalProjectRenewed.Controllers
             {
                 Session["name"] = data.Name;
                 Session["Type"] = "Psy";
+                Session["pic"] = data.ImageAddress;
                 return RedirectToAction("Index", "Psychologists", Session["name"]);
             }
             else
@@ -193,6 +194,18 @@ namespace FinalProjectRenewed.Controllers
         {
             var data = db.Requests.ToList();
             return View(data);
+        }
+        public ActionResult Schedual()
+        {
+            if (IsPsychologist())
+            {
+
+                
+
+                return View();
+
+            }
+            return Content( HttpStatusCode.Forbidden.ToString());
         }
     }
 }

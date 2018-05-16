@@ -16,96 +16,95 @@
         <h2 class="card-header text-white bg-primary">
             Sign Up
         </h2>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group pl-3 pt-2 pr-3 pb-2">
-            <label for="Name">Name:</label>
-            @Html.EditorFor(model=> model.user.Name, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-           @*!-- <input type="text" class="form-control" id="User.Name" name="Name" placeholder="Enter Your Name">--!*@
-        </div>
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label for="Email">Email:</label>
-            @Html.EditorFor(model => model.user.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
-            @*<input type="email" class="form-control" id="Email" name="Email" placeholder="email@example.com">*@
-        </div>
+        <div id="page1">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group pl-3 pt-2 pr-3 pb-2">
+                <label for="Name">Name:</label>
+                @Html.EditorFor(model => model.user.Name, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                @*!-- <input type="text" class="form-control" id="User.Name" name="Name" placeholder="Enter Your Name">--!*@
+            </div>
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label for="Email">Email:</label>
+                @Html.EditorFor(model => model.user.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                @*<input type="email" class="form-control" id="Email" name="Email" placeholder="email@example.com">*@
+            </div>
 
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label for="Password">Password:</label>
-            @Html.EditorFor(model => model.user.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            @*<input type="password" class="form-control" id="Password" name="Password">*@
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label for="Password">Password:</label>
+                @Html.EditorFor(model => model.user.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                @*<input type="password" class="form-control" id="Password" name="Password">*@
+            </div>
+
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label for="DateOfBirth">Enter Your Date Of Birth:</label>
+                @Html.EditorFor(model => model.user.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @*<input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">*@
+          <input type="button" class="btn mt-4 mb-4 btn-outline-primary btn-lg btn-block" onclick="pageChange()" id="page" value="Next" />
+            </div>
+            
         </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label for="DateOfBirth">Enter Your Date Of Birth:</label>
-            @Html.EditorFor(model => model.user.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-            @*<input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">*@
-        </div>
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label for="City">Enter Your City:</label>
-            @Html.EditorFor(model => model.user.City, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-            @*<input type="text" class="form-control" id="City" name="City" placeholder="Gujranwala">*@
-        </div>
+        <div id="page2" >
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label for="City">Enter Your City:</label>
+                @Html.EditorFor(model => model.user.City, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                @*<input type="text" class="form-control" id="City" name="City" placeholder="Gujranwala">*@
+            </div>
 
 
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label>Select Your Gender:</label>
-            <div class="form-row ">
-                <div class="pretty p-default p-round p-thick">
-                    <div class="form-check form-check-inline">
-                        @*@Html.EditorFor(model => model.user.Sex, new { htmlAttributes = new { @class = "form-control", @type = "radio" ,@value="true" },@checked="checked" })*@
-                        <input class="form-check-input" type="radio" name="user.Sex" id="user_Sex" checked value="True">
-                        <div class="state p-primary-o">
-                            <label class="form-check-label" for="Sex">Male</label>
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label>Select Your Gender:</label>
+                <div class="form-row ">
+                    <div class="pretty p-default p-round p-thick">
+                        <div class="form-check form-check-inline">
+                            @*@Html.EditorFor(model => model.user.Sex, new { htmlAttributes = new { @class = "form-control", @type = "radio" ,@value="true" },@checked="checked" })*@
+                            <input type="radio" class="form-check-input" name="user.Sex" id="user_Sex" checked value="True">
+                            <div class="state p-primary-o">
+                                <label class="form-check-label" for="user.Sex">Male</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="pretty p-default p-round p-thick">
-                    <div class="form-check form-check-inline">
-                        @*@Html.EditorFor(model => model.user.Sex, new { htmlAttributes = new { @class = "form-control", @type = "radio" } })*@
-                        <input class="form-check-input" type="radio" name="user_Sex" id="user.Sex" value="False">
-                        <div class="state p-primary-o">
-                            <label class="form-check-label" for="Sex">Female</label>
+                    <div class="pretty p-default p-round p-thick">
+                        <div class="form-check form-check-inline">
+                            @*@Html.EditorFor(model => model.user.Sex, new { htmlAttributes = new { @class = "form-control", @type = "radio" } })*@
+                            <input type="radio" class="form-check-input" name="user.Sex" id="user.Sex" value="False">
+                            <div class="state p-primary-o">
+                                <label class="form-check-label" for="user.Sex">Female</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-
-
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label>Marital Status:</label>
-            <div class="form-row ">
-                <div class=" pretty p-default p-round p-thick">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user.IsMarried" id="user_IsMarred" checked value="True">
-                        <div class="state p-primary-o">
-                            <label class="form-check-label" for="user.IsMarried">Married</label>
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label>Marital Status:</label>
+                <div class="form-row ">
+                    <div class=" pretty p-default p-round p-thick">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user.IsMarried" id="user_IsMarred" checked value="True">
+                            <div class="state p-primary-o">
+                                <label class="form-check-label" for="user.IsMarried">Married</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="pretty p-default p-round p-thick ">
-                    <div class="form-check form-check-inline ">
-                        <input class="form-check-input" type="radio" name="user.IsMarried" id="user_IsMarried" value="False">
-                        <div class="state p-primary-o">
-                            <label class="form-check-label" for="user.IsMarried">Not-Married</label>
+                    <div class="pretty p-default p-round p-thick ">
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="user.IsMarried" id="user_IsMarried" value="False">
+                            <div class="state p-primary-o">
+                                <label class="form-check-label" for="user.IsMarried">Not-Married</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group pl-3 pr-3 pb-2">
-            <label for="image">Upload Profile Picture:</label>
-            <input type="file" name="image" id="image" class="form-control" />
-            @*@Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control", @type = "file" } })*@
-            @*<input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">*@
-        </div>
-        <input type="date" hidden name="JoinDate" value="@DateTime.Now" id="JoinDate" />
+            <div class="form-group pl-3 pr-3 pb-2">
+                <label for="image">Upload Profile Picture:</label>
+                <input type="file" name="image" id="image" class="form-control" />
+                @*@Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control", @type = "file" } })*@
+                @*<input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">*@
+            </div>
+            <input type="date" hidden name="JoinDate" value="@DateTime.Now" id="JoinDate" />
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.IsMarried, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
@@ -115,7 +114,7 @@
                 </div>
             </div>*@
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
@@ -123,7 +122,7 @@
                 </div>
             </div>*@
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
@@ -133,7 +132,7 @@
                 </div>
             </div>*@
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
@@ -141,7 +140,7 @@
                 </div>
             </div>*@
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
@@ -151,7 +150,7 @@
 
 
 
-        @*<div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -161,11 +160,17 @@
 
 
 
-        <input type="submit" value="Sign Up!" class="btn mt-4 mb-4 btn-outline-primary btn-lg btn-block" />
-
+            <input type="submit" value="Sign Up!" class="btn mt-4 mb-4 btn-outline-primary btn-lg btn-block" />
+        </div>
     </div>
 }
-
+<script>
+    document.getElementById('page2').style.display = 'none';
+    function pageChange() {
+        document.getElementById('page1').style.display = "none";
+        document.getElementById('page2').style.display = 'block';
+    }
+</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

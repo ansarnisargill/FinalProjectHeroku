@@ -180,9 +180,10 @@
             <p class="lead">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
             <p class="lead">
                 @*@Html.ActionLink("User SignUp", "Create", "Users", new { @class = "btn btn-lg btn-outline-light" })*@
-                @Html.ActionLink("SignUp", "Create", "Users", new { @class = "btn btn-lg btn-outline-light" })
+                @Html.ActionLink("SignUp", "Signup", "Home", new { @class = "btn btn-lg btn-outline-light" })
+                @Html.ActionLink("SignIn", "LOgin", "Home", new { @class = "btn btn-lg btn-outline-light" })
                 <div class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_likes,user_photos,user_photos,user_status,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-                <a href="http://localhost:52673/Users/SignIn" class="btn btn-lg btn-outline-light">User SignIn</a>
+                
             </p>
         </main>
         <footer class="mastfoot mt-auto">

@@ -500,6 +500,7 @@ E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migratio
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
-E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.wentback.resources
 A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedUser.resources
 A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedPsychologist.resources
+E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedUser.resources
+E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedPsychologist.resources

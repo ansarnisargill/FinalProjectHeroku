@@ -20,19 +20,19 @@
         <!-- Sidebar -->
         <div class="w3-sidebar w3-bar-block" style="width:20%;background-color:#24344b;margin-top:-5px;">
 
-            @{
+            @*@{
                 if (Session["pic"].ToString() == null)
-                {
+                {*@
                     <h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/ImagePsy/img_default.png" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>
 
-                }
+                @*}
                 else
-                {
-                    <h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>
+                {*@
+                    @*<h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>*@
 
-                }
-            }
-            <h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>
+                @*}
+            }*@
+            @*<h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>*@
             <h3></h3>
             @Html.ActionLink("Appointment", "Appointment", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
             @Html.ActionLink("History", "History", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray  w3-border-bottom", @style = "font-size:20px;color:white;" })
@@ -52,10 +52,9 @@
 
 
             <div class="w3-container">
-                <h2>Sidebar Navigation Example</h2>
+               
                 @RenderBody()
-                <p>The sidebar with is set with "style="width:25%".</p>
-                <p>The left margin of the page content is set to the same value.</p>
+               
             </div>
 
         </div>

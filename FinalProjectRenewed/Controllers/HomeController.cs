@@ -9,6 +9,7 @@ using FinalProjectRenewed;
 using FinalProject.Context;
 using FinalProject.Models;
 using FinalProject.Models.ViewModels;
+using System.IO;
 
 namespace FinalProjectRenewed.Controllers
 {
@@ -96,6 +97,7 @@ namespace FinalProjectRenewed.Controllers
         [HttpPost]
         public ActionResult Login( User match)
         {
+            match.Password = match.Password.GetHashCode().ToString();
             var data = db.Users.Where(m => m.Email == match.Email && m.Password == match.Password).FirstOrDefault();
             if (data != null)
             {
@@ -121,13 +123,25 @@ namespace FinalProjectRenewed.Controllers
         {
             try
             {
-                userv.user.JoinDate = DateTime.Now;
-                db.Users.Add(userv.user);
+                User newUser = userv.user;
+                newUser.Password = newUser.Password.GetHashCode().ToString();
+                string fileName = Path.GetFileNameWithoutExtension(userv.image.FileName);
+                string extension = Path.GetExtension(userv.image.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string directory = "~/Images/";
+                string imageUrl = directory + fileName;
+                newUser.ImageUrl = imageUrl;
+                fileName = Path.Combine(Server.MapPath(directory), fileName);
+                userv.image.SaveAs(fileName);
+                newUser.JoinDate = DateTime.Now;
+                
+                db.Users.Add(newUser);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             catch
             {
+              
                 return View(userv.user);
 
             }

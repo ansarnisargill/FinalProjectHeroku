@@ -7,13 +7,13 @@ namespace FinalProjectRenewed.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class wentback : IMigrationMetadata
+    public sealed partial class whenUpdatedUser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(wentback));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(whenUpdatedUser));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804120824326_wentback"; }
+            get { return "201805120457108_whenUpdatedUser"; }
         }
         
         string IMigrationMetadata.Source

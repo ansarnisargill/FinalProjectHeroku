@@ -28,16 +28,16 @@ namespace FinalProjectRenewed.Controllers
         }
         public ActionResult Index()
         {
-            if (IsPsychologist())
-            {
+            //if (IsPsychologist())
+            //{
                 var psychologists = db.Psychologists.Include(p => p.psyType);
                 return View(psychologists.ToList());
-            }
-            else
-            {
-                string a = HttpStatusCode.Forbidden.ToString();
-                return Content( a );
-            }
+            //}
+            //else
+            //{
+              //  string a = HttpStatusCode.Forbidden.ToString();
+                //return Content( a );
+            //}
            
         }
 

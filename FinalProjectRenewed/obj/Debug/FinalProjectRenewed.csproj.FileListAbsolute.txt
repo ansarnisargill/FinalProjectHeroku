@@ -501,4 +501,5 @@ E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.G
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
 E:\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.wentback.resources
-A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.wentback.resources
+A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedUser.resources
+A:\FinalProjectRenewed\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedPsychologist.resources

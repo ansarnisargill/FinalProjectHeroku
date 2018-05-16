@@ -167,9 +167,13 @@
     <Compile Include="Migrations\201804060603304_wee.Designer.cs">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804120824326_wentback.cs" />
-    <Compile Include="Migrations\201804120824326_wentback.Designer.cs">
-      <DependentUpon>201804120824326_wentback.cs</DependentUpon>
+    <Compile Include="Migrations\201805120457108_whenUpdatedUser.cs" />
+    <Compile Include="Migrations\201805120457108_whenUpdatedUser.Designer.cs">
+      <DependentUpon>201805120457108_whenUpdatedUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805121750502_whenUpdatedPsychologist.cs" />
+    <Compile Include="Migrations\201805121750502_whenUpdatedPsychologist.Designer.cs">
+      <DependentUpon>201805121750502_whenUpdatedPsychologist.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -180,6 +184,7 @@
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModels\PsyViewModel.cs" />
     <Compile Include="Models\ViewModels\UserSignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -322,8 +327,11 @@
     <EmbeddedResource Include="Migrations\201804060603304_wee.resx">
       <DependentUpon>201804060603304_wee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120824326_wentback.resx">
-      <DependentUpon>201804120824326_wentback.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805120457108_whenUpdatedUser.resx">
+      <DependentUpon>201805120457108_whenUpdatedUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805121750502_whenUpdatedPsychologist.resx">
+      <DependentUpon>201805121750502_whenUpdatedPsychologist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

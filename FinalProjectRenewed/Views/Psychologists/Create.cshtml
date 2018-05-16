@@ -1,4 +1,4 @@
-﻿@model FinalProject.Models.Psychologist
+﻿@model FinalProject.Models.ViewModels.PsyViewModel
 
 @{
     ViewBag.Title = "Create Your Acount";
@@ -9,11 +9,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
     <link href="~/Content/w3.css" rel="stylesheet" />
+    <script>
+
+    </script>
 </head>
 <body style="background-color:#e9ebee;">
-    @using (Html.BeginForm())
+
+    @using (Html.BeginForm("Create","Psychologists",FormMethod.Post,new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
+
+      
 
         <div class="w3-col l4 w3-card-4 w3-margin-top w3-margin-bottom w3-white" style="margin-left:35%;">
             <div class="w3-container w3-teal  ">
@@ -22,79 +28,82 @@
             @Html.ValidationSummary(true, "", new { @class = "w3-red" })
             <div class="w3-container">
                 <p>
-                    @Html.LabelFor(model => model.Username, new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model=> model.psychologist.Username, new { @class = "w3-text-teal w3-large" })
 
-                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "w3-input" } })
-                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "w3-red" })
+                    @Html.EditorFor(model => model.psychologist.Username, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Username, "", new { @class = "w3-red" })
                 </p>
 
                 <p>
-                    @Html.LabelFor(model => model.Email, new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model => model.psychologist.Email, new { @class = "w3-text-teal w3-large" })
 
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w3-input", @type = "email" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "w3-red" })
+                    @Html.EditorFor(model => model.psychologist.Email, new { htmlAttributes = new { @class = "w3-input", @type = "email" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Email, "", new { @class = "w3-red" })
 
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.Password, new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model => model.psychologist.Password, new { @class = "w3-text-teal w3-large" })
 
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "w3-input", @type = "Password" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "w3-red" })
+                    @Html.EditorFor(model => model.psychologist.Password, new { htmlAttributes = new { @class = "w3-input", @type = "Password" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Password, "", new { @class = "w3-red" })
 
                 </p>
 
 
                 <p>
-                    @Html.LabelFor(model => model.Name, new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model => model.psychologist.Name, new { @class = "w3-text-teal w3-large" })
 
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "w3-input", @type = "text" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "w3-red" })
+                    @Html.EditorFor(model => model.psychologist.Name, new { htmlAttributes = new { @class = "w3-input", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Name, "", new { @class = "w3-red" })
 
                 </p>
 
                 <p>
-                    @Html.LabelFor(model => model.PsyTypeID, "Type Of Psychologist:", new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model => model.psychologist.PsyTypeID, "Type Of Psychologist:", new { @class = "w3-text-teal w3-large" })
 
                     @Html.DropDownList("PsyTypeID", null, htmlAttributes: new { @class = "w3-input" })
-                    @Html.ValidationMessageFor(model => model.PsyTypeID, "", new { @class = "w3-red" })
+                    @Html.ValidationMessageFor(model => model.psychologist.PsyTypeID, "", new { @class = "w3-red" })
 
                 </p>
 
                 <p>
-                    @Html.LabelFor(model => model.Education, new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "w3-input" } })
-                    @Html.ValidationMessageFor(model => model.Education, "", new { @class = "w3-red" })
+                    @Html.LabelFor(model => model.psychologist.Education, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.Education, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Education, "", new { @class = "w3-red" })
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.Experience, new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "w3-input" } })
-                    @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "w3-red" })
+                    @Html.LabelFor(model => model.psychologist.Experience, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.Experience, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.Experience, "", new { @class = "w3-red" })
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.RegistrationNo, new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.RegistrationNo, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
-                    @Html.ValidationMessageFor(model => model.RegistrationNo, "", new { @class = "w3-red" })
+                    @Html.LabelFor(model => model.psychologist.RegistrationNo, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.RegistrationNo, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.RegistrationNo, "", new { @class = "w3-red" })
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.CNIC, new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.CNIC, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
-                    @Html.ValidationMessageFor(model => model.CNIC, "", new { @class = "w3-red" })
+                    @Html.LabelFor(model => model.psychologist.CNIC, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.CNIC, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.CNIC, "", new { @class = "w3-red" })
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.MobileNo, new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "w3-input", @type = "tel" } })
-                    @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "w3-red" })
+                    @Html.LabelFor(model => model.psychologist.MobileNo, new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.MobileNo, new { htmlAttributes = new { @class = "w3-input", @type = "tel" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.MobileNo, "", new { @class = "w3-red" })
 
                 <p>
-                    @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "w3-text-teal w3-large" })
-                    @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.LabelFor(model => model.psychologist.Sex, htmlAttributes: new { @class = "w3-text-teal w3-large" })
+                    @Html.EditorFor(model => model.psychologist.Sex, new { htmlAttributes = new { @class = "w3-input" } })
                     @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "w3-red" })
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "w3-text-teal w3-large" })
+                    @Html.LabelFor(model => model.psychologist.JoinDate, htmlAttributes: new { @class = "w3-text-teal w3-large" })
 
-                    @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "w3-input" } })
-                    @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "w3-red" })
+                    @Html.EditorFor(model => model.psychologist.JoinDate, new { htmlAttributes = new { @class = "w3-input" } })
+                    @Html.ValidationMessageFor(model => model.psychologist.JoinDate, "", new { @class = "w3-red" })
+
+                </p>
+                <p>
 
                 </p>
             </div>

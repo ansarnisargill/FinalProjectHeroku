@@ -6,11 +6,18 @@ namespace FinalProject.Models
     public class Psychologist
     {
         public int ID { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
         public string Username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
         public string Name { get; set; }
+
         public string ImageAddress { get; set; }
         public int PsyTypeID { get; set; }
         public PsyType psyType { get; set; }

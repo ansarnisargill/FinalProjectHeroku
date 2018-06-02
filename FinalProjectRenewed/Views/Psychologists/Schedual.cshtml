@@ -1,0 +1,43 @@
+﻿@using FinalProject.Models
+@{
+    ViewBag.Title = "Schedule You Sessions";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
+}
+<script>
+    function request() {
+        var index = $(".btnSession").get(this)
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:52673/Psychologists/Schedual?start=" + $(this).attr("data-start") + "&end=" + $(this).attr("data-end"),
+            success: function (data) {
+                $(this).hide();
+            },
+            error: function () {
+                window.location("http://localhost:52673/Home/PsyList")
+            }
+        });
+    }
+  
+</script>
+
+
+
+
+    <div class="w3-container">
+        <h2>@DateTime.Now.AddDays(1).ToLongDateString()</h2>
+
+        @{ IQueryable<Session> sessions = ViewBag.sessions;
+            foreach (var s in sessions)
+            {
+                <div class="w3-card-4 w3-teal w3-margin w3-col l3">
+                    <p>
+                        @s.StartingTime.ToString();
+                        Date: @s.SessionDate.ToString("D");
+                        @s.EndingTime.ToString();
+                    </p>
+                    <button onclick="request();" class="w3-btn btnSession w3-blue" data-start="" data-end=""> Activate</button>
+
+                </div>
+            }
+        }
+</div>

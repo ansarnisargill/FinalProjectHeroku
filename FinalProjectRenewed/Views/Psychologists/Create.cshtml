@@ -61,7 +61,7 @@
                 <p>
                     @Html.LabelFor(model => model.psychologist.PsyTypeID, "Type Of Psychologist:", new { @class = "w3-text-teal w3-large" })
 
-                    @Html.DropDownList("PsyTypeID", null, htmlAttributes: new { @class = "w3-input" })
+                    @Html.DropDownList("Psychologist.PsyTypeID", (SelectList)ViewBag.PsyTypeID, htmlAttributes: new { @class = "w3-input" })
                     @Html.ValidationMessageFor(model => model.psychologist.PsyTypeID, "", new { @class = "w3-red" })
 
                 </p>
@@ -82,7 +82,9 @@
                     @Html.ValidationMessageFor(model => model.psychologist.RegistrationNo, "", new { @class = "w3-red" })
                 </p>
                 <p>
+           
                     @Html.LabelFor(model => model.psychologist.CNIC, new { @class = "w3-text-teal w3-large" })
+                    @*<input name="psychologist.CNIC" id="psycnic" />*@
                     @Html.EditorFor(model => model.psychologist.CNIC, new { htmlAttributes = new { @class = "w3-input", @type = "number" } })
                     @Html.ValidationMessageFor(model => model.psychologist.CNIC, "", new { @class = "w3-red" })
                 </p>
@@ -94,7 +96,13 @@
                 <p>
                     @Html.LabelFor(model => model.psychologist.Sex, htmlAttributes: new { @class = "w3-text-teal w3-large" })
                     @Html.EditorFor(model => model.psychologist.Sex, new { htmlAttributes = new { @class = "w3-input" } })
-                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "w3-red" })
+                    @Html.ValidationMessageFor(model => model.psychologist.Sex, "", new { @class = "w3-red" })
+                </p>
+                <p>
+                    <label for="image" class="w3-text-teal w3-large">Upload Profile Picture:</label>
+                    <input type="file" name="image" id="image" class="form-control w3-input" />
+                    @*@Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control", @type = "file" } })*@
+                    @*<input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="04/03/1995">*@
                 </p>
                 <p>
                     @Html.LabelFor(model => model.psychologist.JoinDate, htmlAttributes: new { @class = "w3-text-teal w3-large" })

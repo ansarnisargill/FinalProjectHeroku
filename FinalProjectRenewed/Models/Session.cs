@@ -9,9 +9,9 @@ namespace FinalProject.Models
         public DateTime SessionDate { get; set; }
         public bool Status { get; set; }
         [DataType(DataType.Time)]
-        public DateTime StartingTime { get; set; }
+        public TimeSpan StartingTime { get; set; }
         [DataType(DataType.Time)]
-        public DateTime EndingTime { get; set; } 
+        public TimeSpan EndingTime { get; set; } 
         public int PsychologistID { get; set; }
         public Psychologist psychologist { get; set; }
         

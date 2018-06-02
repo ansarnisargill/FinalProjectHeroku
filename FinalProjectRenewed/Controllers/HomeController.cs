@@ -20,7 +20,14 @@ namespace FinalProjectRenewed.Controllers
         Dictionary<int, string> Answers = new Dictionary<int, string>();
 
        
-           
+        public bool IsUser()
+        {
+            if((string)Session["type"]!= null && (string)Session["type"]=="user")
+            {
+                return true;
+            }
+            return false;
+        }   
         
         public ActionResult Index()
         {

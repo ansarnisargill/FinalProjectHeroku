@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using FinalProject.Context;
 using FinalProject.Models;
+using FinalProject.Models.ViewModels;
+using System.IO;
 
 namespace FinalProjectRenewed.Controllers
 {
@@ -20,7 +22,7 @@ namespace FinalProjectRenewed.Controllers
 
         public bool IsPsychologist()
         {
-            if ( Session["Type"]!=null && Session["Type"].ToString() == "Psy")
+            if (Session["Type"] != null && Session["Type"].ToString() == "Psy")
             {
                 return true;
             }
@@ -30,15 +32,15 @@ namespace FinalProjectRenewed.Controllers
         {
             //if (IsPsychologist())
             //{
-                var psychologists = db.Psychologists.Include(p => p.psyType);
-                return View(psychologists.ToList());
+            var psychologists = db.Psychologists.Include(p => p.psyType);
+            return View(psychologists.ToList());
             //}
             //else
             //{
-              //  string a = HttpStatusCode.Forbidden.ToString();
-                //return Content( a );
+            //  string a = HttpStatusCode.Forbidden.ToString();
+            //return Content( a );
             //}
-           
+
         }
 
         // GET: Psychologists/Details/5
@@ -68,17 +70,24 @@ namespace FinalProjectRenewed.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Username,Password,Name,PsyTypeID,Education,Experience,RegistrationNo,CNIC,MobileNo,Sex,JoinDate,Email")] Psychologist psychologist)
+        public ActionResult Create(PsyViewModel psyViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                db.Psychologists.Add(psychologist);
-                db.SaveChanges();
-                return RedirectToAction("Login");
-            }
+            Psychologist newPsy = psyViewModel.psychologist;
+            newPsy.Password = newPsy.Password.GetHashCode().ToString();
+            string fileName = Path.GetFileNameWithoutExtension(psyViewModel.image.FileName);
+            string extension = Path.GetExtension(psyViewModel.image.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            string directory = "~/Images/";
+            string imageUrl = directory + fileName;
+            newPsy.ImageAddress = imageUrl;
+            fileName = Path.Combine(Server.MapPath(directory), fileName);
+            psyViewModel.image.SaveAs(fileName);
+            newPsy.JoinDate = DateTime.Now;
 
-            ViewBag.PsyTypeID = new SelectList(db.PsyTypes, "ID", "Name", psychologist.PsyTypeID);
-            return View(psychologist);
+            db.Psychologists.Add(newPsy);
+            db.SaveChanges();
+            return RedirectToAction("Login");
+
         }
 
         // GET: Psychologists/Edit/5
@@ -88,7 +97,7 @@ namespace FinalProjectRenewed.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Psychologist psychologist = db.Psychologists.Find(id);
+            var psychologist = (Psychologist)db.Psychologists.Find(id);
             if (psychologist == null)
             {
                 return HttpNotFound();
@@ -160,13 +169,13 @@ namespace FinalProjectRenewed.Controllers
         [HttpPost]
         public ActionResult Login(Psychologist match)
         {
-            var data = db.Psychologists.Where(m => m.Email == match.Email && m.Password == match.Password).FirstOrDefault();
+            var pass = match.Password.GetHashCode().ToString();
+            Psychologist data = db.Psychologists.Where(m => m.Email == match.Email && m.Password == pass).FirstOrDefault();
             if (data != null)
             {
-                Session["name"] = data.Name;
+                Session["Psy"] = data;
                 Session["Type"] = "Psy";
-                Session["pic"] = data.ImageAddress;
-                return RedirectToAction("Index", "Psychologists", Session["name"]);
+                return RedirectToAction("Index", "Psychologists");
             }
             else
             {
@@ -199,13 +208,46 @@ namespace FinalProjectRenewed.Controllers
         {
             if (IsPsychologist())
             {
+                var dateOfDay = DateTime.Now.Date;
 
-                
+                int numberOfDays = 3; //i will set it as setting parameter
+                int durationOfSession = 240;
 
+                for (int i = 0; i < numberOfDays; i++)
+                {
+                    //DateTime today = new DateTime();
+                    //var numberOfSesssions = 1440 / durationOfSession;
+                    //int valueOfTimeToAdd = new int();
+                    //for (int j = 0; j < numberOfSesssions; j++)
+                    //{
+                    //    var start = today.AddMinutes(valueOfTimeToAdd).TimeOfDay;
+                    //    var end = today.AddMinutes(valueOfTimeToAdd + durationOfSession).TimeOfDay;
+                    //    valueOfTimeToAdd = valueOfTimeToAdd + durationOfSession;
+                    //    Session s1 = new Session();
+                    //    s1.SessionDate = dateOfDay.AddDays(i).Date;
+                    //    s1.StartingTime = start;
+                    //    s1.EndingTime = end;
+                    //    s1.Status = false;
+                    //    Psychologist ps = (Psychologist)Session["Psy"];
+                    //    s1.PsychologistID = ps.ID;
+                    //    db.Sessions.Add(s1);
+                    //    db.SaveChanges();
+                   // }
+
+
+                }
+                var sessionData = db.Sessions.Where(c => c.SessionDate >= dateOfDay);
+                ViewBag.sessions = sessionData;
                 return View();
-
             }
-            return Content( HttpStatusCode.Forbidden.ToString());
+            return Content("you are not allowed");
+           
+        }
+    
+        [HttpPost]
+        public ActionResult Schedual(string start, string end)
+        {
+            return Json(new { message = "yeah"});
         }
     }
 }

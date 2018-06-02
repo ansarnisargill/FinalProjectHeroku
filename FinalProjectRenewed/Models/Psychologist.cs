@@ -23,9 +23,9 @@ namespace FinalProject.Models
         public PsyType psyType { get; set; }
         public string Education { get; set; }
         public int Experience { get; set; }
-        public int RegistrationNo { get; set; }
-        public int CNIC { get; set; }
-        public int MobileNo { get; set; }
+        public double RegistrationNo { get; set; }
+        public double CNIC { get; set; }
+        public double MobileNo { get; set; }
         public string Sex { get; set; }
         public DateTime JoinDate { get; set; }
 

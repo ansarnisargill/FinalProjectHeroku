@@ -175,6 +175,14 @@
     <Compile Include="Migrations\201805121750502_whenUpdatedPsychologist.Designer.cs">
       <DependentUpon>201805121750502_whenUpdatedPsychologist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311805229_changecnicreturntype.cs" />
+    <Compile Include="Migrations\201805311805229_changecnicreturntype.Designer.cs">
+      <DependentUpon>201805311805229_changecnicreturntype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806020502213_whenChangedSessionModelStartAndEndTime.cs" />
+    <Compile Include="Migrations\201806020502213_whenChangedSessionModelStartAndEndTime.Designer.cs">
+      <DependentUpon>201806020502213_whenChangedSessionModelStartAndEndTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
@@ -294,6 +302,7 @@
     <Content Include="Views\Home\PsyList.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Psychologists\Schedual.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +341,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805121750502_whenUpdatedPsychologist.resx">
       <DependentUpon>201805121750502_whenUpdatedPsychologist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311805229_changecnicreturntype.resx">
+      <DependentUpon>201805311805229_changecnicreturntype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806020502213_whenChangedSessionModelStartAndEndTime.resx">
+      <DependentUpon>201806020502213_whenChangedSessionModelStartAndEndTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,11 +6,20 @@
     <title>@ViewBag.Title -BetterBrain</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script>
-       
-    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+ <script type="text/javascript">
+     $(document).ready(function () {
+         document.getElementById('mainbody').style.Height = window.innerHeight;
+         
+         
+     });
+    
+ </script>
 </head>
-<body style="background-color:antiquewhite;">
+<body style="background-color:#e9ebee;">
     <nav class="navbar w3-card-8 navbar-dark bg-primary ">
         <a class="navbar-brand" href="#">BetterBrain</a>
         <button class="navbar-toggler btn btn-outline-light btn-lg collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,18 +45,21 @@
         </div>
     </nav>
    
-    <div class="body-content" style="background-color:antiquewhite;">
+    <div class="body-content" id="mainbody" style="background-color:#e9ebee;">
         @RenderBody()
-        <hr />
-        <footer class=" bg-dark h-100">
-            <p>Copy Right 2018</p>
-            <br />
-            <br />
-        </footer>
+       
+       
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <footer class=" bg-primary  h-100">
+        <p>Copy Right 2018</p>
+    </footer>
+
 </body>
+
 </html>

@@ -14,6 +14,6 @@ namespace FinalProject.Models
         public TimeSpan EndingTime { get; set; } 
         public int PsychologistID { get; set; }
         public Psychologist psychologist { get; set; }
-        
+        public bool Active { get; set; }
     }
 }

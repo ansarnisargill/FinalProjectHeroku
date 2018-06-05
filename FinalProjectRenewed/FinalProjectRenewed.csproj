@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201806020502213_whenChangedSessionModelStartAndEndTime.Designer.cs">
       <DependentUpon>201806020502213_whenChangedSessionModelStartAndEndTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806021817375_addedACTIVEinSession.cs" />
+    <Compile Include="Migrations\201806021817375_addedACTIVEinSession.Designer.cs">
+      <DependentUpon>201806021817375_addedACTIVEinSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
@@ -210,6 +214,7 @@
     <Content Include="Content\image\banner3.svg" />
     <Content Include="Content\image\banner4.svg" />
     <Content Include="Content\prettych.css" />
+    <Content Include="Content\Penguin-Error-Page.css" />
     <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -231,6 +236,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\easy-toggle-state.es6.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -303,6 +309,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Psychologists\Schedual.cshtml" />
+    <Content Include="Views\Psychologists\NotAuthorize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806020502213_whenChangedSessionModelStartAndEndTime.resx">
       <DependentUpon>201806020502213_whenChangedSessionModelStartAndEndTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021817375_addedACTIVEinSession.resx">
+      <DependentUpon>201806021817375_addedACTIVEinSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

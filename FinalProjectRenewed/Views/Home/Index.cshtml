@@ -175,20 +175,76 @@
                 </nav>
             </div>
         </header>
+
+
+
+
+
+        <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.ActionLink("SignIn With Email!", "Login", "Home",new { a=1}, new { @class = "btn btn-lg btn-block btn-outline-primary" })
+                        <h2 style="text-decoration-style:wavy; color:black;">OR</h2>
+                        <div class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_likes,user_photos,user_photos,user_status,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.ActionLink("SignUp With Email!", "Signup", "Home", new { a = 1 }, new { @class = "btn btn-lg btn-block btn-outline-primary" })
+                        <h2 style="text-decoration-style:double; color:black;">OR</h2>
+                        <div class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_likes,user_photos,user_photos,user_status,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
         <main role="main" class="inner cover">
             <h1 class="cover-heading">Welcome!!!</h1>
             <p class="lead">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
             <p class="lead">
-                @*@Html.ActionLink("User SignUp", "Create", "Users", new { @class = "btn btn-lg btn-outline-light" })*@
-                @Html.ActionLink("SignUp", "Signup", "Home", new { @class = "btn btn-lg btn-outline-light" })
-                @Html.ActionLink("SignIn", "LOgin", "Home", new { @class = "btn btn-lg btn-outline-light" })
-                <div class="fb-login-button" data-size="large" onclick="location.reload(true)" data-scope="public_profile,email,user_likes,user_photos,user_photos,user_status,user_birthday" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-                
+
+                <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalLogin" data-toggle="modal">
+                    SignIn!
+                </button>
+                <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalSignup" data-toggle="modal">
+                    SignUp!
+                </button>
+              
             </p>
         </main>
         <footer class="mastfoot mt-auto">
             <div class="inner">
-                <p>*it is mandatory to have Facebook account to use our platform. </a>.</p>
+                <p>*by sign in or sign up, you are declaring agreement with privacy policy..</p>
             </div>
         </footer>
     </div>

@@ -9,7 +9,7 @@
     foreach (var item in Model)
     {
         <div class="card cardsizing  border-primary" style="">
-            <img class="img-fluid" src="~/Content/image/banner3.svg" />
+            <img class="img-fluid" style="height:200px;" src=@Url.Content(item.ImageAddress) />
            
             <p class="text-primary ml-3" style="font-size:30px;">@item.Name</p>
             <ul>
@@ -18,10 +18,10 @@
                 <li><p class="text-capitalize" style="font-size:18px;">@item.Sex</p></li>
 
             </ul>
-            <button class="btn btn-primary"><i class="glyphicon glyphicon-phone-alt"></i> Call</button>
+            <a href="tel:@item.MobileNo" class="btn btn-primary btn-sm col-lg-4"><i class="glyphicon glyphicon-phone-alt"></i> Call</a>
             
 
-            <div class="card-body">
+            <div class="card-body border-primary border-top">
 
                 <p class="card-text"> This is the description of the psychologist</p>
             </div>

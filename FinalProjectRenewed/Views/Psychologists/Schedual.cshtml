@@ -3,41 +3,300 @@
     ViewBag.Title = "Schedule You Sessions";
     Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
 }
-<script>
-    function request() {
-        var index = $(".btnSession").get(this)
+<script type="text/javascript">
+    function request(id) {
+        var a = "div";
+        var b = a.concat(id.toString());
+        var c = "btn";
+        var d = c.concat(id.toString());
         $.ajax({
             type: "POST",
-            url: "http://localhost:52673/Psychologists/Schedual?start=" + $(this).attr("data-start") + "&end=" + $(this).attr("data-end"),
+            url: "http://localhost:52673/Psychologists/Schedual?id=" + id,
             success: function (data) {
-                $(this).hide();
+                if (data.message == "False") {
+                    document.getElementById(b).classList.remove("w3-teal");
+                    document.getElementById(b).classList.add("w3-green");
+                    document.getElementById(d).innerText = "Deactivate";
+                }
+                else {
+                    document.getElementById(b).classList.remove("w3-green");
+                    document.getElementById(b).classList.add("w3-teal");
+                    document.getElementById(d).innerText = "Activate";
+                }
+
+
             },
             error: function () {
                 window.location("http://localhost:52673/Home/PsyList")
             }
         });
     }
-  
+
+
+
+
+
 </script>
+<style>
+    .example-collapsible-button {
+        display: flex;
+        width: 100%;
+        margin-top: .5em;
+        padding: .5em;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+        box-sizing: border-box;
+        border: none;
+        background-color: white;
+        text-align: left;
+    }
 
-
-
-
-    <div class="w3-container">
-        <h2>@DateTime.Now.AddDays(1).ToLongDateString()</h2>
-
-        @{ IQueryable<Session> sessions = ViewBag.sessions;
-            foreach (var s in sessions)
-            {
-                <div class="w3-card-4 w3-teal w3-margin w3-col l3">
-                    <p>
-                        @s.StartingTime.ToString();
-                        Date: @s.SessionDate.ToString("D");
-                        @s.EndingTime.ToString();
-                    </p>
-                    <button onclick="request();" class="w3-btn btnSession w3-blue" data-start="" data-end=""> Activate</button>
-
-                </div>
-            }
+        .example-collapsible-button.is-open {
+            background-color: black; /* You probably need to change this! */
+            color: white;
         }
+
+        .example-collapsible-button::after {
+            font-size: 1.5em;
+            line-height: 1;
+            content: "+";
+        }
+
+        .example-collapsible-button.is-open::after {
+            content: "–";
+        }
+
+    .example-collapsible-panel {
+        max-height: 0;
+        margin-bottom: .5em;
+        overflow: hidden;
+        background-color: white;
+        transition: max-height .25s ease-out;
+    }
+
+        .example-collapsible-panel.is-open {
+            max-height: 200em;
+        }
+
+    .example-collapsible-panel-content {
+        padding: .5em;
+    }
+</style>
+
+@{ int numberOfDAYS = 3;
+    for (int i = 0; i < numberOfDAYS; i++)
+    {
+        <div class="w3-container">
+            <h2>@DateTime.Now.AddDays(i).ToLongDateString()</h2>
+
+           
+
+                    @{ IQueryable<Session> sessions = ViewBag.sessions;
+                        <!-- this is the first quarter of the day which has to be scheduled-->
+                        <button type="button" class="example-collapsible-button w3-large w3-brown" data-toggle-class="is-open" data-toggle-target-next>Morning Sessions:</button>
+                        <div class="example-collapsible-panel">
+                            <div class="example-collapsible-panel-content">
+
+                                @{foreach (var s in sessions)
+                                    {
+                                        if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                        {
+                                            TimeSpan a = new TimeSpan(10, 0, 0);
+                                            ;
+                                            if (s.EndingTime <= a)
+                                            {
+
+                                                var btnid = "btn" + s.ID.ToString();
+                                                var divid = "div" + s.ID.ToString();
+                                                string cssclasses;
+                                                if (s.Active == false)
+                                                {
+                                                    cssclasses = "w3-card-4 w3-padding w3-teal w3-margin w3-col l3";
+                                                }
+                                                else
+                                                {
+                                                    cssclasses = "w3-card-4 w3-padding w3-green w3-margin w3-col l3";
+                                                }
+
+
+                                    <div class="@cssclasses" id="@divid">
+                                        
+                                         <h4>Start Time:</h4><h5 class="w3-margin-left" > @s.StartingTime.ToString()</h5>
+                                        
+                                        <h4>End Time:</h4><h5 class="w3-margin-left"> @s.EndingTime.ToString()</h5>
+                                        @{ var btnText = "";
+                                            if (s.Active == false)
+                                            {
+                                                btnText = "Activate";
+                                            }
+                                            else
+                                            {
+                                                btnText = "Deactivate";
+                                            }
+                                        }
+                                        <button onclick="request(@s.ID)" id="@btnid" class="w3-btn btnSession w3-red w3-block">@btnText</button>
+
+                                    </div>
+                                }
+
+
+
+                                }
+
+
+
+
+
+                                }
+
+
+                                }
+                            </div>
+                        </div>
+
+
+
+                        <!-- this is the second quarter of the day which has to be scheduled-->
+                                    <button type="button" class="example-collapsible-button w3-large w3-dark-grey" data-toggle-class="is-open" data-toggle-target-next>Afternoon Sessions:</button>
+                                    <div class="example-collapsible-panel">
+                                        <div class="example-collapsible-panel-content">
+
+                                            @{foreach (var s in sessions)
+                                                {
+                                                    if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                                    {
+                                                        TimeSpan a = new TimeSpan(16, 0, 0);
+                                                        TimeSpan b = new TimeSpan(10, 0, 0);
+                                                        ;
+                                                        if (s.EndingTime <= a && s.EndingTime>b)
+                                                        {
+
+                                                            var btnid = "btn" + s.ID.ToString();
+                                                            var divid = "div" + s.ID.ToString();
+                                                            string cssclasses;
+                                                            if (s.Active == false)
+                                                            {
+                                                                cssclasses = "w3-card-4 w3-padding w3-teal w3-margin w3-col l3";
+                                                            }
+                                                            else
+                                                            {
+                                                                cssclasses = "w3-card-4 w3-padding w3-green w3-margin w3-col l3";
+                                                            }
+
+
+                                                            <div class="@cssclasses" id="@divid">
+                                                                
+                                                                <h4>Start Time:</h4><h5 class="w3-margin-left">
+                                                                    @s.StartingTime.ToString()</h5>
+                                                                <h4>End Time:</h4><h5 class="w3-margin-left">
+                                                                    @s.EndingTime.ToString()</h5>
+                                                                @{ var btnText = "";
+                                                                    if (s.Active == false)
+                                                                    {
+                                                                        btnText = "Activate";
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        btnText = "Deactivate";
+                                                                    }
+                                                                }
+                                                                    <button onclick="request(@s.ID)" id="@btnid" class="w3-btn btnSession w3-red w3-block"> @btnText</button>
+
 </div>
+                                                        }
+
+
+
+                                                    }
+
+
+
+
+
+                                                }
+
+
+                                            }
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- this is the third quarter of the day which has to be scheduled-->
+                                                <button type="button" class="example-collapsible-button w3-purple w3-large" data-toggle-class="is-open" data-toggle-target-next>Evening Sessions:</button>
+                                                <div class="example-collapsible-panel">
+                                                    <div class="example-collapsible-panel-content">
+
+                                                        @{foreach (var s in sessions)
+                                                            {
+                                                                if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                                                {
+                                                                    TimeSpan a = new TimeSpan(20, 0, 0);
+
+                                                                    TimeSpan b = new TimeSpan(16, 0, 0);
+                                                                    if ( s.EndingTime>b)
+                                                                    {
+
+
+                                                                        var divid = "div" + s.ID.ToString();
+                                                                        var btnid = "btn" + s.ID.ToString();
+                                                                        string cssclasses;
+                                                                        if (s.Active == false)
+                                                                        {
+                                                                            cssclasses = "w3-card-4 w3-padding w3-teal w3-margin w3-col l3";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            cssclasses = "w3-card-4 w3-padding w3-green w3-margin w3-col l3";
+                                                                        }
+
+
+                                                                        <div class="@cssclasses" id="@divid">
+                                                                            <h4>Start Time:</h4><h5 class="w3-margin-left">
+                                                                                @s.StartingTime.ToString()
+                                                                            </h5>
+                                                                            <h4>End Time:</h4><h5 class="w3-margin-left">
+                                                                                @s.EndingTime.ToString() </h5>
+                                                                            @{ var btnText = "";
+                                                                                if (s.Active == false)
+                                                                                {
+                                                                                    btnText = "Activate";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    btnText = "Deactivate";
+                                                                                }
+                                                                            }
+                                                                                <button onclick="request(@s.ID)" id="@btnid" class="w3-btn btnSession w3-red w3-block">@btnText</button>
+
+</div>
+                                                                    }
+
+
+
+                                                                }
+
+
+
+
+
+                                                            }
+
+
+                                                        }
+                                                    </div>
+                                                </div>
+                    }
+                </div>
+
+                                   
+
+                                
+                }
+            }
+
+
+
+
+

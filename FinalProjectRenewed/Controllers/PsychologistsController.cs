@@ -11,6 +11,7 @@ using FinalProject.Models;
 using FinalProject.Models.ViewModels;
 using System.IO;
 
+
 namespace FinalProjectRenewed.Controllers
 {
     public class PsychologistsController : Controller
@@ -30,18 +31,17 @@ namespace FinalProjectRenewed.Controllers
         }
         public ActionResult Index()
         {
-            //if (IsPsychologist())
-            //{
-            var psychologists = db.Psychologists.Include(p => p.psyType);
+            if (IsPsychologist())
+            {
+                var psychologists = db.Psychologists.Include(p => p.psyType);
             return View(psychologists.ToList());
-            //}
-            //else
-            //{
-            //  string a = HttpStatusCode.Forbidden.ToString();
-            //return Content( a );
-            //}
+            }
+            else
+            {
+                return View("NotAuthorize");
+             }
 
-        }
+}
 
         // GET: Psychologists/Details/5
         public ActionResult Details(int? id)
@@ -208,6 +208,7 @@ namespace FinalProjectRenewed.Controllers
         {
             if (IsPsychologist())
             {
+                Psychologist ps = (Psychologist)Session["Psy"];
                 var dateOfDay = DateTime.Now.Date;
 
                 int numberOfDays = 3; //i will set it as setting parameter
@@ -215,39 +216,65 @@ namespace FinalProjectRenewed.Controllers
 
                 for (int i = 0; i < numberOfDays; i++)
                 {
-                    //DateTime today = new DateTime();
-                    //var numberOfSesssions = 1440 / durationOfSession;
-                    //int valueOfTimeToAdd = new int();
-                    //for (int j = 0; j < numberOfSesssions; j++)
-                    //{
-                    //    var start = today.AddMinutes(valueOfTimeToAdd).TimeOfDay;
-                    //    var end = today.AddMinutes(valueOfTimeToAdd + durationOfSession).TimeOfDay;
-                    //    valueOfTimeToAdd = valueOfTimeToAdd + durationOfSession;
-                    //    Session s1 = new Session();
-                    //    s1.SessionDate = dateOfDay.AddDays(i).Date;
-                    //    s1.StartingTime = start;
-                    //    s1.EndingTime = end;
-                    //    s1.Status = false;
-                    //    Psychologist ps = (Psychologist)Session["Psy"];
-                    //    s1.PsychologistID = ps.ID;
-                    //    db.Sessions.Add(s1);
-                    //    db.SaveChanges();
-                   // }
+                    DateTime forWhere = dateOfDay.AddDays(i);
+
+
+                    var checkDayEXIST = db.Sessions.Where(c => c.SessionDate == forWhere &&  c.PsychologistID==ps.ID).FirstOrDefault();
+                    if(checkDayEXIST == null)
+                    {
+                        DateTime today = new DateTime();
+                        var numberOfSesssions = 1440 / durationOfSession;
+                        int valueOfTimeToAdd = new int();
+                        for (int j = 0; j < numberOfSesssions; j++)
+                        {
+                            var start = today.AddMinutes(valueOfTimeToAdd).TimeOfDay;
+                            var end = today.AddMinutes(valueOfTimeToAdd + durationOfSession).TimeOfDay;
+                            valueOfTimeToAdd = valueOfTimeToAdd + durationOfSession;
+                            Session s1 = new Session();
+                            s1.SessionDate = dateOfDay.AddDays(i).Date;
+                            s1.StartingTime = start;
+                            s1.EndingTime = end;
+                            s1.Status = false;
+                            s1.Active = false;
+                           
+                            s1.PsychologistID = ps.ID;
+                            db.Sessions.Add(s1);
+                            db.SaveChanges();
+                        }
+                    }
+                   
 
 
                 }
-                var sessionData = db.Sessions.Where(c => c.SessionDate >= dateOfDay);
+                var sessionData = db.Sessions.Where(c => c.SessionDate >= dateOfDay && c.PsychologistID==ps.ID);
                 ViewBag.sessions = sessionData;
                 return View();
             }
-            return Content("you are not allowed");
-           
+            return View("NotAuthorize");
+
         }
     
         [HttpPost]
-        public ActionResult Schedual(string start, string end)
+        public ActionResult Schedual(int id)
         {
-            return Json(new { message = "yeah"});
+            Session s = db.Sessions.Where(c => c.ID == id).Single();
+            bool toSend = s.Active;
+            if (s.Active == false)
+            {
+                s.Active = true;
+            }
+            else
+            {
+                s.Active = false;
+            }
+           
+            db.SaveChanges();
+
+            return Json(new { message = toSend.ToString()});
+        }
+        public ActionResult NotAuthorize()
+        {
+            return View();
         }
     }
 }

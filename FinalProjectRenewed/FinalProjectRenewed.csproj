@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201806021817375_addedACTIVEinSession.Designer.cs">
       <DependentUpon>201806021817375_addedACTIVEinSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806061710072_addedFBsupport.cs" />
+    <Compile Include="Migrations\201806061710072_addedFBsupport.Designer.cs">
+      <DependentUpon>201806061710072_addedFBsupport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
@@ -209,6 +213,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chat.css" />
     <Content Include="Content\image\2.jpg" />
+    <Content Include="Content\image\bg.gif" />
     <Content Include="Content\image\banner1.svg" />
     <Content Include="Content\image\banner2.svg" />
     <Content Include="Content\image\banner3.svg" />
@@ -310,6 +315,7 @@
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Psychologists\Schedual.cshtml" />
     <Content Include="Views\Psychologists\NotAuthorize.cshtml" />
+    <Content Include="Views\Home\ChatInit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -357,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806021817375_addedACTIVEinSession.resx">
       <DependentUpon>201806021817375_addedACTIVEinSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061710072_addedFBsupport.resx">
+      <DependentUpon>201806061710072_addedFBsupport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

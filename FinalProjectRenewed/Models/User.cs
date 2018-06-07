@@ -28,6 +28,7 @@ namespace FinalProject.Models
         [DataType(DataType.Text)]
         public string ImageUrl { get; set; }
         public DateTime JoinDate { get; set; }
+        public int? fbid { get; set; }
 
     }
 }

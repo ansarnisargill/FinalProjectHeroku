@@ -22,7 +22,7 @@ namespace FinalProjectRenewed.Controllers
        
         public bool IsUser()
         {
-            if((string)Session["type"]!= null && (string)Session["type"]=="user")
+            if((string)Session["Type"]!= null && (string)Session["Type"]=="user")
             {
                 return true;
             }
@@ -108,10 +108,10 @@ namespace FinalProjectRenewed.Controllers
             var data = db.Users.Where(m => m.Email == match.Email && m.Password == match.Password).FirstOrDefault();
             if (data != null)
             {
-                Session["name"] = match.Name;
-                Session["type"] = "user";
-                Session["id"] = match.ID;
-                return RedirectToAction("Chat", "Home");
+                
+                Session["Type"] = "user";
+                Session["User"] = data;
+                return RedirectToAction("ChatInit", "Home");
             }
             else
             {
@@ -120,11 +120,23 @@ namespace FinalProjectRenewed.Controllers
             }
         }
         //These two methods are responsible for adding client, they are basically creeate methods
-
+        
+        [HttpGet]
         public ActionResult Signup()
         {
+            User user = new User();
+            if ((User)TempData["user"] != null)
+            {
+                user = (User)TempData["user"];
+            }
+           
+
+                ViewBag.user = user;
+            
+
             return View();
         }
+
         [HttpPost]
         public ActionResult Signup(UserSignUpViewModel userv )
         {
@@ -157,6 +169,61 @@ namespace FinalProjectRenewed.Controllers
             
 
             
+        }
+        public ActionResult test()
+        {
+            
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:52673/Home/test2");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = "{\"user\":\"test\"," +
+                              "\"password\":\"bla\"}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+             string result;
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return Content(result);
+        }
+        public ActionResult test2()
+        {
+            HttpStatusCodeResult ht = new HttpStatusCodeResult(200);
+            return ht ;
+        }
+        public ActionResult IsLoggedIn(int? fbid,string email, string name)
+        {
+            var user = db.Users.Where(c => c.fbid == fbid).FirstOrDefault();
+            if (user != null)
+            {
+               
+                Session["Type"] = "user";
+                Session["User"] = user;
+               return RedirectToAction("ChatInit");
+            }
+            else
+            {
+                User newuser = new User();
+                newuser.fbid = fbid;
+                newuser.Email = email;
+                newuser.Name = name;
+
+                TempData["user"]=newuser;
+                return RedirectToAction("Signup");
+            }
+            
+        }
+        public ActionResult ChatInit()
+        {
+            return View();
         }
     }
 }

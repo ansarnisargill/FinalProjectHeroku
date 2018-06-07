@@ -716,3 +716,4 @@ A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenew
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedFBsupport.resources

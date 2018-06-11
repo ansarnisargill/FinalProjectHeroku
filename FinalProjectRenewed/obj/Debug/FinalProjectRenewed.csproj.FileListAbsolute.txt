@@ -598,18 +598,8 @@ C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\bin\System.Web.Web
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\bin\System.Web.WebPages.Razor.xml
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\bin\System.Web.Optimization.xml
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csprojResolveAssemblyReference.cache
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.init.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.toCreateDb.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addmigr.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.wee.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedUser.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenUpdatedPsychologist.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.changecnicreturntype.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.whenChangedSessionModelStartAndEndTime.resources
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedACTIVEinSession.resources
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\bin\ApplicationInsights.config
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\bin\FinalProjectRenewed.dll.config
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\bin\FinalProjectRenewed.dll
@@ -716,4 +706,5 @@ A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenew
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.dll
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
-C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedFBsupport.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.newToProj.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache

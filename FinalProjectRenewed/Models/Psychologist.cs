@@ -12,12 +12,12 @@ namespace FinalProject.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [DataType(DataType.EmailAddress)]
+        [Required]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Text)]
         public string Name { get; set; }
-
+        public string Description { get; set; }
         public string ImageAddress { get; set; }
         public int PsyTypeID { get; set; }
         public PsyType psyType { get; set; }

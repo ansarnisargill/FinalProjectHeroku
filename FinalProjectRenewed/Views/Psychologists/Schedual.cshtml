@@ -11,7 +11,7 @@
         var d = c.concat(id.toString());
         $.ajax({
             type: "POST",
-            url: "http://localhost:52673/Psychologists/Schedual?id=" + id,
+            url: "@Url.Content("~")Psychologists/Schedual?id=" + id,
             success: function (data) {
                 if (data.message == "False") {
                     document.getElementById(b).classList.remove("w3-teal");
@@ -27,7 +27,7 @@
 
             },
             error: function () {
-                window.location("http://localhost:52673/Home/PsyList")
+                window.location("@Url.Content("~")Psychologist/Index")
             }
         });
     }

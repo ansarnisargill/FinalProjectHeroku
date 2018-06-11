@@ -11,4 +11,7 @@
 <h2 class="p-5 jumbotron bg-primary m-4 text-white ">Welcome to QnA test section, This is a two parts test which is aimed to explore your psychological condition. First part 
     gathers your personal informations and then AI based algorithm tries to analyze it. Second part is based on 
     industry standard BDI test which is aimed at assessing your Depression level! </h2>
-
+<div class="col-8 mt-5 offset-2 btn-group" style="">
+@Html.ActionLink("Personal Informations!","Chat","Home" ,new { a=1},new { @style = "font-size:2rem;", @class ="btn  btn-lg btn-outline-primary col-6"} )
+@Html.ActionLink("Depression Test!","BDIChat","Home", new { a = 1 }, new { @style = "font-size:2rem;", @class = "btn btn-lg btn-outline-primary btn-block" })
+    </div>

@@ -19,6 +19,9 @@
 
 
     <script>
+        @{ 
+            FinalProject.Models.User user = (FinalProject.Models.User)Session["User"];
+        }
         var num = 1;
         $(document).ready(function () {
             $(document).keypress(function (e) {
@@ -32,9 +35,9 @@
             var dateAtLoading = d.getHours().toString() + ':' + d.getMinutes().toString();
             $.ajax({
                 type: "POST",
-                url: "http://localhost:52673/Home/Chat?a=0",
+                url: "@Url.Content("~")Home/Chat?a=0",
                 success: function (data) {
-                    $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="Content/css/an.jpg" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
+                    $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
 
                 }
             }
@@ -56,15 +59,15 @@
             var d = new Date();
             var dateAtLoading = d.getHours().toString() + ':' + d.getMinutes().toString();
 
-            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="Content/css/an.jpg" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
+            $('.chat ul').append(' <li class="other">' + a + ' <img class="" alt="" src="@Url.Content(user.ImageUrl)" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 "><p>' + bt.val() + '</p></div></li >');
 
 
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:52673/Home/Chat?answer=" + bt.val() + "&a=" + num,
+                url: "@Url.Content("~")Home/Chat?answer=" + bt.val() + "&a=" + num,
                 success: function (data) {
-                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="~/Content/image/banner1.svg" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+                    $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
                     num = data.key;
                     $('#last').focus();
                 },

@@ -11,9 +11,9 @@
 @using (Html.BeginForm("Signup","Home",FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @{ 
+   
         User u1 = (User)ViewBag.user;
-    }
+    
 
     <div class="form-horizontal card white w3-card-8 col-lg-4 offset-4">
         <h2 class="card-header text-white bg-primary">

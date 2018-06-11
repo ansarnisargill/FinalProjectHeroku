@@ -3,7 +3,7 @@ namespace FinalProjectRenewed.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class newToProj : DbMigration
     {
         public override void Up()
         {
@@ -34,15 +34,18 @@ namespace FinalProjectRenewed.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Username = c.String(),
-                        Password = c.String(),
-                        Name = c.String(),
+                        Username = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Name = c.String(nullable: false),
+                        Description = c.String(),
+                        ImageAddress = c.String(),
                         PsyTypeID = c.Int(nullable: false),
                         Education = c.String(),
                         Experience = c.Int(nullable: false),
-                        RegistrationNo = c.Int(nullable: false),
-                        CNIC = c.Int(nullable: false),
-                        MobileNo = c.Int(nullable: false),
+                        RegistrationNo = c.Double(nullable: false),
+                        CNIC = c.Double(nullable: false),
+                        MobileNo = c.Double(nullable: false),
                         Sex = c.String(),
                         JoinDate = c.DateTime(nullable: false),
                     })
@@ -81,14 +84,16 @@ namespace FinalProjectRenewed.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false),
                         IsMarried = c.Boolean(nullable: false),
                         DateOfBirth = c.DateTime(nullable: false),
                         Sex = c.Boolean(nullable: false),
-                        City = c.String(),
-                        Password = c.String(),
-                        Email = c.String(),
+                        City = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        ImageUrl = c.String(nullable: false),
                         JoinDate = c.DateTime(nullable: false),
+                        fbid = c.Int(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -99,9 +104,10 @@ namespace FinalProjectRenewed.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         SessionDate = c.DateTime(nullable: false),
                         Status = c.Boolean(nullable: false),
-                        StartingTime = c.DateTime(nullable: false),
-                        EndingTime = c.DateTime(nullable: false),
+                        StartingTime = c.Time(nullable: false, precision: 7),
+                        EndingTime = c.Time(nullable: false, precision: 7),
                         PsychologistID = c.Int(nullable: false),
+                        Active = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Psychologists", t => t.PsychologistID, cascadeDelete: true)

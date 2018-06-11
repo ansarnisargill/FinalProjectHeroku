@@ -16,10 +16,9 @@ namespace FinalProjectRenewed.Controllers
     public class HomeController : Controller
     {
         private FinalContext db = new FinalContext();
-        Dictionary<int, string> chatQuestions = new Dictionary<int, string>();
-        Dictionary<int, string> Answers = new Dictionary<int, string>();
 
-       
+
+        int total_score = new int();
         public bool IsUser()
         {
             if((string)Session["Type"]!= null && (string)Session["Type"]=="user")
@@ -37,47 +36,114 @@ namespace FinalProjectRenewed.Controllers
         [HttpGet]
         public ActionResult Chat()
         {
-            //if( Session["type"]==null || Session["type"].ToString()!="user")
-
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
-               
-            //}
-
-            return View();
+            if (IsUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized");
+            }
+           
             
         }
         [HttpPost]
         public ActionResult Chat(string answer, int a)
         {
-            chatQuestions.Add(0, "Hey! This is your DoctorBB! I am going to conduct your Depression Analysis Survey,<br> This would take only about 5 minutes! Are We ready to go?");
-
-            chatQuestions.Add(1, "Ok! First Of all, tell me about your home environment?");
-            chatQuestions.Add(2, "Whats your qualification?");
-            chatQuestions.Add(3, "Ok! That was all for today!");
+            ChatSystem c = new ChatSystem();
             if (answer != null && answer != "" && a != 1)
             {
-                Answers.Add(a, answer);
+               
+               c.Answers.Add(a, answer);
                 a++;
             }
 
             if (a == 1)
             {
-                return Json(new { message = chatQuestions[a], key = 2 });
+                return Json(new { message = c.chatQuestions[a], key = 2 });
             }
-            if (!chatQuestions.Keys.Contains(a))
+            if (!c.chatQuestions.Keys.Contains(a))
             {
                 RedirectToAction("Index");
             }
-            return Json(new { message = chatQuestions[a], key = a });
+            return Json(new { message = c.chatQuestions[a], key = a });
+
+
+        }
+        
+        public ActionResult BDIChat()
+        {
+            if (IsUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized");
+            }
+
+
+        }
+        [HttpPost]
+        public ActionResult BDIChat(string answer, int a)
+        {
+            ChatSystem c = new ChatSystem();
+
+            if (answer != null && answer != "" && a != 0)
+            {
+                
+                int score = new int();
+                answer = answer.ToLower();
+                if(answer.Contains("first")|| answer.Contains("1st")|| answer.Contains("1")|| answer.Contains("blue") || answer.Contains("blu"))
+                {
+                    score = 0;
+                }
+                else if (answer.Contains("2") || answer.Contains("second") || answer.Contains("2nd")  || answer.Contains("brown") )
+                {
+                    score = 1;
+                }
+                else if(answer.Contains("3") || answer.Contains("third") || answer.Contains("3rd")  || answer.Contains("purple") || answer.Contains("purpel") )
+                {
+                    score = 2;
+                }
+                else if (answer.Contains("4") || answer.Contains("four") || answer.Contains("4th") || answer.Contains("green") || answer.Contains("parrot")||answer.Contains("teal"))
+                {
+                    score = 3;
+                }
+                else
+                {
+
+                }
+                total_score = total_score + score;
+                c.BDIAnswers.Add(a, score);
+                a++;
+            }
+
+            if (a == 0)
+            {
+                return Json(new { message = c.BDIQuesstions[a], key = 1 });
+            }
+            if (!c.BDIQuesstions.Keys.Contains(a))
+            {
+                RedirectToAction("Index");
+            }
+            var messages = c.BDIQuesstions[a];
+            return Json(new { message = messages[0], key = a,option1=messages[1], option2 = messages[2], option3 = messages[3], option4 = messages[4] });
 
 
         }
         public ActionResult PsyList()
         {
-            var psychologists = db.Psychologists.Include( p => p.psyType);
-            return View(psychologists.ToList());
-            
+            if (IsUser())
+            {
+                var psychologists = db.Psychologists.Include(p => p.psyType);
+                return View(psychologists.ToList());
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized");
+            }
+
         }
         public ActionResult About()
         {
@@ -222,6 +288,22 @@ namespace FinalProjectRenewed.Controllers
             
         }
         public ActionResult ChatInit()
+        {
+            if (IsUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized");
+            }
+
+        }
+        public ActionResult NotFound()
+        {
+            return View();
+        }
+        public ActionResult NotAuthorized()
         {
             return View();
         }

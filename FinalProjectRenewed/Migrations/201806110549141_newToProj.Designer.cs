@@ -7,13 +7,13 @@ namespace FinalProjectRenewed.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addmigr : IMigrationMetadata
+    public sealed partial class newToProj : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addmigr));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newToProj));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804060559194_add-migr"; }
+            get { return "201806110549141_newToProj"; }
         }
         
         string IMigrationMetadata.Source

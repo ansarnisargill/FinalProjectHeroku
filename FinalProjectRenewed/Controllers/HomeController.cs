@@ -6,19 +6,22 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using FinalProjectRenewed;
+using System.Net.Http;
 using FinalProject.Context;
 using FinalProject.Models;
 using FinalProject.Models.ViewModels;
 using System.IO;
+using System.Web.Helpers;
+using Newtonsoft.Json;
 
 namespace FinalProjectRenewed.Controllers
 {
     public class HomeController : Controller
     {
         private FinalContext db = new FinalContext();
+        private static readonly WebClient client = new WebClient();
 
-
-        int total_score = new int();
+        public static int total_score = new int();
         public bool IsUser()
         {
             if((string)Session["Type"]!= null && (string)Session["Type"]=="user")
@@ -38,6 +41,8 @@ namespace FinalProjectRenewed.Controllers
         {
             if (IsUser())
             {
+                Result rs = new Result();
+                Session["Result"] = rs;
                 return View();
             }
             else
@@ -51,27 +56,247 @@ namespace FinalProjectRenewed.Controllers
         public ActionResult Chat(string answer, int a)
         {
             ChatSystem c = new ChatSystem();
-            if (answer != null && answer != "" && a != 1)
+            if (a == 11)
             {
-               
-               c.Answers.Add(a, answer);
-                a++;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            if (answer != null && answer != "" )
+            {
+                bool val = SaveChatAnswers(answer, a);
+                if (a == 0&& answer=="first")
+                {
+                    return Json(new { message = c.chatQuestions[a], key = 0 });
+                }
+                else if (val)
+                {
+                    a++;
+                    return Json(new { message = c.chatQuestions[a], key = a });
 
-            if (a == 1)
-            {
-                return Json(new { message = c.chatQuestions[a], key = 2 });
+                }
+                else
+                {
+                    return Json(new { message = "I am sorry! I can't understand your answer,<br> so read question again and answer!<br>" + c.chatQuestions[a], key = a });
+                }
             }
-            if (!c.chatQuestions.Keys.Contains(a))
-            {
-                RedirectToAction("Index");
-            }
-            return Json(new { message = c.chatQuestions[a], key = a });
+            return Json(new { message = "Sorry! You sent an empty answer! reply again!", key = a });
+
+            //if (a == 0)
+            //{
+            //    return Json(new { message = c.chatQuestions[a], key = 1 });
+            //}
+
+
 
 
         }
-        
-        public ActionResult BDIChat()
+        public bool SaveChatAnswers( string answer, int key)
+        {
+            Result rs = (Result)Session["Result"];
+            if (key == 0)
+            {
+                return true;
+            }
+            else if (key == 1)
+            {
+                int val=CountHelper(answer);
+                if (val == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.HomeEnvironmentStrictness = val;
+                    Session["Result"] = rs;
+                    return true;
+                }
+                
+            }
+            else if (key == 2)
+            {
+                
+                if (answer=="")
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.Education = answer;
+                    Session["Result"] = rs;
+                    return true;
+                }
+
+            }
+            else if (key == 3)
+            {
+                bool val = YesNoHelper(answer);
+                rs.SexuallyActive = val;
+                Session["Result"] = rs;
+                return true;
+                
+
+            }
+            else if (key == 4)
+            {
+                bool val = YesNoHelper(answer);
+                rs.IsReligios = val;
+                Session["Result"] = rs;
+                return true;
+                
+
+            }
+            else if (key == 5)
+            {
+                bool val = YesNoHelper(answer);
+                
+             
+                rs.EmploymentStatus = val;
+                Session["Result"] = rs;
+                return true;
+               
+
+            }
+            else if (key == 6)
+            {
+                int val = CountHelper(answer);
+                if (val == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.JobSatisfaction = val;
+                    Session["Result"] = rs;
+                    return true;
+                }
+
+            }
+            else if (key == 7)
+            {
+                int val = CountHelper(answer);
+                if (val == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.Siblings = val;
+                    Session["Result"] = rs;
+                    return true;
+                }
+
+            }
+            else if (key == 8)
+            {
+                int val = CountHelper(answer);
+                if (val == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.BirthOrder = val;
+                    Session["Result"] = rs;
+                    return true;
+                }
+
+            }
+            else if (key == 9)
+            {
+                    bool val = YesNoHelper(answer);
+                    rs.Insomnia = val;
+                    Session["Result"] = rs;
+                    return true;
+                
+
+            }
+            else if (key == 10)
+            {
+                if (answer == "")
+                {
+                    return false;
+                }
+                else
+                {
+                    rs.Illness = answer;
+                    Session["Result"] = rs;
+                    return true;
+                }
+               
+                   
+                
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public int CountHelper(string s)
+        {
+            s = s.ToLower();
+            int toReturn = new int();
+            if(int.TryParse(s,out toReturn))
+            {
+                return toReturn;
+            }
+            else if (s.Contains("1") || s.Contains("1st") || s.Contains("first") || s.Contains("one"))
+            {
+                return 1;
+            }
+            else if (s.Contains("2") || s.Contains("2nd") || s.Contains("second") || s.Contains("two"))
+            {
+                return 2;
+            }
+            else if (s.Contains("3") || s.Contains("3rd") || s.Contains("third") || s.Contains("three"))
+            {
+                return 3;
+            }
+            else if(s.Contains("4") || s.Contains("4th") || s.Contains("fourth") || s.Contains("four"))
+            {
+                return 4;
+            }
+            else if(s.Contains("5") || s.Contains("5th") || s.Contains("fifth") || s.Contains("five"))
+            {
+                return 5;
+            }
+            else if(s.Contains("6") || s.Contains("6th") || s.Contains("sixth") || s.Contains("six"))
+            {
+                return 6;
+            }
+            else if(s.Contains("7") || s.Contains("7th") || s.Contains("seventh") || s.Contains("seven"))
+            {
+                return 7;
+            }
+            else if(s.Contains("8") || s.Contains("8th") || s.Contains("eighth") || s.Contains("eight"))
+            {
+                return 8;
+            }
+            else if(s.Contains("9") || s.Contains("9th") || s.Contains("ninth") || s.Contains("nine"))
+            {
+                return 9;
+            }
+            else if(s.Contains("10") || s.Contains("10th") || s.Contains("tenth") || s.Contains("ten"))
+            {
+                return 10;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public bool YesNoHelper(string s)
+        {
+            s = s.ToLower();
+            if (s.Contains("yeah") || s.Contains("yes") || s.Contains("ok") || s.Contains("sure") || s.Contains("go"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public ActionResult BDIChat( bool? FirstPartDone)
         {
             if (IsUser())
             {
@@ -91,9 +316,10 @@ namespace FinalProjectRenewed.Controllers
 
             if (answer != null && answer != "" && a != 0)
             {
-                
+
                 int score = new int();
                 answer = answer.ToLower();
+                if(int.TryParse(answer,out score))
                 if(answer.Contains("first")|| answer.Contains("1st")|| answer.Contains("1")|| answer.Contains("blue") || answer.Contains("blu"))
                 {
                     score = 0;
@@ -123,10 +349,20 @@ namespace FinalProjectRenewed.Controllers
             {
                 return Json(new { message = c.BDIQuesstions[a], key = 1 });
             }
-            if (!c.BDIQuesstions.Keys.Contains(a))
+
+            if (a == 22)
             {
-                RedirectToAction("Index");
+                User u1 = (User)Session["User"];
+                Result rs = (Result)Session["Result"];
+                rs.DateOfTest = DateTime.Now;
+                rs.BDIScore = total_score;
+                rs.UserID = u1.ID;
+                db.Results.Add(rs);
+                db.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+                
             }
+            
             var messages = c.BDIQuesstions[a];
             return Json(new { message = messages[0], key = a,option1=messages[1], option2 = messages[2], option3 = messages[3], option4 = messages[4] });
 
@@ -287,10 +523,18 @@ namespace FinalProjectRenewed.Controllers
             }
             
         }
-        public ActionResult ChatInit()
+        public ActionResult ChatInit(string first, string second)
         {
             if (IsUser())
             {
+                if (first != null && first != "" && first=="yes")
+                {
+                    ViewBag.done = "fdone";
+                }
+                else
+                {
+                    ViewBag.done = "not";
+                }
                 return View();
             }
             else
@@ -307,5 +551,59 @@ namespace FinalProjectRenewed.Controllers
         {
             return View();
         }
+        public ActionResult Show_Sessions(int id)
+        {
+            
+            DateTime today = DateTime.Now.Date;
+            var sessions = db.Sessions.Where(c => c.PsychologistID == id && c.Active==true && c.SessionDate >= today);
+            return View( sessions);
+        }
+        public ActionResult Confirm_Request(int id)
+        {
+            var session_details = db.Sessions.Where(c => c.ID == id).Include(c => c.psychologist).First();
+
+
+            return View(session_details);
+        }
+        [ActionName("Confirmed")]
+        public ActionResult Confirm_Request(int psychologist_id,int session_id)
+        {
+            Request rq = new Request();
+            User u1 = (User)Session["User"];
+            var result_id = db.Results.Where(c => c.UserID == u1.ID).Select(c => c.ID).FirstOrDefault();
+            rq.UserID = u1.ID;
+            rq.ResultID = result_id;
+            rq.PsychologistID = psychologist_id;
+            rq.SessionID = session_id;
+            db.Requests.Add(rq);
+            db.SaveChanges();
+            
+
+
+            return Content("Ok Your Request has been sent!");
+        }
+        [HttpPost]
+        public string saveImage(string img)
+        {
+            //string filePath = "MyImage.jpg";
+            //File.WriteAllBytes(filePath, Convert.FromBase64String(img));
+            return img ;
+        }
+        public ActionResult PhotoSignup()
+        {
+            //client.Headers.Add("app_id", "9710ce6c");
+            //client.Headers.Add("app_key", "5415b25df0cb7c593f63c53306c59885");
+            //client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            //client.Headers[HttpRequestHeader.Accept] = "application/json";
+            //client.BaseAddress = "http://api.kairos.com/detect";
+            //var data= new { image="https://media.kairos.com/liz.jpg"};
+            //var dataSer = JsonConvert.SerializeObject(data);
+            //var res=client.UploadString(client.BaseAddress,"POST", dataSer);
+            //res = JsonConvert.SerializeObject(res);
+            //return Content("ok");
+
+           return View();
+        }
+      
     }
 }

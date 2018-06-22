@@ -1,50 +1,30 @@
 ﻿@model IEnumerable<FinalProject.Models.Request>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Requests</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-   
-    
-    @foreach (var item in Model)
-    {
 
-        <div class="w3-card-4">
 
-            <header class="w3-container w3-blue">
-                <h1>@Html.DisplayFor(modelItem => item.user.Name)</h1>
-            </header>
+@foreach (var item in Model)
+{
 
-            <div class="w3-container">
-                <p>@Html.DisplayFor(modelItem => item.result.HistoryOfIllness)</p>
-                <p>@Html.DisplayFor(modelItem => item.PsychologitsID)</p>
-                <p>@Html.DisplayFor(modelItem => item.session.ID)</p>
-            </div>
-          <footer class="w3-container w3-blue">
-                <h5>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                </h5>
-            </footer>
-
+    <div class="w3-container w3-text-white w3-blue w3-card-4 w3-col l4 w3-margin"- style="" >
+       <div style="margin-left:10%">
+        <h3>Client Name:</h3><h4 class="w3-margin-left"> @item.user.Name</h4>
+        <h3>Appointment Date:</h3><h4 class="w3-margin-left"> @item.session.SessionDate.ToString("D")</h4>
+        <h3>Starting Time:</h3><h4 class="w3-margin-left"> @item.session.StartingTime</h4>
+        <h3>Ending Time:</h3><h4 class="w3-margin-left"> @item.session.EndingTime</h4>
         </div>
- 
-              
-                
-          
-    }
-    
-   
-</body>
-</html>
+           <div class="w3-bar w3-large w3-margin-bottom ">
+        @Html.ActionLink("Accept", "AcceptRequest", "Psychologists",new {id=item.ID}, new { @class= "w3-button w3-col l4 w3-bar-item w3-green " })
+        
+        @Html.ActionLink("Reject", "RejectRequest", "Psychologists", new {id=item.ID }, new { @class = "w3-button w3-col l4 w3-bar-item w3-red " })
+        @Html.ActionLink("Details", "AcceptRequest", "Psychologists", new { }, new { @class = "w3-button w3-col l4 w3-bar-item w3-brown " })
+      </div>
+     </div>
+  
+}
+

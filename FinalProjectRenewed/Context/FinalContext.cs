@@ -11,7 +11,7 @@ namespace FinalProject.Context {
         public DbSet<History> Histories{get; set;}
         public DbSet<Request> Requests{get; set;}
         public DbSet<Appointment> Appointments{get; set;}
-
+        public DbSet<Notification> Notifications { get; set; }
 
        
        

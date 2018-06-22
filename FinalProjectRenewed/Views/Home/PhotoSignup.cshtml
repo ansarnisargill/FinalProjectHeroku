@@ -1,0 +1,52 @@
+﻿
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photobooth js Html 5 Camera</title>
+   
+  
+
+
+</head>
+<body>
+    <style type="text/css">
+        #example {
+            min-height: 500px;
+            min-width: 500px;
+            height: 70%;
+            width: 80%;
+        }
+
+        #gallery {
+            min-height: 200px;
+            min-width: 200px;
+            height: 600px;
+            width: 600px;
+        }
+    </style>
+    <div id="example"></div>
+    <div id="gallery"></div>
+    <button  id="btn">Add photo</button>
+    <script src="~/Scripts/jqforpb.js"></script>
+    <script src="~/Scripts/photobooth_min.js"></script>
+    <script src="~/Scripts/PBSignupFunc.js"></script>
+    <script>
+        function saveImage( img ) {
+             $.ajax({
+                 type: "POST",
+                 url: "@Url.Content("~")Home/saveImage?img=" + img,
+                 success: function (data) {
+                     alert("image sent successfully");
+                }
+            }
+            );
+        }
+    </script>
+
+</body>
+</html>

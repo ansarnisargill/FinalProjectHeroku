@@ -15,8 +15,14 @@
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
-
+    <script src="~/Scripts/LoaderFunctions.js"></script>
     <title>Index</title>
+    <script>
+        $(document).ready(function () {
+            document.getElementById("mainBody").style.display = "block";
+            document.getElementById("loader").style.display = "none";
+        });
+    </script>
     <style>
                a,
                a:focus,
@@ -155,8 +161,10 @@ background-size: cover;">
                 monthsec = 2592000;
                 val = Math.floor(Date.now() / 1000) - monthsec;
                 FB.api('/me?fields=id,name,picture,email', function (response) {
-                 
+                    HideLoader();
+                    console.log(response);
                     window.location="@Url.Content("~/Home/IsLoggedIn?fbid=")" + response.id + "&email=" + response.email
+
                 });
 
             }
@@ -165,92 +173,96 @@ background-size: cover;">
 
 
     </script>
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
-            <div class="inner">
-                <h3 class="masthead-brand">BetterBrain!</h3>
-                <nav class="nav nav-masthead justify-content-center">
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link active" })
-                    @Html.ActionLink("About Us!", "About", "Home", new { @class = "nav-link" })
-                    @Html.ActionLink("User Privacy", "Contact", "Home", new { @class = "nav-link " })
-
-                </nav>
-            </div>
-        </header>
-
-
-
-
-
-        <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @Html.ActionLink("SignIn With Email!", "Login", "Home",new { a=1}, new { @style = "width:400px;", @class = "btn btn-lg  btn-primary" })
-                        <h2 style="text-decoration-style:wavy; color:black;">OR</h2>
-                        <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-                       
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="ModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @Html.ActionLink("SignUp With Email!", "Signup", "Home", new { a = 1 }, new { @class = "btn btn-lg  btn-primary",@style="width:400px;" })
-                        <h2 style="text-decoration-style:double; color:black;">OR</h2>
-                        <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <main role="main" class="inner cover">
-            <h1 class="cover-heading">Welcome!!!</h1>
-            <p class="lead" style="background-color:rgba(0,0,0,0.7)">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
-            <p class="lead">
-
-                <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalLogin" data-toggle="modal">
-                    SignIn!
-                </button>
-                <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalSignup" data-toggle="modal">
-                    SignUp!
-                </button>
-              
-            </p>
-        </main>
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p>*by sign in or sign up, you are declaring agreement with privacy policy..</p>
-            </div>
-        </footer>
+    <div id="loader">
+        @Html.Partial("Loader")
     </div>
+  <div id="mainBody" style="display:none;">
+      <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+          <header class="masthead mb-auto">
+              <div class="inner">
+                  <h3 class="masthead-brand">BetterBrain!</h3>
+                  <nav class="nav nav-masthead justify-content-center">
+                      @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link active" })
+                      @Html.ActionLink("About Us!", "About", "Home", new { @class = "nav-link" })
+                      @Html.ActionLink("User Privacy", "Contact", "Home", new { @class = "nav-link " })
+
+                  </nav>
+              </div>
+          </header>
 
 
+
+
+
+          <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          @Html.ActionLink("SignIn With Email!", "Login", "Home", new { a = 1 }, new { @style = "width:400px;", @class = "btn btn-lg  btn-primary" })
+                          <h2 style="text-decoration-style:wavy; color:black;">OR</h2>
+                          <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
+
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal fade" id="ModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          @Html.ActionLink("SignUp With Email!", "Signup", "Home", new { a = 1 }, new { @class = "btn btn-lg  btn-primary", @style = "width:400px;" })
+                          <h2 style="text-decoration-style:double; color:black;">OR</h2>
+                          <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
+
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+         
+          <main role="main" class="inner cover">
+              <h1 class="cover-heading">Welcome!!!</h1>
+              <p class="lead" style="background-color:rgba(0,0,0,0.7)">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
+              <p class="lead">
+
+                  <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalLogin" data-toggle="modal">
+                      SignIn!
+                  </button>
+                  <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalSignup" data-toggle="modal">
+                      SignUp!
+                  </button>
+
+              </p>
+          </main>
+          <footer class="mastfoot mt-auto">
+              <div class="inner">
+                  <p>*by sign in or sign up, you are declaring agreement with privacy policy..</p>
+              </div>
+          </footer>
+      </div>
+
+  </div>
 </body>
 </html>

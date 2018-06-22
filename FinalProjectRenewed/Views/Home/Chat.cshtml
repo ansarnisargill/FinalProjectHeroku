@@ -22,7 +22,7 @@
         @{ 
             FinalProject.Models.User user = (FinalProject.Models.User)Session["User"];
         }
-        var num = 1;
+        var num ;
         $(document).ready(function () {
             $(document).keypress(function (e) {
                 if (e.which == 13) {
@@ -35,10 +35,10 @@
             var dateAtLoading = d.getHours().toString() + ':' + d.getMinutes().toString();
             $.ajax({
                 type: "POST",
-                url: "@Url.Content("~")Home/Chat?a=0",
+                url: "@Url.Content("~")Home/Chat?a=0&answer=first",
                 success: function (data) {
                     $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
-
+                    num = data.key;
                 }
             }
             );
@@ -69,12 +69,15 @@
                 success: function (data) {
                     $('.chat ul').append(' <li class="you">' + a + ' <img class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
                     num = data.key;
-                    $('#last').focus();
+                   
                 },
                 error: function () {
-                    window.location("http://localhost:52673/Home/PsyList")
+                    window.location = "@Url.Content("~")Home/ChatInit?first=yes";
                 }
             });
+            $('#last').focus();
+            $('#reply').val('');
+            $('#reply').focus();
         }
 
 

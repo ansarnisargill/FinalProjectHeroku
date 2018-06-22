@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FinalProject.Models.Session>
+
+@{
+    ViewBag.Title = "Show_Sessions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{
+    foreach (var item in Model)
+    {
+        <div onclick=""  class="card bg-primary w3-card-8 text-white cardsizing">
+            <div class="ml-4 card-body">
+                <h4>Start Time:</h4><h5 class="ml-5 btn"> @item.StartingTime.ToString()</h5>
+
+                <h4>End Time:</h4><h5 class="ml-5"> @item.EndingTime.ToString()</h5>
+                <h4>Date:</h4><h5 class="ml-5"> @item.SessionDate.ToString("MMMM dd")</h5>
+                @Html.ActionLink("Select!", "Confirm_Request", new { id=item.ID},new { @class="btn mt-4 btn-block col-6 ml-5 btn-outline-light"})
+            </div>
+        </div>
+    }
+}
+
+

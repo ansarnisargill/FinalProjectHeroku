@@ -708,3 +708,9 @@ A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenew
 A:\literature\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.pdb
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.newToProj.resources
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.csproj.GenerateResource.Cache
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.uPDATEEDrESULTS.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedNotificationSupport.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedNotificationSupport1.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.updatedNotification.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.AddedNotificationText.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.AddedNotificationText1.resources

@@ -201,8 +201,72 @@ namespace FinalProjectRenewed.Controllers
         }
         public ActionResult Requests()
         {
-            var data = db.Requests.ToList();
+            Psychologist ps = (Psychologist)Session["Psy"];
+
+            var data = db.Requests.Where(c=>c.PsychologistID==ps.ID&& c.Accepted==null).Include(c=>c.session).Include(c=>c.user).ToList();
             return View(data);
+        }
+        public ActionResult AcceptRequest(int id)
+        {
+            if (IsPsychologist())
+            {
+                Appointment ap = new Appointment();
+                Request rq = db.Requests.Where(c => c.ID == id).Include(c => c.session).SingleOrDefault();
+                ap.PsychologistID = rq.PsychologistID;
+                ap.Rating = 0;
+                ap.ResultID = rq.ResultID;
+                ap.SessionID = rq.SessionID;
+                ap.Status = false;
+                ap.UserID = rq.UserID;
+                rq.Accepted = true;
+                db.Appointments.Add(ap);
+                db.SaveChanges();
+                Notification nt = new Notification();
+                nt.Link = Url.Content("~") + "Home/Notification?type=reqacc&id=" + ap.ID;
+                nt.Type = "User";
+                nt.Text = "Your Appointment request has been Accepted";
+                nt.UserID = (int)rq.UserID;
+                nt.Status = false;
+                db.Notifications.Add(nt);
+                db.SaveChanges();
+                TimeSpan ts = rq.session.StartingTime;
+                List<Request> rqlist = db.Requests.Where(c => c.PsychologistID == ap.PsychologistID && c.session.StartingTime == ts
+                ).ToList();
+                foreach (Request r in rqlist)
+                {
+
+                    RejectRequestHelper(r.ID);
+                }
+
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorize");
+            }
+            
+        }
+        public ActionResult RejectRequest(int id)
+        {
+
+            RejectRequestHelper(id);
+            return View();
+        }
+        private bool RejectRequestHelper(int id)
+        {
+            Request rq = db.Requests.Where(c => c.ID == id).SingleOrDefault();
+            rq.Accepted = false;
+            
+            Notification nt = new Notification();
+            nt.Link = Url.Content("~") + "Home/Notification?type=reqrej&id="+rq.ID;
+            nt.Type = "User";
+            nt.UserID = (int)rq.UserID;
+            nt.Status = false;
+            nt.Text = "Your Appointment Request has been rejected";
+            db.Notifications.Add(nt);
+            db.SaveChanges();
+            return true;
         }
         public ActionResult Schedual()
         {

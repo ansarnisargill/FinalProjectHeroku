@@ -156,9 +156,34 @@
     <Compile Include="Migrations\201806110549141_newToProj.Designer.cs">
       <DependentUpon>201806110549141_newToProj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806162258587_uPDATEEDrESULTS.cs" />
+    <Compile Include="Migrations\201806162258587_uPDATEEDrESULTS.Designer.cs">
+      <DependentUpon>201806162258587_uPDATEEDrESULTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806201002148_addedNotificationSupport.cs" />
+    <Compile Include="Migrations\201806201002148_addedNotificationSupport.Designer.cs">
+      <DependentUpon>201806201002148_addedNotificationSupport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806201003475_addedNotificationSupport1.cs" />
+    <Compile Include="Migrations\201806201003475_addedNotificationSupport1.Designer.cs">
+      <DependentUpon>201806201003475_addedNotificationSupport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211512487_updatedNotification.cs" />
+    <Compile Include="Migrations\201806211512487_updatedNotification.Designer.cs">
+      <DependentUpon>201806211512487_updatedNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806220346560_AddedNotificationText.cs" />
+    <Compile Include="Migrations\201806220346560_AddedNotificationText.Designer.cs">
+      <DependentUpon>201806220346560_AddedNotificationText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806220404305_AddedNotificationText1.cs" />
+    <Compile Include="Migrations\201806220404305_AddedNotificationText1.Designer.cs">
+      <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Psychologist.cs" />
     <Compile Include="Models\PsyType.cs" />
     <Compile Include="Models\Request.cs" />
@@ -186,6 +211,7 @@
     <Content Include="Content\image\banner3.svg" />
     <Content Include="Content\image\banner4.svg" />
     <Content Include="Content\image\DOC.jpg" />
+    <Content Include="Content\loader.css" />
     <Content Include="Content\prettych.css" />
     <Content Include="Content\Penguin-Error-Page.css" />
     <Content Include="Content\w3.css" />
@@ -222,6 +248,8 @@
     <None Include="Properties\PublishProfiles\ansarnisargill - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ansarnisargill - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\PBSignupFunc.js" />
+    <Content Include="Scripts\jqforpb.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -231,7 +259,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LoaderFunctions.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\photobooth_min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -277,7 +307,6 @@
     <Content Include="Views\Shared\_LayoutForPsychologist.cshtml" />
     <Content Include="Views\Psychologists\Appointment.cshtml" />
     <Content Include="Views\Psychologists\History.cshtml" />
-    <Content Include="Views\Psychologists\Requests.cshtml" />
     <Content Include="Views\Psychologists\Login.cshtml" />
     <Content Include="Views\Home\PsyList.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -288,6 +317,14 @@
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\NotAuthorized.cshtml" />
     <Content Include="Views\Home\BDIChat.cshtml" />
+    <Content Include="Views\Home\Show_Sessions.cshtml" />
+    <Content Include="Views\Home\Confirm_Request.cshtml" />
+    <Content Include="Views\Home\Loader.cshtml" />
+    <Content Include="Views\Psychologists\Requests.cshtml" />
+    <Content Include="Views\Home\PhotoSignup.cshtml" />
+    <Content Include="Views\Psychologists\AcceptRequest.cshtml" />
+    <Content Include="Views\Psychologists\RejectRequest.cshtml" />
+    <Content Include="Views\Shared\NavBarUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +348,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806110549141_newToProj.resx">
       <DependentUpon>201806110549141_newToProj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806162258587_uPDATEEDrESULTS.resx">
+      <DependentUpon>201806162258587_uPDATEEDrESULTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806201002148_addedNotificationSupport.resx">
+      <DependentUpon>201806201002148_addedNotificationSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806201003475_addedNotificationSupport1.resx">
+      <DependentUpon>201806201003475_addedNotificationSupport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211512487_updatedNotification.resx">
+      <DependentUpon>201806211512487_updatedNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806220346560_AddedNotificationText.resx">
+      <DependentUpon>201806220346560_AddedNotificationText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806220404305_AddedNotificationText1.resx">
+      <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

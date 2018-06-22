@@ -1,0 +1,17 @@
+﻿@model FinalProject.Models.Session
+
+@{
+    ViewBag.Title = "Confirm_Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    FinalProject.Models.User u1 = (FinalProject.Models.User)Session["User"];
+}
+<div class="card mt-5 p-3 col-6 offset-3">
+<h3> Psycholopgist:</h3><h4 class="ml-5"> @Model.psychologist.Name</h4>
+
+
+<h3> Date:</h3><h4 class="ml-5"> @Model.SessionDate.ToString("D")</h4>
+
+    <h3> Client Name:</h3><h4 class="ml-5">@u1.Name</h4>
+<h3> Appointment Timing:</h3><h4 class="ml-5"> @Model.StartingTime to @Model.EndingTime</h4>
+    </div>
+@Html.ActionLink("Confirm","Confirmed","Home",new { session_id=Model.ID,psychologist_id=Model.PsychologistID},new { @class="btn btn-outline-primary btn-lg"})

@@ -9,15 +9,21 @@ namespace FinalProjectRenewed
     {
         public Dictionary<int, string[]> BDIQuesstions= new Dictionary<int, string[]>();
         public  Dictionary<int, string> chatQuestions = new Dictionary<int, string>();
-        public Dictionary<int, string> Answers = new Dictionary<int, string>();
         public Dictionary<int, int> BDIAnswers = new Dictionary<int, int>();
         public ChatSystem()
         {
             chatQuestions.Add(0, "Hey! This is your DoctorBB! I am going to conduct your Depression Analysis Survey,<br> This would take only about 5 minutes! Are We ready to go?");
-            chatQuestions.Add(1, "Ok! First Of all, tell me about your home environment?");
-            chatQuestions.Add(2, "Whats your qualification?");
-            chatQuestions.Add(3, "Ok! That was all for today!");
-
+            chatQuestions.Add(1, "Ok! First Of all, tell me about your home environment? On the scale of 1 to 5, what score would you asign it for strictness!");
+            chatQuestions.Add(2, "What is your education level? ");
+            chatQuestions.Add(3, "Are You sexually active?");
+            chatQuestions.Add(4, "Do you consider Yourself a religious person?");
+            chatQuestions.Add(5, "Are you employed currently?");
+            chatQuestions.Add(6, "On a scale of 1 to 5, How much do you love your work life? 1 for hating your work life and 5 for enjoying it throughly!");
+            chatQuestions.Add(7, "How many Siblings do you have?");
+            chatQuestions.Add(8, "What is your birth Order? for example if you are first born in family, your birth order is 1.");
+            chatQuestions.Add(9, "Do you have sleep problems?");
+            chatQuestions.Add(10, "Tell me Your present condition? how do feel about yourself? what problems do you think yoou have. It will help your psychologist understand your problem!");
+            chatQuestions.Add(11, "Ok! That was all for today! Reply \" OK\" to proceed!");
             BDIQuesstions.Add(0,new string[] { "Hello! This is BDI depression test. You need to choose one options from given four options! <br> You can reply with the number of option or color of that option!"});
             BDIQuesstions.Add(1, new string[] { "Whats your condition about \"Sadness\" ?", "I do not feel sad.", "I feel sad.", "I am sad all the time and I can't snap out of it.", "I am so sad and unhappy that I can't stand it." });
             BDIQuesstions.Add(2, new string[] { "what's your perspective about \"future\" ?", "I am not particularly discouraged about the future.", "I feel discouraged about the future.", "I feel I have nothing to look forward to.", "I feel the future is hopeless and that things cannot improve." });

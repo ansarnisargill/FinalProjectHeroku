@@ -15,17 +15,19 @@
 
     <link href="~/Content/chat.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-
-    <script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
+    <script src="~/Scripts/LoaderFunctions.js"></script>
+    
 
 
 
     <script>
+       
         @{
             FinalProject.Models.User user = (FinalProject.Models.User)Session["User"];
         }
         var num = 1;
         $(document).ready(function () {
+            
             $(document).keypress(function (e) {
                 if (e.which == 13) {
                     SendData();
@@ -39,9 +41,10 @@
                 type: "POST",
                 url: "@Url.Content("~")Home/BDIChat?a=0",
                 success: function (data) {
+                   
                     $('.chat ul').append(' <li class="you">' + a + ' <img  class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + ' </div><div class="message w3-card-12 w3-white "><p >' + data.message + '</p></div></li >');
                   
-
+                    
                     
                 }
             }
@@ -56,8 +59,10 @@
             $("#bt").click(function () {
                 SendData();
             });
+           
         });
         function SendData() {
+        
             var a = "<a  class='user' href='#'> ";
             var bt = $('#reply');
             var d = new Date();
@@ -71,21 +76,25 @@
                 type: "POST",
                 url: "@Url.Content("~")Home/BDIChat?answer=" + bt.val() + "&a=" + num,
                 success: function (data) {
+                    
                     $('.chat ul').children().remove();
-                    $('.chat ul').append(' <li class="you" style="margin-top:-25px;">' + a + ' <img class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
-                    $('.chat ul').append(' <li class="w3-card-4 w3-padding w3-container w3-xlarge w3-blue">' +'1.  '+ data.option1 + '</li>');
+                    $('.chat ul').append(' <li class="you" style="margin-top:-45px;">' + a + ' <img class="" alt="" src="@Url.Content("~/Content/image/DOC.jpg")" /> </a ><div class="date">' + dateAtLoading + '</div><div class="message w3-card-12 w3-white "><p>' + data.message + '</p></div></li >');
+                    $('.chat ul').append(' <li class="w3-card-4 w3-padding w3-container w3-xlarge w3-blue">' + '1.  ' + data.option1 + '</li>');
                     $('.chat ul').append(' <li class="w3-card-4 w3-padding w3-container w3-xlarge w3-brown ">' + '2.  ' + data.option2 + '</li>');
                     $('.chat ul').append(' <li class="w3-card-4 w3-padding w3-xlarge w3-container w3-purple">' + '3.  ' + data.option3 + '</li>');
                     $('.chat ul').append(' <li class="w3-card-4 w3-padding w3-xlarge w3-teal w3-container">' + '4.  ' + data.option4 + '</li>');
-
                     num = data.key;
+                    valueTo = num / 22 * 100;
+                    $('#progress').text(Math.floor( valueTo)+"% ");
+                    $('#progress').css('width', valueTo.toString() + "%");
+                    
                     $('#last').focus();
-                    $('#reply').innerHTML = "";
+                    $('#reply').val("");
                     $('#reply').focus();
-
+                   
                 },
                 error: function () {
-                    window.location("http://localhost:52673/Home/PsyList")
+                    window.location = "@Url.Content("~")Home/PsyList";
                 }
             });
         }
@@ -98,63 +107,12 @@
     </style>
 </head>
 <body class="w3-light-grey">
-    @*<canvas id="myChartPie" width="40" height="40"></canvas>*@
-
-    <script>
-
-    var ctx = document.getElementById("myChartPie");
-        var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-        labels: ["complete","uncomplete"],
-            datasets: [{
-            label: '# of Items Sold',
-                data: [6,24],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 206, 86, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 206, 86, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 159, 64, 0.3)'
-
-                ],
-                borderColor: [
-
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 4
-            }]
-        },
-        options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-    </script>
-
+    <div class="w3-light-grey">
+        <div class="w3-container w3-blue" id="progress" style="width:1%;">1%</div>
+    </div><br>
+    <div id="loader" style="display:none;">
+        @Html.Partial("Loader")
+    </div>
     <div id="chat">
         <div class="chat">
             <ul></ul>
@@ -168,5 +126,6 @@
             <a class="" id="bt"><i style="font-size:50px;" class="w3-text-teal w3-hover-text-black glyphicon glyphicon-send"></i></a>
         </div>
     </div>
+    
 </body>
 </html>

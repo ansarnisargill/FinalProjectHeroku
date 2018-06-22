@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,56 +12,29 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
- <script type="text/javascript">
-     $(document).ready(function () {
-         document.getElementById('mainbody').style.Height = window.innerHeight;
-         
-         
-     });
+   
+    <script type="text/javascript">
+    
     
  </script>
 </head>
 <body style="background-color:#e9ebee;">
-    <nav class="navbar w3-card-8 navbar-dark bg-primary ">
-        <a class="navbar-brand" href="#">BetterBrain</a>
-        <button class="navbar-toggler btn btn-outline-light btn-lg collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse collapse justify-content-center" id="navbarsExample01" style="">
-            <ul class="navbar-nav mr-auto ">
-                <li class="nav-item active" >
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">Disabled</a>
-                </li>
-                
-            </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </form>
-        </div>
-    </nav>
    
-    <div class="body-content" id="mainbody" style="background-color:#e9ebee;">
-        @RenderBody()
-       
-       
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    @Html.Partial("NavBarUser")
+        <div class="body-content" id="mainbody" style="background-color:#e9ebee;">
+            @RenderBody()
 
-    <footer class=" bg-primary  h-100">
-        <p>Copy Right 2018</p>
-    </footer>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
 
 </body>
 

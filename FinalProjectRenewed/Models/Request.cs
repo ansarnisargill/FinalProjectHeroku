@@ -8,11 +8,12 @@ namespace FinalProject.Models
         public int ID { get; set; }
         public int? SessionID { get; set; }
         public Session session { get; set; }
-        public int? PsychologitsID { get; set; }
+        public int? PsychologistID { get; set; }
         public Psychologist psychologist { get; set; }
         public int? UserID { get; set; }
         public User user { get; set; }
         public int? ResultID { get; set; }
         public Result result { get; set; }
+        public bool? Accepted { get; set; }
     }
 }

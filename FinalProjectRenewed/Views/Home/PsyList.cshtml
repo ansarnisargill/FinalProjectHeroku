@@ -18,16 +18,21 @@
                 <li><p class="text-capitalize" style="font-size:18px;">@item.Sex</p></li>
 
             </ul>
-            <a href="tel:@item.MobileNo" class="btn btn-primary btn-sm col-lg-4"><i class="glyphicon glyphicon-phone-alt"></i> Call</a>
+           
             
 
             <div class="card-body border-primary border-top">
 
-                <p class="card-text"> This is the description of the psychologist</p>
+                <p class="card-text">@item.Description</p>
             </div>
 
-            <div class="card-footer border-primary">gfgfgfg</div>
-            @Html.ActionLink("Details", "Details", new {id= item.ID },new { @class="btn  btn-primary "})
+            
+                <div class="btn-group ">
+                    <a href="tel:@item.MobileNo" class="btn btn-block col-6 btn-primary"><i class="glyphicon glyphicon-phone-alt"></i> Call</a>
+                    @Html.ActionLink("Select", "Show_Sessions", new { id = item.ID }, new { @class = "btn col-6 btn-primary" })
+                </div>
+            
+            
 
         </div>
     }

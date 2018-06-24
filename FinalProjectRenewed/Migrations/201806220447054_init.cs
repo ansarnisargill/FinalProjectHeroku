@@ -3,7 +3,7 @@ namespace FinalProjectRenewed.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newToProj : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -70,10 +70,18 @@ namespace FinalProjectRenewed.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         UserID = c.Int(nullable: false),
                         BirthOrder = c.Int(nullable: false),
-                        HistoryOfIllness = c.String(),
+                        Illness = c.String(),
                         Education = c.String(),
-                        Religion = c.String(),
+                        IsReligios = c.Boolean(nullable: false),
                         SexuallyActive = c.Boolean(nullable: false),
+                        Siblings = c.Int(nullable: false),
+                        DateOfTest = c.DateTime(nullable: false),
+                        EmploymentStatus = c.Boolean(nullable: false),
+                        JobSatisfaction = c.Int(nullable: false),
+                        AttachmentWithFamily = c.Boolean(nullable: false),
+                        HomeEnvironmentStrictness = c.Int(nullable: false),
+                        Insomnia = c.Boolean(nullable: false),
+                        BDIScore = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
@@ -133,25 +141,38 @@ namespace FinalProjectRenewed.Migrations
                 .Index(t => t.psychologist_ID);
             
             CreateTable(
+                "dbo.Notifications",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Link = c.String(),
+                        Text = c.String(),
+                        UserID = c.Int(nullable: false),
+                        Status = c.Boolean(nullable: false),
+                        Type = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Requests",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
                         SessionID = c.Int(),
-                        PsychologitsID = c.Int(),
+                        PsychologistID = c.Int(),
                         UserID = c.Int(),
                         ResultID = c.Int(),
-                        psychologist_ID = c.Int(),
+                        Accepted = c.Boolean(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Psychologists", t => t.psychologist_ID)
+                .ForeignKey("dbo.Psychologists", t => t.PsychologistID)
                 .ForeignKey("dbo.Results", t => t.ResultID)
                 .ForeignKey("dbo.Sessions", t => t.SessionID)
                 .ForeignKey("dbo.Users", t => t.UserID)
                 .Index(t => t.SessionID)
+                .Index(t => t.PsychologistID)
                 .Index(t => t.UserID)
-                .Index(t => t.ResultID)
-                .Index(t => t.psychologist_ID);
+                .Index(t => t.ResultID);
             
         }
         
@@ -160,7 +181,7 @@ namespace FinalProjectRenewed.Migrations
             DropForeignKey("dbo.Requests", "UserID", "dbo.Users");
             DropForeignKey("dbo.Requests", "SessionID", "dbo.Sessions");
             DropForeignKey("dbo.Requests", "ResultID", "dbo.Results");
-            DropForeignKey("dbo.Requests", "psychologist_ID", "dbo.Psychologists");
+            DropForeignKey("dbo.Requests", "PsychologistID", "dbo.Psychologists");
             DropForeignKey("dbo.Histories", "UserID", "dbo.Users");
             DropForeignKey("dbo.Histories", "psychologist_ID", "dbo.Psychologists");
             DropForeignKey("dbo.Histories", "AppointmentID", "dbo.Appointments");
@@ -171,9 +192,9 @@ namespace FinalProjectRenewed.Migrations
             DropForeignKey("dbo.Results", "UserID", "dbo.Users");
             DropForeignKey("dbo.Appointments", "PsychologistID", "dbo.Psychologists");
             DropForeignKey("dbo.Psychologists", "PsyTypeID", "dbo.PsyTypes");
-            DropIndex("dbo.Requests", new[] { "psychologist_ID" });
             DropIndex("dbo.Requests", new[] { "ResultID" });
             DropIndex("dbo.Requests", new[] { "UserID" });
+            DropIndex("dbo.Requests", new[] { "PsychologistID" });
             DropIndex("dbo.Requests", new[] { "SessionID" });
             DropIndex("dbo.Histories", new[] { "psychologist_ID" });
             DropIndex("dbo.Histories", new[] { "AppointmentID" });
@@ -186,6 +207,7 @@ namespace FinalProjectRenewed.Migrations
             DropIndex("dbo.Appointments", new[] { "PsychologistID" });
             DropIndex("dbo.Appointments", new[] { "UserID" });
             DropTable("dbo.Requests");
+            DropTable("dbo.Notifications");
             DropTable("dbo.Histories");
             DropTable("dbo.Sessions");
             DropTable("dbo.Users");

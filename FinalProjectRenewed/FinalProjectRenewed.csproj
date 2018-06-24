@@ -152,33 +152,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806110549141_newToProj.cs" />
-    <Compile Include="Migrations\201806110549141_newToProj.Designer.cs">
-      <DependentUpon>201806110549141_newToProj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806162258587_uPDATEEDrESULTS.cs" />
-    <Compile Include="Migrations\201806162258587_uPDATEEDrESULTS.Designer.cs">
-      <DependentUpon>201806162258587_uPDATEEDrESULTS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806201002148_addedNotificationSupport.cs" />
-    <Compile Include="Migrations\201806201002148_addedNotificationSupport.Designer.cs">
-      <DependentUpon>201806201002148_addedNotificationSupport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806201003475_addedNotificationSupport1.cs" />
-    <Compile Include="Migrations\201806201003475_addedNotificationSupport1.Designer.cs">
-      <DependentUpon>201806201003475_addedNotificationSupport1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806211512487_updatedNotification.cs" />
-    <Compile Include="Migrations\201806211512487_updatedNotification.Designer.cs">
-      <DependentUpon>201806211512487_updatedNotification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806220346560_AddedNotificationText.cs" />
-    <Compile Include="Migrations\201806220346560_AddedNotificationText.Designer.cs">
-      <DependentUpon>201806220346560_AddedNotificationText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806220404305_AddedNotificationText1.cs" />
-    <Compile Include="Migrations\201806220404305_AddedNotificationText1.Designer.cs">
-      <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
+    <Compile Include="Migrations\201806220447054_init.cs" />
+    <Compile Include="Migrations\201806220447054_init.Designer.cs">
+      <DependentUpon>201806220447054_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -346,26 +322,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806110549141_newToProj.resx">
-      <DependentUpon>201806110549141_newToProj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806162258587_uPDATEEDrESULTS.resx">
-      <DependentUpon>201806162258587_uPDATEEDrESULTS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806201002148_addedNotificationSupport.resx">
-      <DependentUpon>201806201002148_addedNotificationSupport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806201003475_addedNotificationSupport1.resx">
-      <DependentUpon>201806201003475_addedNotificationSupport1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806211512487_updatedNotification.resx">
-      <DependentUpon>201806211512487_updatedNotification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806220346560_AddedNotificationText.resx">
-      <DependentUpon>201806220346560_AddedNotificationText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806220404305_AddedNotificationText1.resx">
-      <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806220447054_init.resx">
+      <DependentUpon>201806220447054_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

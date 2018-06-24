@@ -7,13 +7,13 @@ namespace FinalProjectRenewed.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedNotificationSupport1 : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedNotificationSupport1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806201003475_addedNotificationSupport1"; }
+            get { return "201806220447054_init"; }
         }
         
         string IMigrationMetadata.Source

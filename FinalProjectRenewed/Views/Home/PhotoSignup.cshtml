@@ -35,18 +35,7 @@
     <script src="~/Scripts/jqforpb.js"></script>
     <script src="~/Scripts/photobooth_min.js"></script>
     <script src="~/Scripts/PBSignupFunc.js"></script>
-    <script>
-        function saveImage( img ) {
-             $.ajax({
-                 type: "POST",
-                 url: "@Url.Content("~")Home/saveImage?img=" + img,
-                 success: function (data) {
-                     alert("image sent successfully");
-                }
-            }
-            );
-        }
-    </script>
+    
 
 </body>
 </html>

@@ -585,25 +585,69 @@ namespace FinalProjectRenewed.Controllers
         [HttpPost]
         public string saveImage(string img)
         {
-            //string filePath = "MyImage.jpg";
+            string filePath = "MyImage.jpg";
             //File.WriteAllBytes(filePath, Convert.FromBase64String(img));
             return img ;
         }
+        public ActionResult TwitterAnalysis(string username)
+        {
+            if (username != "")
+            {
+                WebClient tw = new WebClient();
+                tw.Headers[HttpRequestHeader.ContentType] = "application/json";
+                tw.Headers[HttpRequestHeader.Accept] = "application/json";
+                tw.BaseAddress = "http://localhost:8080/twitter";
+                var data = new { username= username};
+                var dataSer = JsonConvert.SerializeObject(data,Formatting.Indented);
+                var res = tw.UploadString(tw.BaseAddress, "POST",dataSer );
+
+            }
+            return View();
+        }
         public ActionResult PhotoSignup()
         {
-            //client.Headers.Add("app_id", "9710ce6c");
-            //client.Headers.Add("app_key", "5415b25df0cb7c593f63c53306c59885");
+            //client.Headers.Add("app_id", "");
+            //client.Headers.Add("app_key", "");
             //client.Headers[HttpRequestHeader.ContentType] = "application/json";
             //client.Headers[HttpRequestHeader.Accept] = "application/json";
-            //client.BaseAddress = "http://api.kairos.com/detect";
-            //var data= new { image="https://media.kairos.com/liz.jpg"};
+            ////client.BaseAddress = "http://api.kairos.com/detect";
+            ////var data= new { image="https://media.kairos.com/liz.jpg"};
+            //client.BaseAddress = "http://localhost:8080/test";
+            //int[,] data = new int[,] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
             //var dataSer = JsonConvert.SerializeObject(data);
-            //var res=client.UploadString(client.BaseAddress,"POST", dataSer);
+            //var res = client.UploadString(client.BaseAddress, "POST", dataSer);
             //res = JsonConvert.SerializeObject(res);
             //return Content("ok");
 
-           return View();
+            return View();
         }
-      
+        public ActionResult Notification(string type, int id)
+        {
+            if(type== "reqacc")
+            {
+
+                var ap = db.Appointments.Where(c => c.ID == id).FirstOrDefault();
+                
+                TempData["notif"] = ap;
+                return RedirectToAction("RequestAcc");
+            }
+            else
+            {
+                var rq = db.Requests.Where(c => c.ID == id).FirstOrDefault();
+                TempData["notif"] = rq;
+                return RedirectToAction("RequestRej");
+            }
+            
+        }
+        public ActionResult RequestAcc()
+        {
+            Appointment ap = (Appointment)TempData["notif"];
+            return View(ap);
+        }
+        public ActionResult RequestRej()
+        {
+            Request rq = (Request)TempData["notif"];
+            return View(rq);
+        }
     }
 }

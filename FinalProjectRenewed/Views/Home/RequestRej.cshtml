@@ -1,0 +1,59 @@
+﻿@model FinalProject.Models.Request
+
+@{
+    ViewBag.Title = "RequestRej";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RequestRej</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.psychologist.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.psychologist.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.result.Illness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.result.Illness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.session.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.session.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accepted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

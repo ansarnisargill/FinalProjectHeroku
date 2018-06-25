@@ -180,11 +180,28 @@
     <Compile Include="Migrations\201806220404305_AddedNotificationText1.Designer.cs">
       <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806230422408_pSySeTtInG.cs" />
+    <Compile Include="Migrations\201806230422408_pSySeTtInG.Designer.cs">
+      <DependentUpon>201806230422408_pSySeTtInG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806230454038_pSySeTtInGNew.cs" />
+    <Compile Include="Migrations\201806230454038_pSySeTtInGNew.Designer.cs">
+      <DependentUpon>201806230454038_pSySeTtInGNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806242024581_AddedPhotoSignUp.cs" />
+    <Compile Include="Migrations\201806242024581_AddedPhotoSignUp.Designer.cs">
+      <DependentUpon>201806242024581_AddedPhotoSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251442000_addedAppointmentMiss.cs" />
+    <Compile Include="Migrations\201806251442000_addedAppointmentMiss.Designer.cs">
+      <DependentUpon>201806251442000_addedAppointmentMiss.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Psychologist.cs" />
+    <Compile Include="Models\PsySetting.cs" />
     <Compile Include="Models\PsyType.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Result.cs" />
@@ -248,6 +265,7 @@
     <None Include="Properties\PublishProfiles\ansarnisargill - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ansarnisargill - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\gauge.min.js" />
     <Content Include="Scripts\PBSignupFunc.js" />
     <Content Include="Scripts\jqforpb.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -305,7 +323,6 @@
     <Content Include="Views\Psychologists\Index.cshtml" />
     <Content Include="Views\Psychologists\psycard.cshtml" />
     <Content Include="Views\Shared\_LayoutForPsychologist.cshtml" />
-    <Content Include="Views\Psychologists\Appointment.cshtml" />
     <Content Include="Views\Psychologists\History.cshtml" />
     <Content Include="Views\Psychologists\Login.cshtml" />
     <Content Include="Views\Home\PsyList.cshtml" />
@@ -325,6 +342,15 @@
     <Content Include="Views\Psychologists\AcceptRequest.cshtml" />
     <Content Include="Views\Psychologists\RejectRequest.cshtml" />
     <Content Include="Views\Shared\NavBarUser.cshtml" />
+    <Content Include="Views\Psychologists\Appointment.cshtml" />
+    <Content Include="Views\Home\RequestAcc.cshtml" />
+    <Content Include="Views\Home\RequestRej.cshtml" />
+    <Content Include="Views\Psychologists\AppointmentDetail.cshtml" />
+    <Content Include="Views\Psychologists\RequestDetail.cshtml" />
+    <Content Include="Views\Psychologists\PerformAppointment.cshtml" />
+    <Content Include="Views\Psychologists\DescriptionSaved.cshtml" />
+    <Content Include="Views\Psychologists\MissedAppointment.cshtml" />
+    <Content Include="Views\Psychologists\PsychologistSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +392,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806220404305_AddedNotificationText1.resx">
       <DependentUpon>201806220404305_AddedNotificationText1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806230422408_pSySeTtInG.resx">
+      <DependentUpon>201806230422408_pSySeTtInG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806230454038_pSySeTtInGNew.resx">
+      <DependentUpon>201806230454038_pSySeTtInGNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806242024581_AddedPhotoSignUp.resx">
+      <DependentUpon>201806242024581_AddedPhotoSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251442000_addedAppointmentMiss.resx">
+      <DependentUpon>201806251442000_addedAppointmentMiss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

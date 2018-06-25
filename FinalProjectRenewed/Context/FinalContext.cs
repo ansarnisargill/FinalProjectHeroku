@@ -12,6 +12,7 @@ namespace FinalProject.Context {
         public DbSet<Request> Requests{get; set;}
         public DbSet<Appointment> Appointments{get; set;}
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<PsySetting> PsySettings { get; set; }
 
        
        

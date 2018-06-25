@@ -191,7 +191,13 @@ namespace FinalProjectRenewed.Controllers
         }
         public ActionResult Appointment()
         {
-            var data = db.Appointments.ToList();
+            Psychologist ps = (Psychologist)Session["Psy"];
+            DateTime dt = DateTime.Now.Date;
+            var data = db.Appointments
+                .Where(a=> a.Status==false && a.session.SessionDate>= dt && a.PsychologistID==ps.ID && a.Missed==false)
+                .Include(a=>a.session)
+                .Include(a=>a.user)
+                .Include(a=>a.result);
             return View(data);
         }
         public ActionResult History()
@@ -217,6 +223,7 @@ namespace FinalProjectRenewed.Controllers
                 ap.ResultID = rq.ResultID;
                 ap.SessionID = rq.SessionID;
                 ap.Status = false;
+                ap.Missed = false;
                 ap.UserID = rq.UserID;
                 rq.Accepted = true;
                 db.Appointments.Add(ap);
@@ -230,7 +237,7 @@ namespace FinalProjectRenewed.Controllers
                 db.Notifications.Add(nt);
                 db.SaveChanges();
                 TimeSpan ts = rq.session.StartingTime;
-                List<Request> rqlist = db.Requests.Where(c => c.PsychologistID == ap.PsychologistID && c.session.StartingTime == ts
+                List<Request> rqlist = db.Requests.Where(c => c.PsychologistID == ap.PsychologistID && c.session.StartingTime == ts && c.Accepted==null
                 ).ToList();
                 foreach (Request r in rqlist)
                 {
@@ -276,11 +283,18 @@ namespace FinalProjectRenewed.Controllers
                 var dateOfDay = DateTime.Now.Date;
 
                 int numberOfDays = 3; //i will set it as setting parameter
-                int durationOfSession = 240;
-
+                int durationOfSession = 60;
+                TimeSpan dayStart = new TimeSpan(00, 00, 00);
+                var settings = db.PsySettings.Where(c => c.PsychologistID == ps.ID).FirstOrDefault();
+                if (settings != null)
+                {
+                    numberOfDays = settings.NumberOfDaysToShow;
+                    durationOfSession = settings.DurationOfAppointment;
+                    dayStart = settings.StartOfDay;
+                }
                 for (int i = 0; i < numberOfDays; i++)
                 {
-                    DateTime forWhere = dateOfDay.AddDays(i);
+                    DateTime forWhere = dateOfDay.AddDays(i+1);
 
 
                     var checkDayEXIST = db.Sessions.Where(c => c.SessionDate == forWhere &&  c.PsychologistID==ps.ID).FirstOrDefault();
@@ -288,7 +302,7 @@ namespace FinalProjectRenewed.Controllers
                     {
                         DateTime today = new DateTime();
                         var numberOfSesssions = 1440 / durationOfSession;
-                        int valueOfTimeToAdd = new int();
+                        int valueOfTimeToAdd = dayStart.Minutes;
                         for (int j = 0; j < numberOfSesssions; j++)
                         {
                             var start = today.AddMinutes(valueOfTimeToAdd).TimeOfDay;
@@ -312,12 +326,23 @@ namespace FinalProjectRenewed.Controllers
                 }
                 var sessionData = db.Sessions.Where(c => c.SessionDate >= dateOfDay && c.PsychologistID==ps.ID);
                 ViewBag.sessions = sessionData;
+                ViewBag.NoOfDays = numberOfDays;
                 return View();
             }
             return View("NotAuthorize");
 
         }
-    
+        public ActionResult AppointmentDetail(int id)
+        {
+            var appointment = db.Appointments.Where(c => c.ID == id).Include(c=>c.session).Include(c=>c.result).Include(c=>c.user).FirstOrDefault();
+            return View(appointment);
+        }
+        public ActionResult RequestDetail(int id)
+        {
+            var rq = db.Requests.Where(c => c.ID == id).Include(c => c.session).Include(c => c.result).Include(c => c.user).FirstOrDefault();
+            return View(rq);
+        }
+
         [HttpPost]
         public ActionResult Schedual(int id)
         {
@@ -337,6 +362,59 @@ namespace FinalProjectRenewed.Controllers
             return Json(new { message = toSend.ToString()});
         }
         public ActionResult NotAuthorize()
+        {
+            return View();
+        }
+        public ActionResult PerformAppointment(int id)
+        {
+            var ap = db.Appointments.Where(c => c.ID == id).SingleOrDefault();
+         
+            db.SaveChanges();
+            return View(ap);
+        }
+        [HttpPost]
+        public ActionResult PerformAppointment(int apid,int userid,string description)
+        {
+            Psychologist ps = (Psychologist)Session["Psy"];
+            History hs = new History();
+            hs.PsychologitsID = ps.ID;
+            hs.UserID = userid;
+            hs.AppointmentID = apid;
+            hs.Description = description;
+            db.Histories.Add(hs);
+            var ap = db.Appointments.Where(c => c.ID == apid).SingleOrDefault();
+            ap.Missed = false;
+            ap.Status = true;
+            Notification nt = new Notification();
+            nt.Link = Url.Content("~") + "Home/Notification?type=apdone&id=" + ap.ID;
+            nt.Type = "User";
+            nt.Text = "Your Appointment has been conducted successfully!";
+            nt.UserID =(int) ap.UserID;
+            nt.Status = false;
+            db.Notifications.Add(nt);
+            db.SaveChanges();
+            return Json( new { message = "sent" });
+            
+        }
+        public ActionResult MissedAppointment(int id)
+        {
+            var ap = db.Appointments.Where(c => c.ID == id).SingleOrDefault();
+            ap.Missed = true;
+            Notification nt = new Notification();
+            nt.Link = Url.Content("~") + "Home/Notification?type=apmissed&id=" + ap.ID;
+            nt.Type = "User";
+            nt.Text = "Your Missed your Appointment!";
+            nt.UserID = (int)ap.UserID;
+            nt.Status = false;
+            db.Notifications.Add(nt);
+            db.SaveChanges();
+            return View();
+        }
+        public ActionResult DescriptionSaved()
+        {
+            return View();
+        }
+        public ActionResult PsychologistSettings()
         {
             return View();
         }

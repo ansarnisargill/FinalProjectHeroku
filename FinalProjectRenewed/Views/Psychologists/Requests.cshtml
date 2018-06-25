@@ -22,7 +22,7 @@
         @Html.ActionLink("Accept", "AcceptRequest", "Psychologists",new {id=item.ID}, new { @class= "w3-button w3-col l4 w3-bar-item w3-green " })
         
         @Html.ActionLink("Reject", "RejectRequest", "Psychologists", new {id=item.ID }, new { @class = "w3-button w3-col l4 w3-bar-item w3-red " })
-        @Html.ActionLink("Details", "AcceptRequest", "Psychologists", new { }, new { @class = "w3-button w3-col l4 w3-bar-item w3-brown " })
+        @Html.ActionLink("Details", "RequestDetail", "Psychologists", new { id=item.ID}, new { @class = "w3-button w3-col l4 w3-bar-item w3-brown " })
       </div>
      </div>
   

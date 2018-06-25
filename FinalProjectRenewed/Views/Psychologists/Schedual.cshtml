@@ -84,11 +84,11 @@
     }
 </style>
 
-@{ int numberOfDAYS = 3;
+@{ int numberOfDAYS = ViewBag.NoOfDays;
     for (int i = 0; i < numberOfDAYS; i++)
     {
         <div class="w3-container">
-            <h2>@DateTime.Now.AddDays(i).ToLongDateString()</h2>
+            <h2>@DateTime.Now.AddDays(i+1).ToLongDateString()</h2>
 
            
 

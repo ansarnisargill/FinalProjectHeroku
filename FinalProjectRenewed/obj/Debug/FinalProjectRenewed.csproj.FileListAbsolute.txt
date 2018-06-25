@@ -714,3 +714,7 @@ C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalPro
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.updatedNotification.resources
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.AddedNotificationText.resources
 C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.AddedNotificationText1.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.pSySeTtInG.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.pSySeTtInGNew.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.AddedPhotoSignUp.resources
+C:\Users\Ansar\Desktop\FinalProjectHeroku\FinalProjectRenewed\obj\Debug\FinalProjectRenewed.Migrations.addedAppointmentMiss.resources

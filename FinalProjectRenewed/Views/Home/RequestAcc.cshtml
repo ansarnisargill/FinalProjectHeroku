@@ -1,0 +1,67 @@
+﻿@model FinalProject.Models.Appointment
+
+@{
+    ViewBag.Title = "RequestAcc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RequestAcc</h2>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.psychologist.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.psychologist.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.result.Illness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.result.Illness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.session.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.session.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

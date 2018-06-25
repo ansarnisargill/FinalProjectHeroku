@@ -16,5 +16,6 @@ namespace FinalProject.Models
         public int Rating { get; set; }
         public int? ResultID { get; set; }
         public Result result{get; set;}
+        public bool Missed { get; set; }
     }
 }

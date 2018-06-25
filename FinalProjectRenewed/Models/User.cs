@@ -29,6 +29,6 @@ namespace FinalProject.Models
         public string ImageUrl { get; set; }
         public DateTime JoinDate { get; set; }
         public int? fbid { get; set; }
-
+        public bool IsPhotoSignup { get; set; }
     }
 }

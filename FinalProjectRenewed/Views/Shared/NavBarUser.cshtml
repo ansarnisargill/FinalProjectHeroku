@@ -8,21 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                @Html.ActionLink("Home","Index","Home",new { },new { @class= "nav-item nav-link active "})
                 </li>
-            <li class="nav-item ">
-                <a class="nav-item nav-link" href="#">Features</a>
-                </li>
-            <li class="nav-item ">
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                </li>
+           
                 @{
                     FinalProject.Context.FinalContext db = new FinalProject.Context.FinalContext();
                     if (Session["User"] != null)
                     {
-                         <li class="nav-item dropdown">
+                         <li class="nav-item float-lg-right dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
+                           Notifications
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 

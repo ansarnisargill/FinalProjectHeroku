@@ -1,0 +1,109 @@
+﻿@model FinalProject.Models.Appointment
+
+@{
+    ViewBag.Title = "AppointmentDetail";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
+}
+
+
+<div>
+    <div class="w3-container w3-white w3-card w3-margin-top  " style="margin-left:35%; width:30%">
+    <canvas id="foo"></canvas>
+        <hr />
+        <h3 style="text-align:center;">Depression State</h3>
+        </div>
+    <br />
+    <div class="w3-container w3-card w3-white w3-text-black ">
+        <h1>Appointment Details!</h1>
+</div>
+    <div class="" style="margin-left:10%;">        @{ 
+            TimeSpan timespan = Model.session.StartingTime;
+            DateTime time = DateTime.Today.Add(timespan);
+            string startingTime = time.ToString("hh:mm tt");
+
+            TimeSpan timespan2 = Model.session.EndingTime;
+            DateTime time2 = DateTime.Today.Add(timespan2);
+            string endingTime = time2.ToString("hh:mm tt");
+        }
+        <h2><span class="w3-teal">Date: </span> <span style="margin-left:20px;">@Model.session.SessionDate.ToString("D")</span> </h2>
+        <h2><span class="w3-teal">Starting Time:</span> <span style="margin-left:20px;"></span>@startingTime</h2>
+        <h2><span class="w3-teal">Ending Time:</span> <span style="margin-left:20px;"></span>@endingTime</h2>
+        
+
+    </div>
+
+    <div class="w3-container w3-card w3-white w3-text-black ">
+        <h1>Client Details!</h1>
+    </div>
+    <div class="" style="margin-left:10%;">
+        <h2><span class="w3-teal">Name: </span> <span style="margin-left:20px;">@Model.user.Name</span> </h2>
+        @{ 
+            var gender = "";
+            var married = "";
+            if (Model.user.IsMarried == true)
+            {
+                married = "Yes";
+            }
+            else
+            {
+                married = "No";
+
+            }
+            if (Model.user.Sex == false)
+            {
+                gender = "Female";
+            }
+            else
+            {
+                gender = "Male";
+            }
+        }
+        <img src="@Url.Content( Model.user.ImageUrl)" style="float:right; width:200px; height:200px; border:inset; margin-right:20px;" />
+        <h2><span class="w3-teal">Gender: </span> <span style="margin-left:20px;">@gender</span> </h2>  
+        <h2><span class="w3-teal">Married: </span> <span style="margin-left:20px;">@married</span> </h2>
+        <h2><span class="w3-teal">BDI Score: </span> <span style="margin-left:20px;">@Model.result.BDIScore</span> </h2>
+        <h2><span class="w3-teal">Problem: </span> <span style="margin-left:20px;">@Model.result.Illness</span> </h2>
+        
+
+
+    </div>
+     
+    </div>
+<p>
+    @Html.ActionLink("Start!", "PerformAppointment", new { id = Model.ID },new { @class="w3-btn w3-xlarge w3-margin w3-brown w3-col l4"}) 
+   
+    @Html.ActionLink("Missed!", "MissedAppointment", new { id = Model.ID }, new { @class = "w3-btn w3-xlarge w3-margin w3-red w3-col l4" }) 
+   
+</p>
+<script>
+    var opts = {
+        angle: 0.10, // The span of the gauge arc
+        lineWidth: 0.44, // The line thickness
+        radiusScale: 1, // Relative radius
+        pointer: {
+            length: 0.6, // // Relative to gauge radius
+            strokeWidth: 0.035, // The thickness
+            color: '#000000' // Fill color
+        },
+        staticZones: [
+            { strokeStyle: "#30B32D", min: 0, max: 10 }, // green
+            { strokeStyle: "#FFDD00", min: 10, max: 20 }, // Yellow
+            { strokeStyle: "#f47a42", min: 20, max: 30 }, // Green
+            { strokeStyle: "#F03E3E", min: 30, max: 63 }  // Red
+        ],
+        limitMax: false,     // If false, max value increases automatically if value > maxValue
+        limitMin: false,     // If true, the min value of the gauge will be fixed
+        colorStart: '#6FADCF',   // Colors
+        colorStop: '#8FC0DA',    // just experiment with them
+        strokeColor: '#E0E0E0',  // to see which ones work best for you
+        generateGradient: true,
+        highDpiSupport: true,     // High resolution support
+
+    };
+    var target = document.getElementById('foo'); // your canvas element
+    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    gauge.maxValue = 63; // set max gauge value
+    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+    gauge.animationSpeed = 23; // set animation speed (32 is default value)
+    gauge.set(@Model.result.BDIScore); // set actual value
+</script>

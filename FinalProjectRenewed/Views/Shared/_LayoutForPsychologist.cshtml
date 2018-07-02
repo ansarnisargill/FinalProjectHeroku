@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
     <script src="~/Scripts/easy-toggle-state.es6.js"></script>
 
 
@@ -48,17 +49,34 @@
             }
             @*<h3 class="w3-bar-item" style="background-color:#2b3c58 ; color:white"><img src="~/Content/image/2.jpg" alt="Car" class="w3-round-xxlarge" style="width:100%;"> @data</h3>*@
             <h3></h3>
-            <i class="fas fa-calendar-alt"></i>@Html.ActionLink("Appointment", "Appointment", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @Html.ActionLink("Appointment", "Appointment", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
             @Html.ActionLink("Schedule", "Schedual", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray  w3-border-bottom", @style = "font-size:20px;color:white;" })
             @Html.ActionLink("Request", "Requests", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
-            @*<a href="@Html.ActionLink("","","")" class="w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray">Setting</a>*@
+            @Html.ActionLink("Setting", "PsychologistSettings", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @Html.ActionLink("Profile", "PsyProfile", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+            @Html.ActionLink("Reports", "Reports", "Psychologists", new { @class = "w3-bar-item w3-button w3-hover-blue-gray w3-hover-blue-gray w3-border-bottom", @style = "font-size:20px;color:white;" })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
         <!-- Page Content -->
         <div style="margin-left:20%;">
 
             <div class="w3-bar" style="margin-top:30px;background-color:#24344b;">
-                <a class=" ">@Html.ActionLink("Logout","Logout","Psychologists",new {@class= "w3-right w3-bar-item w3-button w3-mobile",style="font-size:20px" })</a>
+                @Html.ActionLink("Logout","Logout","Psychologists",new {@class= "w3-right w3-bar-item w3-button w3-mobile",style="font-size:20px" })
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-right" style="font-size:20px">Notification</a>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-right" style="font-size:20px">Messages</a>
             </div>

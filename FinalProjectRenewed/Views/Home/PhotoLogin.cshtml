@@ -1,25 +1,21 @@
 ﻿
-@{ 
+
+@{
     Layout = null;
-    
-    
-    
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Set Your Face Id</title>
-   
-  
+    <title>Login with Face</title>
+
+
 
 
 </head>
 <body>
-    @{ 
-       FinalProject.Models.User u1 = (FinalProject.Models.User)Session["User"];
-    }
+   
     <style type="text/css">
         #example {
             min-height: 500px;
@@ -36,12 +32,16 @@
         }
     </style>
     <div id="example"></div>
-    <div id="gallery"></div>
-    <input  type="hidden" value="@u1.ID" id="idval"/>
+    <div id="Loader" style="display:none;">
+        @Html.Partial("Loader")
+    </div>
+    
     <script src="~/Scripts/jqforpb.js"></script>
     <script src="~/Scripts/photobooth_min.js"></script>
-    <script src="~/Scripts/PBSignupFunc.js"></script>
-    
+    <script src="~/Scripts/PBSignupFuncLogin.js"></script>
+
 
 </body>
 </html>
+
+

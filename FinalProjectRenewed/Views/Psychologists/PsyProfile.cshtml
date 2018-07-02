@@ -1,0 +1,31 @@
+﻿@model FinalProject.Models.Psychologist
+
+@{
+    ViewBag.Title = "PsyProfile";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
+}
+
+<h1 class="w3-container w3-white w3-padding">@Model.Name's Info</h1>
+<div class="w3-margin">
+    <img src="@Url.Content( Model.ImageAddress)" style="float:right; width:200px; height:200px; border:inset; margin-right:20px;" />
+
+    <h2><span class="w3-teal ">Name: </span> <span style="margin-left:20px;">@Model.Name</span> </h2>
+    <h2><span class="w3-teal">Gender: </span> <span style="margin-left:20px;">@Model.Sex</span> </h2>
+    <h2><span class="w3-teal">Email: </span> <span style="margin-left:20px;">@Model.Email</span> </h2>
+    <h2><span class="w3-teal">Description: </span> <span style="margin-left:20px;">@Model.Description</span> </h2>
+    <h2><span class="w3-teal">Education: </span> <span style="margin-left:20px;">@Model.Education</span> </h2>
+    <h2><span class="w3-teal">Experience: </span> <span style="margin-left:20px;">@Model.Experience Years</span> </h2>
+    <h2><span class="w3-teal">Mobile: </span> <span style="margin-left:20px;">@Model.MobileNo</span> </h2>
+    <h2><span class="w3-teal">Joined On: </span> <span style="margin-left:20px;">@Model.JoinDate.ToString("D")</span> </h2>
+    @Html.ActionLink("Edit", "Edit", "Psychologists", new { id = Model.ID }, new { @class = "w3-button w3-xlarge w3-col l4 w3-margin  w3-green " })
+
+
+
+
+
+
+
+
+
+
+</div>

@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201806251442000_addedAppointmentMiss.Designer.cs">
       <DependentUpon>201806251442000_addedAppointmentMiss.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806260712336_hhnb.cs" />
+    <Compile Include="Migrations\201806260712336_hhnb.Designer.cs">
+      <DependentUpon>201806260712336_hhnb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\History.cs" />
@@ -266,6 +270,7 @@
     <None Include="Properties\PublishProfiles\ansarnisargill - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gauge.min.js" />
+    <Content Include="Scripts\PBSignupFuncLogin.js" />
     <Content Include="Scripts\PBSignupFunc.js" />
     <Content Include="Scripts\jqforpb.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -284,6 +289,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\PsyReportCharts.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -351,6 +357,12 @@
     <Content Include="Views\Psychologists\DescriptionSaved.cshtml" />
     <Content Include="Views\Psychologists\MissedAppointment.cshtml" />
     <Content Include="Views\Psychologists\PsychologistSettings.cshtml" />
+    <Content Include="Views\Psychologists\PsyProfile.cshtml" />
+    <Content Include="Views\Psychologists\Reports.cshtml" />
+    <Content Include="Views\Home\PicSignup.cshtml" />
+    <Content Include="Views\Home\TwitterAnalysis.cshtml" />
+    <Content Include="Views\Home\PhotoLogin.cshtml" />
+    <Content Include="Views\Home\LoginByPic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806251442000_addedAppointmentMiss.resx">
       <DependentUpon>201806251442000_addedAppointmentMiss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260712336_hhnb.resx">
+      <DependentUpon>201806260712336_hhnb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

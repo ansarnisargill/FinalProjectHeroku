@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
+}
+<style>
+    .example-collapsible-button {
+        display: flex;
+        width: 100%;
+        margin-top: .5em;
+        padding: .5em;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+        box-sizing: border-box;
+        border: none;
+        background-color: white;
+        text-align: left;
+    }
+
+        .example-collapsible-button.is-open {
+            background-color: black; /* You probably need to change this! */
+            color: white;
+        }
+
+        .example-collapsible-button::after {
+            font-size: 1.5em;
+            line-height: 1;
+            content: "+";
+        }
+
+        .example-collapsible-button.is-open::after {
+            content: "–";
+        }
+
+    .example-collapsible-panel {
+        max-height: 0;
+        margin-bottom: .5em;
+        overflow: hidden;
+        background-color: white;
+        transition: max-height .25s ease-out;
+    }
+
+        .example-collapsible-panel.is-open {
+            max-height: 200em;
+        }
+
+    .example-collapsible-panel-content {
+        padding: .5em;
+    }
+</style>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Weekly Request Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div id="weeklyRequests">
+                <canvas id="RequestReport1"></canvas>
+
+            </div>
+
+        </div>
+   </div>
+</div>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Monthly Request Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div id="MonthlyRequests">
+                <canvas id="RequestReport2"></canvas>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Weekly Appointment Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div id="WeeklyAppoinment">
+                <canvas id="AppReport1"></canvas>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Monthly Appointment Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div id="MonthlyAppoinment">
+                <canvas id="AppReport2"></canvas>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Weekly Rating Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div class="w3-col l6" style="margin-left:25%;" id="MonthlyAppoinment">
+                <canvas id="RatingReport"></canvas>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<button type="button" class="example-collapsible-button w3-xlarge w3-brown" data-toggle-class="is-open" data-toggle-target-next>Monthly Rating Report:</button>
+<div class="example-collapsible-panel">
+    <div class="example-collapsible-panel-content">
+        <div id="RequestReport">
+            <div class="w3-col l6" style="margin-left:25%;" id="MonthlyAppoinment">
+                <canvas id="RatingReport2"></canvas>
+                 
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+        <script>
+    var ctx = document.getElementById('RequestReport1').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [@Html.Raw(ViewBag.lbl)],
+        datasets: [{
+            label: "Number Of Requests!",
+
+            borderColor: '#24344b',
+            data: [@Html.Raw(ViewBag.data)],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+            });
+
+
+            var ctx2 = document.getElementById('RequestReport2').getContext('2d');
+var chart2 = new Chart(ctx2, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [@Html.Raw(ViewBag.lbl2)],
+        datasets: [{
+            label: "Number Of Requests!",
+
+            borderColor: '#24344b',
+            data: [@Html.Raw(ViewBag.data2)],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+
+            var ctx3 = document.getElementById('AppReport1').getContext('2d');
+var chart3 = new Chart(ctx3, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [@Html.Raw(ViewBag.lbl3)],
+        datasets: [{
+            label: "Number Of Appointment!",
+
+            borderColor: '#24344b',
+            data: [@Html.Raw(ViewBag.data3)],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+              var ctx4 = document.getElementById('AppReport2').getContext('2d');
+var chart4 = new Chart(ctx4, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [@Html.Raw(ViewBag.lbl4)],
+        datasets: [{
+            label: "Number Of Appointment!",
+
+            borderColor: '#24344b',
+            data: [@Html.Raw(ViewBag.data4)],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+            new Chart(document.getElementById("RatingReport"), {
+                type: 'pie',
+                data: {
+                    labels: ["0","1","2","3","4","5"],
+                    datasets: [{
+                        label: "Rating By User!",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        data: [@Html.Raw(ViewBag.data5)]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Percentage Of Ratings Awarded by Clients!'
+                    }
+                }
+            });
+
+
+            new Chart(document.getElementById("RatingReport2"), {
+                type: 'pie',
+                data: {
+                    labels: ["0","1","2","3","4","5"],
+                    datasets: [{
+                        label: "Rating By User!",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        data: [@Html.Raw(ViewBag.data6)]
+                        
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Percentage Of Ratings Awarded by Clients!'
+                    }
+                }
+            });
+
+
+        </script>
+
+

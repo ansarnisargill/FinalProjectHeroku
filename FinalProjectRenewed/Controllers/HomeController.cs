@@ -444,63 +444,56 @@ namespace FinalProjectRenewed.Controllers
         {
             try
             {
+                var tocheck = db.Users.Where(c => c.Email == userv.user.Email).FirstOrDefault();
+                if (tocheck != null)
+                {
+                    throw new Exception("The email address you entered already exists!");
+
+                }
                 User newUser = userv.user;
                 newUser.Password = newUser.Password.GetHashCode().ToString();
                 string fileName = Path.GetFileNameWithoutExtension(userv.image.FileName);
                 string extension = Path.GetExtension(userv.image.FileName);
-                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string directory = "~/Images/";
-                string imageUrl = directory + fileName;
-                newUser.ImageUrl = imageUrl;
-                fileName = Path.Combine(Server.MapPath(directory), fileName);
-                userv.image.SaveAs(fileName);
+                if(extension==".jpg" || extension==".png"||extension==".jpeg" || extension == ".gif")
+                {
+                    fileName = DateTime.Now.ToString("yymmssfff") + extension;
+                    string directory = "~/Images/";
+                    string imageUrl = directory + fileName;
+                    newUser.ImageUrl = imageUrl;
+                    fileName = Path.Combine(Server.MapPath(directory), fileName);
+                    userv.image.SaveAs(fileName);
+                }
+                else
+                {
+                    throw new Exception("Picture you have selected is not in supported formate");
+                }
+               
                 newUser.JoinDate = DateTime.Now;
-                
+                newUser.IsPhotoSignup = false;
                 db.Users.Add(newUser);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                Session["User"] = newUser;
+                return RedirectToAction("PicSignup", "Home");
+
             }
-            catch
+            catch(Exception ex)
             {
-              
-                return View(userv.user);
+
+                return Content(ex.ToString());
 
             }
             
-           
+          
             
 
             
         }
-        public ActionResult test()
+        public ActionResult PicSignup()
         {
-            
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:52673/Home/test2");
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{\"user\":\"test\"," +
-                              "\"password\":\"bla\"}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-             string result;
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                result = streamReader.ReadToEnd();
-            }
-            return Content(result);
+            return View();
         }
-        public ActionResult test2()
-        {
-            HttpStatusCodeResult ht = new HttpStatusCodeResult(200);
-            return ht ;
-        }
+        
+      
         public ActionResult IsLoggedIn(int? fbid,string email, string name)
         {
             var user = db.Users.Where(c => c.fbid == fbid).FirstOrDefault();
@@ -523,7 +516,7 @@ namespace FinalProjectRenewed.Controllers
             }
             
         }
-        public ActionResult ChatInit(string first, string second)
+        public ActionResult ChatInit(string first)
         {
             if (IsUser())
             {
@@ -570,7 +563,7 @@ namespace FinalProjectRenewed.Controllers
         {
             Request rq = new Request();
             User u1 = (User)Session["User"];
-            var result_id = db.Results.Where(c => c.UserID == u1.ID).Select(c => c.ID).FirstOrDefault();
+            var result_id = db.Results.Where(c => c.UserID == u1.ID).Select(c=>c.ID).Max();
             rq.UserID = u1.ID;
             rq.ResultID = result_id;
             rq.PsychologistID = psychologist_id;
@@ -582,13 +575,12 @@ namespace FinalProjectRenewed.Controllers
 
             return Content("Ok Your Request has been sent!");
         }
-        [HttpPost]
-        public string saveImage(string img)
+        public ActionResult TwitterAnalysis()
         {
-            string filePath = "MyImage.jpg";
-            //File.WriteAllBytes(filePath, Convert.FromBase64String(img));
-            return img ;
+            return View();
         }
+        [HttpPost]
+       
         public ActionResult TwitterAnalysis(string username)
         {
             if (username != "")
@@ -600,24 +592,14 @@ namespace FinalProjectRenewed.Controllers
                 var data = new { username= username};
                 var dataSer = JsonConvert.SerializeObject(data,Formatting.Indented);
                 var res = tw.UploadString(tw.BaseAddress, "POST",dataSer );
+                return Json(new {res });
 
             }
             return View();
         }
         public ActionResult PhotoSignup()
         {
-            //client.Headers.Add("app_id", "");
-            //client.Headers.Add("app_key", "");
-            //client.Headers[HttpRequestHeader.ContentType] = "application/json";
-            //client.Headers[HttpRequestHeader.Accept] = "application/json";
-            ////client.BaseAddress = "http://api.kairos.com/detect";
-            ////var data= new { image="https://media.kairos.com/liz.jpg"};
-            //client.BaseAddress = "http://localhost:8080/test";
-            //int[,] data = new int[,] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
-            //var dataSer = JsonConvert.SerializeObject(data);
-            //var res = client.UploadString(client.BaseAddress, "POST", dataSer);
-            //res = JsonConvert.SerializeObject(res);
-            //return Content("ok");
+           
 
             return View();
         }
@@ -626,9 +608,8 @@ namespace FinalProjectRenewed.Controllers
             if(type== "reqacc")
             {
 
-                var ap = db.Appointments.Where(c => c.ID == id).FirstOrDefault();
-                
-                TempData["notif"] = ap;
+
+                TempData["notif"] = id;
                 return RedirectToAction("RequestAcc");
             }
             else
@@ -641,13 +622,25 @@ namespace FinalProjectRenewed.Controllers
         }
         public ActionResult RequestAcc()
         {
-            Appointment ap = (Appointment)TempData["notif"];
+            int id = (int)TempData["notif"];
+           Appointment ap = db.Appointments.Where(c => c.ID == id).Include(c => c.psychologist).Include(c => c.session).FirstOrDefault();
+
             return View(ap);
         }
         public ActionResult RequestRej()
         {
-            Request rq = (Request)TempData["notif"];
+            int  id = (int)TempData["notif"];
+            var rq = db.Requests.Where(c => c.ID == id).Include(c => c.psychologist).Include(c => c.session).FirstOrDefault();
+
             return View(rq);
+        }
+        public ActionResult PhotoLogin()
+        {
+            return View();
+        }
+        public ActionResult LoginByPic(int id)
+        {
+            return View();
         }
     }
 }

@@ -100,12 +100,18 @@
 
                                 @{foreach (var s in sessions)
                                     {
-                                        if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                        if (s.SessionDate.Date == DateTime.Now.AddDays(i+1).Date)
                                         {
                                             TimeSpan a = new TimeSpan(10, 0, 0);
-                                            ;
+                                            
                                             if (s.EndingTime <= a)
                                             {
+                                                TimeSpan timespan = s.StartingTime;
+                                                DateTime time = DateTime.Today.Add(timespan);
+                                                string startingTime = time.ToString("hh:mm tt");
+                                                TimeSpan timespan2 = s.EndingTime;
+                                                DateTime time2 = DateTime.Today.Add(timespan2);
+                                                string endingTime = time2.ToString("hh:mm tt");
 
                                                 var btnid = "btn" + s.ID.ToString();
                                                 var divid = "div" + s.ID.ToString();
@@ -122,9 +128,9 @@
 
                                     <div class="@cssclasses" id="@divid">
                                         
-                                         <h4>Start Time:</h4><h5 class="w3-margin-left" > @s.StartingTime.ToString()</h5>
+                                         <h4>Start Time:</h4><h5 class="w3-margin-left" > @startingTime</h5>
                                         
-                                        <h4>End Time:</h4><h5 class="w3-margin-left"> @s.EndingTime.ToString()</h5>
+                                        <h4>End Time:</h4><h5 class="w3-margin-left"> @endingTime</h5>
                                         @{ var btnText = "";
                                             if (s.Active == false)
                                             {
@@ -164,13 +170,19 @@
 
                                             @{foreach (var s in sessions)
                                                 {
-                                                    if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                                    if (s.SessionDate.Date == DateTime.Now.AddDays(i+1).Date)
                                                     {
                                                         TimeSpan a = new TimeSpan(16, 0, 0);
                                                         TimeSpan b = new TimeSpan(10, 0, 0);
                                                         ;
                                                         if (s.EndingTime <= a && s.EndingTime>b)
                                                         {
+                                                            TimeSpan timespan = s.StartingTime;
+                                                            DateTime time = DateTime.Today.Add(timespan);
+                                                            string startingTime = time.ToString("hh:mm tt");
+                                                            TimeSpan timespan2 = s.EndingTime;
+                                                            DateTime time2 = DateTime.Today.Add(timespan2);
+                                                            string endingTime = time2.ToString("hh:mm tt");
 
                                                             var btnid = "btn" + s.ID.ToString();
                                                             var divid = "div" + s.ID.ToString();
@@ -188,9 +200,9 @@
                                                             <div class="@cssclasses" id="@divid">
                                                                 
                                                                 <h4>Start Time:</h4><h5 class="w3-margin-left">
-                                                                    @s.StartingTime.ToString()</h5>
+                                                                    @startingTime</h5>
                                                                 <h4>End Time:</h4><h5 class="w3-margin-left">
-                                                                    @s.EndingTime.ToString()</h5>
+                                                                    @endingTime</h5>
                                                                 @{ var btnText = "";
                                                                     if (s.Active == false)
                                                                     {
@@ -230,7 +242,7 @@
 
                                                         @{foreach (var s in sessions)
                                                             {
-                                                                if (s.SessionDate.Date == DateTime.Now.AddDays(i).Date)
+                                                                if (s.SessionDate.Date == DateTime.Now.AddDays(i+1).Date)
                                                                 {
                                                                     TimeSpan a = new TimeSpan(20, 0, 0);
 
@@ -238,7 +250,12 @@
                                                                     if ( s.EndingTime>b)
                                                                     {
 
-
+                                                                        TimeSpan timespan = s.StartingTime;
+                                                                        DateTime time = DateTime.Today.Add(timespan);
+                                                                        string startingTime = time.ToString("hh:mm tt");
+                                                                        TimeSpan timespan2 = s.EndingTime;
+                                                                        DateTime time2 = DateTime.Today.Add(timespan2);
+                                                                        string endingTime = time2.ToString("hh:mm tt");
                                                                         var divid = "div" + s.ID.ToString();
                                                                         var btnid = "btn" + s.ID.ToString();
                                                                         string cssclasses;
@@ -254,10 +271,10 @@
 
                                                                         <div class="@cssclasses" id="@divid">
                                                                             <h4>Start Time:</h4><h5 class="w3-margin-left">
-                                                                                @s.StartingTime.ToString()
+                                                                                @startingTime
                                                                             </h5>
                                                                             <h4>End Time:</h4><h5 class="w3-margin-left">
-                                                                                @s.EndingTime.ToString() </h5>
+                                                                                @endingTime </h5>
                                                                             @{ var btnText = "";
                                                                                 if (s.Active == false)
                                                                                 {

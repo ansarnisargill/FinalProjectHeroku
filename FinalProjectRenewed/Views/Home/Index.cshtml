@@ -123,56 +123,8 @@
     </style>
 
 </head>
-<body class="text-center" style="background-image: url('@Url.Content("~")Content/image/bg.gif');
-background-size: cover;">
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1951660698494891',
-                cookie: true,
-                xfbml: true,
-                version: 'v2.12'
-            });
-
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        };
-
-
-
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-        function checkLoginState() {
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        }
-
-        function statusChangeCallback(response) {
-            if (response.status === 'connected') {
-               
-                monthsec = 2592000;
-                val = Math.floor(Date.now() / 1000) - monthsec;
-                FB.api('/me?fields=id,name,picture,email', function (response) {
-                    HideLoader();
-                    console.log(response);
-                    window.location="@Url.Content("~/Home/IsLoggedIn?fbid=")" + response.id + "&email=" + response.email
-
-                });
-
-            }
-        }
-
-
-
-    </script>
+<body class="text-center" style="">
+  
     <div id="loader">
         @Html.Partial("Loader")
     </div>
@@ -204,11 +156,11 @@ background-size: cover;">
                           </button>
                       </div>
                       <div class="modal-body">
-                          @Html.ActionLink("SignIn With Email!", "Login", "Home", new { a = 1 }, new { @style = "width:400px;", @class = "btn btn-lg  btn-primary" })
-                          <h2 style="text-decoration-style:wavy; color:black;">OR</h2>
-                          <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+                          @Html.ActionLink("SignIn With Email!", "Login", "Home", new { }, new { @style = "width:400px;", @class = "btn btn-lg  btn-primary" })
+                          @Html.ActionLink("SignUp With FaceId!", "PhotoLogin", "Home", new { }, new { @class = "btn btn-lg  btn-primary", @style = "width:400px;" })
 
 
+  
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -227,9 +179,8 @@ background-size: cover;">
                           </button>
                       </div>
                       <div class="modal-body">
-                          @Html.ActionLink("SignUp With Email!", "Signup", "Home", new { a = 1 }, new { @class = "btn btn-lg  btn-primary", @style = "width:400px;" })
-                          <h2 style="text-decoration-style:double; color:black;">OR</h2>
-                          <div class="fb-login-button" data-width="700" data-size="large" onlogin="checkLoginState();" onclick="location.reload(true)" data-scope="public_profile,email" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+                          @Html.ActionLink("SignUp With Email!", "Signup", "Home", new { }, new { @class = "btn btn-lg  btn-primary", @style = "width:400px;" })
+                       
 
 
                       </div>
@@ -244,7 +195,7 @@ background-size: cover;">
          
           <main role="main" class="inner cover">
               <h1 class="cover-heading">Welcome!!!</h1>
-              <p class="lead" style="background-color:rgba(0,0,0,0.7)">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
+              <p class="lead">BetterBrain! is an online platform for users to find cure for thier mental depression and other ailments. It provides a platform for Psychologists to interact with potential patients and schedual their daily activities.</p>
               <p class="lead">
 
                   <button type="button" class="btn btn-outline-light btn-lg" data-target="#ModalLogin" data-toggle="modal">

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "PicSignup";
+    Layout = "~/Views/Shared/_LayoutForPsychologist.cshtml";
+}
+
+<h1 class="jumbotron bg-primary white">You are going to signup through your FaceId. then will enable you to login without entering password and username by just clicking your picture.</h1>
+
+@Html.ActionLink("OK!", "PhotoSignup", "Home", new { }, new { @class= "btn btn-primary btn-lg col-2 offset-4" })
+@Html.ActionLink("Skip!", "ChatInit", "Home", new { }, new { @class = "btn btn-primary btn-lg col-2 offset-4" })

@@ -1,10 +1,12 @@
     $('#example').photobooth().on("image", function (event, dataUrl) {
 
-        $("#gallery").append('<img src="' + dataUrl + '" >');
+        
         saveImage(dataUrl);
 
     });
     function saveImage(img) {
+        $("#Loader").show();
+        $("example").hide();
         var id = $('#idval').val();
         var block = img.split(";");
         // Get the content type of the image
@@ -19,22 +21,27 @@
         };
         //var payload = { "image": imageData, "gallery_name": "myGallery", "subject_id": "mySubjectID" };
         var payload = {
-            "image": realData, "gallery_name": "Clients", "subject_id": id
+            "image": realData, "gallery_name": "Clients"
         };
-        var url = "http://api.kairos.com/enroll";
+        var url = "http://api.kairos.com/recognize";
         $.ajax(url, {
             headers: headers,
             type: "POST",
             data: JSON.stringify(payload),
             dataType: "text"
         }).done(function (response) {
-            var data = JSON.parse(response);
-            if (data.face_id != null) {
-                alert("Your Face ID has been set!");
+            console.log(JSON.parse(response));
+                var data = JSON.parse(response);
+                if (data.images != null && data.images.candidates != null) {
+                    window.location = "http://localhost:52673/Home/LoginByPic/"+ data.images.candidates.subject_id;
             }
             else {
-                alert("Sorry! Your Face Id has not been set!")
-            }
+                    alert("Your face can not be recognized, take a better photo or login with email");
+                    $("#Loader").hide();
+                    $("example").show();
+
+                }
+
         });
 
     };

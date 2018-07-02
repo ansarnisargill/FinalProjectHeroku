@@ -4,64 +4,21 @@
     ViewBag.Title = "RequestAcc";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/w3.css" rel="stylesheet" />
+<h1>Appointment info</h1>
+<div class="" style="margin-left:10%;">
+    @{
+        TimeSpan timespan = Model.session.StartingTime;
+        DateTime time = DateTime.Today.Add(timespan);
+        string startingTime = time.ToString("hh:mm tt");
 
-<h2>RequestAcc</h2>
+        TimeSpan timespan2 = Model.session.EndingTime;
+        DateTime time2 = DateTime.Today.Add(timespan2);
+        string endingTime = time2.ToString("hh:mm tt");
+    }
+    <h2><span class="w3-teal">Date: </span> <span style="margin-left:20px;">@Model.session.SessionDate.ToString("D")</span> </h2>
+    <h2><span class="w3-teal">Starting Time:</span> <span style="margin-left:20px;"></span>@startingTime</h2>
+    <h2><span class="w3-teal">Ending Time:</span> <span style="margin-left:20px;"></span>@endingTime</h2>
+    </div>
 
-<div>
-    <h4>Appointment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.psychologist.Username)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.psychologist.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.result.Illness)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.result.Illness)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.session.ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.session.ID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.user.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.user.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

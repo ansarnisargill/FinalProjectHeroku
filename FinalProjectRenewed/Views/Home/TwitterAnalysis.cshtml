@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "TwitterAnalysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Loader" style="display:none">
+    @Html.Partial("Loader")
+</div>
+<div id="innerbody">
+<div id="form" class="card bg-primary white mt-5 col-6 offset-3">
+
+    <lable class="mt-4 " style="font-size:20px;color:white;" for="username">Enter Your Twitter Username:</lable>
+    <br />
+    <input type="text" id="username" required class="form-control-lg"/>
+    <button class="btn btn-lg mt-4 mb-4 col-4 offset-4 btn-outline-light" onclick="SendData()">OK!</button>
+</div>
+
+<div id="weeklyRequests">
+    <canvas id="RequestReport1"></canvas>
+
+</div>
+</div>
+<script src="~/Scripts/Chart.min.js"></script>
+
+<script>
+    
+    function SendData() {
+        $('#Loader').show();
+        $('#innerbody').hide();
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/twitter/" + $('#username').val(),
+            success: function (data) {
+
+               
+                var newdata = $.parseJSON(data);
+                
+                makeChart(newdata);
+                $('#form').hide();
+                $('#Loader').hide();
+                $('#innerbody').show();
+
+            },
+            error: function () {
+                  //  window.location = "@Url.Content("~")Home/ChatInit?first=yes";
+                }
+            });
+    }
+    function makeChart(data) {
+        var ctx = document.getElementById('RequestReport1').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Happy Active", "Happy Inactive", "Unhappy Active", "Unhappy Inactive"],
+               
+                datasets: [{
+                    label: '# of Occurances!',
+                    data: [data.HA, data.HI, data.UA, data.UI],
+                    
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+</script>
